@@ -1,11 +1,10 @@
 # Park-3
 
-## ETH GLOBAL HACKATHON SEPT 2022<br>
+## ETH HACK FS 2023 <br>
 
 <b>Park 3 is a public data storage and verification hyperstructure.
 </b>
 
-### WEBSITE URL --> https://park3-hyperstructure.netlify.app/
 
 A “Hyperstructure” is built to run in perpetuity on distributed systems.  
 <br>
@@ -28,16 +27,6 @@ First we Establish a standard for the State of "Physical Objects" in "Reality"
    UMA Oracle For Natural Language Questions<br>
    Livepeer Studio For Video Asset Management<br>
    Polygon Network For Speed and Affordable web3 utilities<br>
-
-### EXAMPLES OF STATE IN PARK 3
-
-https://user-images.githubusercontent.com/25784418/191646480-303b2f96-0cf4-4c0d-bbb0-a7a42e5d2821.mp4
-
-https://user-images.githubusercontent.com/25784418/191646314-44f0ddac-db44-4c81-82d8-d05eb26cee77.mp4
-
-https://user-images.githubusercontent.com/25784418/192062578-75905ea2-fc64-436f-8323-05f2f2e6fc4a.mp4
-
-<br>
 
 ### CULTURAL PRESERVATION USE CASE:
 
