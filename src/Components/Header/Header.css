@@ -1,0 +1,23 @@
+.header{
+    background: #F5F4E4;
+    color: rgba(0, 0, 0, 0.53);
+}
+
+/* .park3-heading{
+    color:  rgb(127, 176, 105);
+} */
+
+a{
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.connect-btn{
+    background-color: #00C389;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    color: #F5F4E4;
+    font-size: 1rem;
+    font-weight: 700;
+    max-width: 2rem;
+}
