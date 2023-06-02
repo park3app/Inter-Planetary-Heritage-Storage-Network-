@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Park-3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ETH GLOBAL HACKATHON SEPT 2022<br>
 
-## Available Scripts
+<b>Park 3 is a public data storage and verification hyperstructure.
+</b>
 
-In the project directory, you can run:
+### WEBSITE URL --> https://park3-hyperstructure.netlify.app/
 
-### `npm start`
+A “Hyperstructure” is built to run in perpetuity on distributed systems.  
+<br>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Lets Take Web 3 Outside.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+First we Establish a standard for the State of "Physical Objects" in "Reality"
+<br>
+<br>
+<b>GOAL: Create a publically verifiable STATE in publically accessible SPACETIME.</b>
+<br>
 
-### `npm test`
+1. Host Video on IPFS of Public Parks and Public Spaces. <br>
+2. Create a "Statement Of Fact" declaring attributes and/or contents of the public place.<br>
+3. If the Statement Of Fact becomes invalid, any user can notify the hyperstructure, and trigger a human review of STATE.<br>
+   <br>
+   <b>Making Use Of:</b><br>
+   IPFS For Storage<br>
+   UMA Oracle For Natural Language Questions<br>
+   Livepeer Studio For Video Asset Management<br>
+   Polygon Network For Speed and Affordable web3 utilities<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### EXAMPLES OF STATE IN PARK 3
 
-### `npm run build`
+https://user-images.githubusercontent.com/25784418/191646480-303b2f96-0cf4-4c0d-bbb0-a7a42e5d2821.mp4
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://user-images.githubusercontent.com/25784418/191646314-44f0ddac-db44-4c81-82d8-d05eb26cee77.mp4
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://user-images.githubusercontent.com/25784418/192062578-75905ea2-fc64-436f-8323-05f2f2e6fc4a.mp4
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
+### CULTURAL PRESERVATION USE CASE:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
+<b>The people of Quintana Roo wish to preserve their cultural heritage and insure a Mural and Statue are preserved.</b> 
+<br>
+<br>
+- Document the culturally significant attributes of the place. (Ancient Theatre) (Mayan Buildings)<br>
+<br>
+- Preserve Immutable Video History and Statements Of Fact on Park3<br>
+<br>
+- Allow global community to interact with or add value to the preserved STATE.<br>
+<br>
+- Provide ReFi solutions, KPI Options, and Insurance verification and payouts that support the preservation of the culture. 
+<br><br><br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
+<b>PROBLEMS FOR PUBLIC PARKS ADMINISTRATORS</b> <br><br>
+    •    Public Parks and spaces have untapped potential and <u>need trusted data</u>. <br>
+    •    In Los Angeles a park is being built with Original Art and Data in QR codes. <br>
+    •    City Lawyers want a solution that can not be corrupted or hacked, and if ever compromised can be restored automatically. 
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Why are public spaces ideal for off-chain verification and Hyperstructures?
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Public Parks are Accessible to humans without red tape, ticketing, oversight etc.<br>
+- Open near 365 days per year in most cases<br>
+- A shared responsibility of a geographic community<br>
+- Large Value in Real Estate Holdings <br>
+- Legal Obligations for administrators<br><br>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
