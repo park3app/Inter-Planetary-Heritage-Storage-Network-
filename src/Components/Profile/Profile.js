@@ -1,5 +1,5 @@
 import React , {useEffect, useState} from 'react'
-import "./Assets.css"
+import "./Profile.css"
 import {abi ,address} from "../../constant.js"
 import { ethers } from 'ethers';
 import { Spinner , Button, Center , Box , VStack , Heading , HStack } from '@chakra-ui/react'
@@ -12,13 +12,15 @@ const Assets = () => {
     const [assetsArray , setassetsArray] = useState("")
     const [loading , setloading] = useState(false)
 
-    const fetchMyNFTs = async () => {
+    const fetchMyNFTs = async (address_) => {
         setloading(true)
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
         const park3 = new ethers.Contract(address, abi, signer)
 
-        const tx =  await park3.fetchALLNFTs() 
+
+
+        const tx =  await park3.fetchMYNFTs(address_) 
         console.log(tx)
         setassetsArray(tx)
         setloading(false)
@@ -26,8 +28,10 @@ const Assets = () => {
     }
 
 
-    const handlebtn = () => {
-        fetchMyNFTs()
+    const handlebtn = async() => {
+        const accounts = await window.ethereum.request({method:"eth_accounts"})[0]
+        console.log(accounts)
+        fetchMyNFTs('0xa023E0784A152A6f646f5E3193E24906164Be309')
         
     }
       
@@ -41,7 +45,7 @@ const Assets = () => {
               fontSize='2rem'
               color='rgba(0, 0, 0, 0.53)'
             >
-              See All Assets
+              See Your Assets
             </Heading>
        
          
@@ -55,7 +59,7 @@ const Assets = () => {
                     type='submit'
                     onClick={handlebtn}
                   >
-                    Get All Assets
+                    Get Your Assets
                   </Button>
           </VStack>
         </Center>
@@ -73,8 +77,9 @@ const Assets = () => {
                             <SingleNft img={items.tokenURI} name={items.name} isStateisTrue={items.isStateisTrue} />
                         )
                 })  :
+
                 <Center  h={'50vh'}>
-                <div className='message'>No Assets... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message'>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                
             }
@@ -95,18 +100,3 @@ const Assets = () => {
 export default Assets
 
 
-
-// {loading ? 
-//     <Spinner/> :
-//     <Box>
-//         {
-//             assetsArray ? 
-       
-//        assetsArray.map(nft => {
-//             return (
-//                 <SingleNft img={nft.tokenURI} name={nft.name} isStateisTrue={nft.isStateisTrue} />
-//             )
-//         }):
-//         <div>Nothing to see mate </div>
-
-//     }

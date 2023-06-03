@@ -1,0 +1,11 @@
+.hide{
+    display: none;
+}
+
+
+.message{
+    margin: auto 0 ;
+    font-size: 2rem;
+    color: #5C8984;
+    font-weight: 800;
+}

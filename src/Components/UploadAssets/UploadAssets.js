@@ -23,7 +23,6 @@ import {
 } from '@chakra-ui/react'
 import { Box, Input } from '@chakra-ui/react';
 
-require("dotenv").config()
 
 const UploadAssets = () => {
 
@@ -53,7 +52,7 @@ const UploadAssets = () => {
   // upload image function
   const uploadImage = async (imageData) => {
 
-    const nftstorage = new NFTStorage({ token: process.env.NFT_STORAGE_API })
+    const nftstorage = new NFTStorage({ token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDAzM2Y5Mzc1ZEQ5ODY1YzhmN2FiODVENGRiRTM3NDhERWI4NTljRkYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NTc3MTE1MDk5NiwibmFtZSI6IlBBUkszIn0.eHLoAl-RBIxAqXmHm_KTQ553Ha-_18sZrnoxuXpGxMI` })
 
     // Send request to store image
     const { ipnft } = await nftstorage.store({

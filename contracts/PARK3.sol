@@ -94,14 +94,14 @@ contract PARK3 is ERC721URIStorage  {
         }
 
     // getting nft data for a particular address
-    function fetchMYNFTs() public view returns(NFTInfo[] memory){
+    function fetchMYNFTs(address  _address) public view returns(NFTInfo[] memory){
         uint256 nftcount = _tokenIds.current();
         uint256 currentIndex = 0;
 
         NFTInfo[] memory nfts = new NFTInfo[](nftcount);
 
         for(uint256  i = 0 ; i < nftcount ; i++){
-            if(idToListedNFT[i+1].owner == payable(msg.sender)){
+            if(idToListedNFT[i+1].owner == payable(_address)){
                 uint256 currrentId = i + 1 ;
 
                 NFTInfo storage currentNFT = idToListedNFT[currrentId];

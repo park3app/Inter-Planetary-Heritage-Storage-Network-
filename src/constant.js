@@ -1,5 +1,5 @@
 
-export const address = `0x82F0b1497813c51C8cAaEaA85182943031040eD2`
+export const address = `0xD8b9c5896F4438Da9a8C9DAce0B767370c9558ef`
 export const abi = [
   {
     "inputs": [
@@ -373,7 +373,13 @@ export const abi = [
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
     "name": "fetchMYNFTs",
     "outputs": [
       {
