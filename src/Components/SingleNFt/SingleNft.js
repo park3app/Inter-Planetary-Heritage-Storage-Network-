@@ -1,5 +1,5 @@
 import React from 'react'
-import {  VStack,Heading,Text,Image , Button} from '@chakra-ui/react'
+import {  VStack,Heading,Text,Image , Button , Box} from '@chakra-ui/react'
 import {Link} from "react-router-dom"
 import { includesErrorMessage } from '@thirdweb-dev/react'
 
@@ -12,11 +12,15 @@ const SingleNft = ({img,name,isStateisTrue}) => {
   const ipfsurl = img.replace("metadata.json", "image.jpeg");
   // console.log(ipfsurl)
   return (
+    <Box>
+    {
+      name !== "" ?
+    
     
     <Link to={`/assets`} target='_blank' >
     <VStack
-      w={"70"}
-      h={"200"}
+      maxW={"400"}
+      maxh={"200"}
       shadow={"lg"}
       p={"10"}
       bg={'#F5F4E4'}
@@ -48,9 +52,12 @@ const SingleNft = ({img,name,isStateisTrue}) => {
       <Text noOfLines={1}>{isStateisTrue ? <Button colorScheme='red' size='xs'>Voting Closed</Button> : <Button colorScheme='green' size='xs'>Voting Open</Button>}</Text>
       {/* <Text noOfLines={3}>{img}</Text> */}
     </VStack>
-  </Link>
-
+  </Link>:
+  <div></div>
+    }
+    </Box>
   )
+    
 }
 
 export default SingleNft

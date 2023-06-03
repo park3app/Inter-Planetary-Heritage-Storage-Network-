@@ -12,7 +12,7 @@ const Assets = () => {
     const [assetsArray , setassetsArray] = useState("")
     const [loading , setloading] = useState(false)
 
-    const fetchMyNFTs = async () => {
+    const fetchALLNFTs = async () => {
         setloading(true)
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
@@ -27,9 +27,13 @@ const Assets = () => {
 
 
     const handlebtn = () => {
-        fetchMyNFTs()
+        fetchALLNFTs()
         
     }
+
+    useEffect(() => {
+        fetchALLNFTs()
+    },[])
       
   return (
     <Box>

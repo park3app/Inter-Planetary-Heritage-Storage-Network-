@@ -29,12 +29,20 @@ const Assets = () => {
 
 
     const handlebtn = async() => {
-        const accounts = await window.ethereum.request({method:"eth_accounts"})[0]
-        console.log(accounts)
-        fetchMyNFTs('0xa023E0784A152A6f646f5E3193E24906164Be309')
+        const accounts = await window.ethereum.request({
+            method: 'eth_accounts'
+          });
+
+        const account = accounts[0]
+        
+        console.log(account)
+        await fetchMyNFTs(account)
         
     }
-      
+
+    useEffect(() => {
+        handlebtn()
+    },[])
   return (
     <Box>
         <Center>
@@ -71,7 +79,7 @@ const Assets = () => {
                 </Center>
                  :
               <HStack>
-                {assetsArray ? 
+                {assetsArray !== '' ? 
                 assetsArray.map(items => {
                         return (
                             <SingleNft img={items.tokenURI} name={items.name} isStateisTrue={items.isStateisTrue} />
