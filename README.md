@@ -23,10 +23,14 @@ First we Establish a standard for the State of "Physical Objects" in "Reality"
 3. If the Statement Of Fact becomes invalid, any user can notify the hyperstructure, and trigger a human review of STATE.<br>
    <br>
    <b>Making Use Of:</b><br>
-   IPFS For Storage<br>
-   UMA Oracle For Natural Language Questions<br>
-   Livepeer Studio For Video Asset Management<br>
-   Polygon Network For Speed and Affordable web3 utilities<br>
+     IPFS <br>
+    FILEcoin Storage For Speed and Affordable web3 utilities<br>
+     Livepeer Studio For Video Asset Management<br>
+     NFT.Storage<br>
+     ApeCoin <br>
+     Polybase<br>
+     
+  
 
 ### CULTURAL PRESERVATION USE CASE:
 
