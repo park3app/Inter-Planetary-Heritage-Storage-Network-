@@ -1,13 +1,14 @@
-# Park-3
+# Inter Planetary Heritage Storage (IPHS) Network
 
 ## ETH HACK FS 2023 <br>
 
-<b>Park 3 is a public data storage and verification hyperstructure.
+<b>IPHS  will be a "Global Cultures DataDAO"
 </b>
-
-
-A “Hyperstructure” is built to run in perpetuity on distributed systems.  
+- Preserving cultural histories and places in a dynamic data verification and processing system.
 <br>
+- Creating standards for archival data in a new decentralized records network.
+<br>
+- Enabling DeSci communities to study public data and use it for innovations.
 <br>
 
 ## Lets Take Web 3 Outside.
@@ -18,12 +19,13 @@ First we Establish a standard for the State of "Physical Objects" in "Reality"
 <b>GOAL: Create a publically verifiable STATE in publically accessible SPACETIME.</b>
 <br>
 
-1. Host Video on IPFS of Public Parks and Public Spaces. <br>
-2. Create a "Statement Of Fact" declaring attributes and/or contents of the public place.<br>
-3. If the Statement Of Fact becomes invalid, any user can notify the hyperstructure, and trigger a human review of STATE.<br>
+The  "IPHS"  team is creating solutions for real world problems that affect communities in every part of the world.  With this DataDao we are growing a community of people that protect and preserve cultures and public places.
+
+<br>
    <br>
    <b>Making Use Of:</b><br>
      IPFS <br>
+     FEVM<br>
     FILEcoin Storage For Speed and Affordable web3 utilities<br>
      Livepeer Studio For Video Asset Management<br>
      NFT.Storage<br>
