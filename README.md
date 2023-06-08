@@ -1,29 +1,35 @@
-# Park-3
+# Inter Planetary Cultural Storage (IPHS) Network
 
 ## ETH HACK FS 2023 <br>
 
-<b>Park 3 is a public data storage and verification hyperstructure.
+<b>IPCS manages large data sets for users in a DataDAO. 
 </b>
+- Preserving cultural histories and places in a dynamic data storage and processing system.
+<br>
+- Creating standards for archival cultural data.
+<br>
+- Enabling DeSci communities to study public data and use it for innovations.
+<br>
 
+## Using File Storage For Aligned Network Particpants.
 
-A “Hyperstructure” is built to run in perpetuity on distributed systems.  
+First we establish a standard for Cultural Data Preservation. 
 <br>
 <br>
 
-## Lets Take Web 3 Outside.
-
-First we Establish a standard for the State of "Physical Objects" in "Reality"
+Define the attributes of the files to be stored.
 <br>
 <br>
-<b>GOAL: Create a publically verifiable STATE in publically accessible SPACETIME.</b>
+<b>GOAL: Create a publically verifiable state .</b>
 <br>
 
-1. Host Video on IPFS of Public Parks and Public Spaces. <br>
-2. Create a "Statement Of Fact" declaring attributes and/or contents of the public place.<br>
-3. If the Statement Of Fact becomes invalid, any user can notify the hyperstructure, and trigger a human review of STATE.<br>
+The "IPCS" DataDao is growing a community of people that protect and preserve cultures and public places.
+
+<br>
    <br>
    <b>Making Use Of:</b><br>
      IPFS <br>
+     FEVM<br>
     FILEcoin Storage For Speed and Affordable web3 utilities<br>
      Livepeer Studio For Video Asset Management<br>
      NFT.Storage<br>
@@ -34,17 +40,13 @@ First we Establish a standard for the State of "Physical Objects" in "Reality"
 
 ### CULTURAL PRESERVATION USE CASE:
 
+- Document the culturally significant Boyle Heights Los Angeles<br>
 <br>
-<b>The people of Quintana Roo wish to preserve their cultural heritage and insure a Mural and Statue are preserved.</b> 
+- Preserve Immutable Video History and Statements from the culture<br>
 <br>
+- Allow global community to interact with or add value via Bachula and compute over data<br>
 <br>
-- Document the culturally significant attributes of the place. (Ancient Theatre) (Mayan Buildings)<br>
-<br>
-- Preserve Immutable Video History and Statements Of Fact on Park3<br>
-<br>
-- Allow global community to interact with or add value to the preserved STATE.<br>
-<br>
-- Provide ReFi solutions, KPI Options, and Insurance verification and payouts that support the preservation of the culture. 
+- Verification bounties that support the preservation of the culture. 
 <br><br><br>
 
 <br>
@@ -54,11 +56,11 @@ First we Establish a standard for the State of "Physical Objects" in "Reality"
     •    City Lawyers want a solution that can not be corrupted or hacked, and if ever compromised can be restored automatically. 
 <br>
 
-## Why are public spaces ideal for off-chain verification and Hyperstructures?
+## Why are public art ideal for data daos?
 
-- Public Parks are Accessible to humans without red tape, ticketing, oversight etc.<br>
+- Art in public places is Accessible<br>
 - Open near 365 days per year in most cases<br>
 - A shared responsibility of a geographic community<br>
 - Large Value in Real Estate Holdings <br>
-- Legal Obligations for administrators<br><br>
+<br>
 
