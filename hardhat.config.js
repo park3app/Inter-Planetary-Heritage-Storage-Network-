@@ -9,13 +9,31 @@ module.exports = {
     hardhat: {
       chainId: 1337
     },
-    mumbai: {
-      url: process.env.POLYGON_ENDPOINT,
-      accounts: [process.env.PRIVATE_KEY],
-      gas: "auto",
-      gasPrice: 80000000000,
-      allowUnlimitedContractSize: true
+    // mumbai: {
+    //   url: process.env.POLYGON_ENDPOINT,
+    //   accounts: [process.env.PRIVATE_KEY],
+    //   gas: "auto",
+    //   gasPrice: 80000000000,
+    //   allowUnlimitedContractSize: true
+    // },
+  },
+
+  "sources": {
+    "InterPlanetaryCulturalStorageNetwork.sol": {
+      "content": "..."
+    }
+  },
+  "settings": {
+    "outputSelection": {
+      "*": {
+        "*": ["*"]
+      }
     },
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "viaIR": true
   },
 
   solidity:{

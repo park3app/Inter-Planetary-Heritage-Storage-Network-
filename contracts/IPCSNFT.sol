@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract PARK3 is ERC721URIStorage  {
+contract IPCSNFT is ERC721URIStorage  {
     // using counters for keep tracking of the tokenIds
     using Counters for Counters.Counter;
     //_tokenIds variable has the most recent minted tokenId
@@ -16,7 +16,7 @@ contract PARK3 is ERC721URIStorage  {
     // defining owner 
     address  public owner;
 
-    uint256 public listPrice = 0.001 ether;
+    uint256 public listPrice = 0.01 ether;
 
     constructor(string memory name , string memory symbol) ERC721(name, symbol) {
         owner = msg.sender;
@@ -27,19 +27,9 @@ contract PARK3 is ERC721URIStorage  {
         uint256 tokenId;
         string tokenURI;
         address payable owner;
-        uint256 costToBuild;
-        uint256 insurancePrice;
-        string location;
-        bool wantsInsurance;
-        uint256 VotesInFavour;
-        uint256 VotesInAgainst;
-        bool isStateisTrue;
-        string description;
-        string culturalSignificance;
-        string  name ;
+        bool  _isStateisTrue;
+        bool isproposed;
     }
-
-
 
      //This mapping maps tokenId to token info and is helpful when retrieving details about a tokenId
     mapping(uint256 => NFTInfo) public idToListedNFT;
@@ -48,9 +38,7 @@ contract PARK3 is ERC721URIStorage  {
     mapping(address => uint256[]) public addressTotokenIds;
 
     // create an nft function 
-    function createToken(string memory tokenURI, uint256 _costToBuild, uint256 _insurancePrice,  string memory _location, bool _isStateisTrue,
-        string memory _description,
-        string memory _culturalSignificance, string memory _name ) public payable returns (uint) {
+    function createToken(string memory tokenURI,  bool _isStateisTrue, bool _isproposed) public payable returns (uint) {
         //Increment the tokenId counter, which is keeping track of the number of minted NFTs
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
@@ -62,31 +50,21 @@ contract PARK3 is ERC721URIStorage  {
         _setTokenURI(newTokenId, tokenURI);
 
         //Helper function to update Global variables and emit an event
-        createListedNFT(newTokenId,tokenURI,_costToBuild,_insurancePrice,_location,_isStateisTrue,_description,_culturalSignificance,_name);
+        createListedNFT(newTokenId,tokenURI,_isStateisTrue , _isproposed);
                         
         return newTokenId;
         }
 
 
         // createListedNft function
-        function createListedNFT(uint256 _tokenId , string memory _tokenURI, uint256 _costToBuild,uint256 _insurancePrice,
-        string memory _location,bool _isStateisTrue,string memory _description, string memory _culturalSignificance, string memory _name
-        ) public  {
+        function createListedNFT(uint256 _tokenId , string memory _tokenURI,  bool _isStateisTrue , bool _isproposed ) public  {
             // require(msg.value == listPrice, "Hopefully sending the correct price");
             idToListedNFT[_tokenId] = NFTInfo(
                 _tokenId,
                 _tokenURI,
                 payable (msg.sender),
-                _costToBuild,
-                _insurancePrice,
-                _location,
-                false,
-                0,
-                0,
                 _isStateisTrue,
-                _description,
-                _culturalSignificance,
-                _name
+                _isproposed
             );
 
             addressTotokenIds[msg.sender].push(_tokenId);
@@ -131,7 +109,6 @@ contract PARK3 is ERC721URIStorage  {
     }
 
 
-
     // ------------     Simple Functions 
        function updateListPrice(uint256 _listPrice) public payable {
         require(owner == msg.sender, "Only owner can update listing price");
@@ -142,11 +119,19 @@ contract PARK3 is ERC721URIStorage  {
         return listPrice;
     }
 
-    function getCurrentToken() public view returns (uint256) {
+    function getCurrentTokenID() public view returns (uint256) {
         return _tokenIds.current();
     }
 
+    /// interface Contract 
+    function getNFTInfobyId(uint256 id_) public  view returns(NFTInfo memory){
+        return idToListedNFT[id_];
+    }
 
 
+    function setNFTState(uint256 tokenId, bool newState) public   {
+    require(_exists(tokenId), "NFT does not exist");
+    idToListedNFT[tokenId]._isStateisTrue = newState;
+}
 
 }
