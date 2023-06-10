@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from 'react'
 import "./Assets.css"
-import {abi ,address} from "../../constant.js"
+import {ipcsnftAddress , ipcsnftABI} from "../../constant.js"
 import { ethers } from 'ethers';
 import { Spinner , Button, Center , Box , VStack , Heading , HStack } from '@chakra-ui/react'
 import {ExternalLinkIcon} from "@chakra-ui/icons"
@@ -12,30 +12,44 @@ const Assets = () => {
     const [assetsArray , setassetsArray] = useState("")
     const [loading , setloading] = useState(false)
 
-    const fetchALLNFTs = async () => {
-        setloading(true)
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const signer = provider.getSigner()
-        const park3 = new ethers.Contract(address, abi, signer)
+    const fetchMyNFTs = async (address_) => {
+      setloading(true)
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const park3 = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
 
-        const tx =  await park3.fetchALLNFTs() 
-        console.log(tx)
-        setassetsArray(tx)
-        setloading(false)
-    
-    }
+      const tx =  await park3.fetchALLNFTs() 
+      console.log(tx)
+      setassetsArray(tx)
+      console.log('Reading tc --> ')
+     
 
 
-    const handlebtn = () => {
-        fetchALLNFTs()
+      console.log('Reading assets array --. ')
+      console.log(assetsArray)
+      setloading(false)
+  
+  }
+
+
+    const handlebtn = async() => {
+        const accounts = await window.ethereum.request({
+            method: 'eth_accounts'
+          });
+
+        const account = accounts[0]
+        
+        console.log(account)
+        await fetchMyNFTs(account)
         
     }
 
     useEffect(() => {
-        fetchALLNFTs()
+        handlebtn()
     },[])
+
+    return(
       
-  return (
     <Box>
         <Center>
         <VStack as='header' spacing='6' mt='8'>
@@ -74,7 +88,7 @@ const Assets = () => {
                 {assetsArray ? 
                 assetsArray.map(items => {
                         return (
-                            <SingleNft img={items.tokenURI} name={items.name} isStateisTrue={items.isStateisTrue} />
+                          <SingleNft tokenId={items.tokenId} tokenURI={items.tokenURI}  isStateisTrue={items.isStateisTrue} isproposed={items.isproposed}  /> 
                         )
                 })  :
                 <Center  h={'50vh'}>

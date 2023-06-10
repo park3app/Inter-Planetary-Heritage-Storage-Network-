@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
 contract IPCSToken is ERC20Votes {
-    uint256 public maxSupply = 1000000;
+    uint256 public maxSupply = 100000000000000000000000;
 
     constructor() 
         ERC20("IPCSGovernance", "IPCS") 

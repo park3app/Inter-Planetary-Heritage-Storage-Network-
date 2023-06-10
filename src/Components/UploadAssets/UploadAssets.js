@@ -1,27 +1,22 @@
 import React, { useState , useRef , useEffect } from 'react';
 import { NFTStorage, File } from 'nft.storage'
+import {ipcsnftAddress , ipcsnftABI} from "../../constant.js"
 import { ethers } from 'ethers';
-import {abi , address} from "../../constant.js"
 import "./UploadAssets.css"
-import { useToast, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Button } from '@chakra-ui/react';
-
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Center,
-  HStack,
   Stack,
   VStack,
   Heading,
   Card,
   CardBody,
-  GithubLogo,
-  Text,
-  Link
+  Button
 } from '@chakra-ui/react'
 import { Box, Input } from '@chakra-ui/react';
+
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@chakra-ui/react";
 
 
 const UploadAssets = () => {
@@ -29,8 +24,8 @@ const UploadAssets = () => {
   // definign all states 
     const [name , setname] = useState("");
     const [description , setdescription] = useState("");
-    const [costtobuild ,setcosttobuild] = useState("");
-    const [insurance , setinsurance] = useState("");
+    const [significance , setsignificance] = useState("")
+    const [note,setnote] = useState("")
     const [location , setlocation] = useState("")
     const [url , seturl] = useState('')
     const [isuploaded,setuploaded] = useState(false)
@@ -40,14 +35,7 @@ const UploadAssets = () => {
   // defining  useRef for all inputes
   const fileRef = useRef(null)
 
-   //load blockchain data funtion
-  const loadBlockchainData = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const signer = provider.getSigner()
-    const park3 = new ethers.Contract(address, abi, signer)
-
-    console.log(park3)
-  }
+ 
 
   // upload image function
   const uploadImage = async (imageData) => {
@@ -59,27 +47,27 @@ const UploadAssets = () => {
       image: new File([imageData], "image.jpeg", { type: "image/jpeg" }),
       name: name,
       description: description,
-      costtobuild:costtobuild,
-      insurance:insurance,
-      location:location
+      significance:significance,
+      otherNote:note,
+      location:location,
+      storeddatahash: "",
     })
     // Save the URL
     const NFturl = `https://ipfs.io/ipfs/${ipnft}/metadata.json`
     seturl(NFturl)
-    console.log('Url of Imageis this -> ' , url)
-    return url
+    return NFturl
   }
 
-  const mintnfthandler = async() => {
+  const mintnfthandler = async(tokenuri) => {
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    let contract = new ethers.Contract(address, abi, signer)
-    // let listingPrice = await contract.getListPrice()
-    // listingPrice = listingPrice.toString()
-    const gasLimit = 2000000;
-    let transaction = await contract.createToken(url, ethers.utils.parseUnits(costtobuild,'ether'),ethers.utils.parseUnits(insurance,'ether') ,location , false,description , "Parks", name)
+    let contract = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
+    let listingPrice = await contract.getListPrice()
+    listingPrice = listingPrice.toString()
+
+    let transaction = await contract.createToken(tokenuri,false,false, {value:listingPrice} )
     await transaction.wait()
     alert("Successfully listed your NFT!");
     setuploaded(true);
@@ -93,15 +81,15 @@ const UploadAssets = () => {
     const files = fileRef.current.files[0];
     console.log(files)
 
-    console.log(name,description,location,costtobuild,insurance,fileRef)
-    uploadImage(files)
-    mintnfthandler()
+    console.log(name,description,location,significance , note, fileRef)
+    
+    
+
+    const nfturl = await  uploadImage(files)
+    console.log(nfturl)
+    await mintnfthandler(nfturl)
   }
 
-  // useEffect
-  useEffect(() => {
-    loadBlockchainData()
-  }, [])
 
 
 
@@ -131,7 +119,7 @@ const UploadAssets = () => {
                     <Input
                       type='text'
                       onChange={(event) => setname(event.target.value)}
-                      placeholder='Name of Asset...'
+                      placeholder='Taj Mahal....'
                       bg='white'
                       borderColor='#d8dee4'
                       size='sm'
@@ -145,7 +133,7 @@ const UploadAssets = () => {
                       type='text'
                       bg='white'
                       onChange={(event) => setdescription(event.target.value)}
-                      placeholder='A Little Description...'
+                      placeholder='A Little Description... About it '
                       borderColor='#d8dee4'
                       size='sm'
                       borderRadius='6px'
@@ -153,12 +141,12 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Cost To Build ($)</FormLabel>
+                      <FormLabel size='sm'>Location</FormLabel>
                     <Input
-                      type='number'
+                      type='text'
                       bg='white'
-                      onChange={(event) => setcosttobuild(event.target.value)}
-                      placeholder='Cost to build it...'
+                      onChange={(event) => setlocation(event.target.value)}
+                      placeholder='Where it is located...'
                       borderColor='#d8dee4'
                       size='sm'
                       required
@@ -166,11 +154,11 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Insurance Coverage($)</FormLabel>
+                      <FormLabel size='sm'>Cultural Significance</FormLabel>
                     <Input
-                      type='number'
+                      type='text'
                       bg='white'
-                      onChange={(event) => setinsurance(event.target.value)}
+                      onChange={(event) => setsignificance(event.target.value)}
                       placeholder='Insurance Coverage...'
                       borderColor='#d8dee4'
                       size='sm'
@@ -179,12 +167,12 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Location</FormLabel>
+                      <FormLabel size='sm'>Any Other Note...</FormLabel>
                     <Input
                       type='text'
                       bg='white'
-                      placeholder='location....'
-                      onChange={(event) => setlocation(event.target.value)}
+                      placeholder='If you want to specify more...'
+                      onChange={(event) => setnote(event.target.value)}
                       borderColor='#d8dee4'
                       size='sm'
                       borderRadius='6px'
@@ -242,3 +230,8 @@ const UploadAssets = () => {
 
   }
 export default UploadAssets;
+
+
+
+
+

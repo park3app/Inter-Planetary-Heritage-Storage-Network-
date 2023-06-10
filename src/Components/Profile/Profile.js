@@ -1,7 +1,7 @@
 import React , {useEffect, useState} from 'react'
 import "./Profile.css"
-import {abi ,address} from "../../constant.js"
 import { ethers } from 'ethers';
+import {ipcsnftAddress , ipcsnftABI} from "../../constant.js"
 import { Spinner , Button, Center , Box , VStack , Heading , HStack } from '@chakra-ui/react'
 import {ExternalLinkIcon} from "@chakra-ui/icons"
 import SingleNft from '../SingleNFt/SingleNft';
@@ -9,23 +9,30 @@ import { Link } from 'react-router-dom';
 
 const Assets = () => {
 
-    const [assetsArray , setassetsArray] = useState("")
+    const [assetsArray , setassetsArray] = useState([])
     const [loading , setloading] = useState(false)
 
+
     const fetchMyNFTs = async (address_) => {
-        setloading(true)
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const signer = provider.getSigner()
-        const park3 = new ethers.Contract(address, abi, signer)
+      setloading(true)
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const park3 = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
 
 
 
-        const tx =  await park3.fetchMYNFTs(address_) 
-        console.log(tx)
-        setassetsArray(tx)
-        setloading(false)
-    
-    }
+      const tx =  await park3.fetchMYNFTs(address_) 
+      console.log(tx)
+      setassetsArray(tx)
+      console.log('Reading tc --> ')
+     
+
+
+      console.log('Reading assets array --. ')
+      console.log(assetsArray)
+      setloading(false)
+  
+  }
 
 
     const handlebtn = async() => {
@@ -79,10 +86,10 @@ const Assets = () => {
                 </Center>
                  :
               <HStack>
-                {assetsArray !== '' ? 
+                {assetsArray !== [] ? 
                 assetsArray.map(items => {
                         return (
-                            <SingleNft img={items.tokenURI} name={items.name} isStateisTrue={items.isStateisTrue} />
+                            <SingleNft tokenId={items.tokenId} tokenURI={items.tokenURI}  isStateisTrue={items.isStateisTrue} isproposed={items.isproposed}  />
                         )
                 })  :
 

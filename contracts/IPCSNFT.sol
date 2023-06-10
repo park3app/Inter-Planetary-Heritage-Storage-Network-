@@ -14,12 +14,12 @@ contract IPCSNFT is ERC721URIStorage  {
     Counters.Counter private _tokenIds;
 
     // defining owner 
-    address  public owner;
+    address  payable public  owner;
 
     uint256 public listPrice = 0.01 ether;
 
     constructor(string memory name , string memory symbol) ERC721(name, symbol) {
-        owner = msg.sender;
+        owner = payable(msg.sender);
     }
 
     //defining nftinfo struct
@@ -29,6 +29,7 @@ contract IPCSNFT is ERC721URIStorage  {
         address payable owner;
         bool  _isStateisTrue;
         bool isproposed;
+        string storeddatahash;
     }
 
      //This mapping maps tokenId to token info and is helpful when retrieving details about a tokenId
@@ -57,14 +58,15 @@ contract IPCSNFT is ERC721URIStorage  {
 
 
         // createListedNft function
-        function createListedNFT(uint256 _tokenId , string memory _tokenURI,  bool _isStateisTrue , bool _isproposed ) public  {
-            // require(msg.value == listPrice, "Hopefully sending the correct price");
+        function createListedNFT(uint256 _tokenId , string memory _tokenURI,  bool _isStateisTrue , bool _isproposed ) payable public  {
+            require(msg.value == listPrice, "Hopefully sending the correct price");
             idToListedNFT[_tokenId] = NFTInfo(
                 _tokenId,
                 _tokenURI,
                 payable (msg.sender),
                 _isStateisTrue,
-                _isproposed
+                _isproposed,
+                ''
             );
 
             addressTotokenIds[msg.sender].push(_tokenId);
@@ -133,5 +135,28 @@ contract IPCSNFT is ERC721URIStorage  {
     require(_exists(tokenId), "NFT does not exist");
     idToListedNFT[tokenId]._isStateisTrue = newState;
 }
+
+    function setNFTisproposed(uint256 _id) public{
+        idToListedNFT[_id].isproposed = true;
+    }
+
+
+    function getNFTHash(uint256 tokenId , string memory _hash) public {
+        require(_exists(tokenId), "NFT does not exist");
+        idToListedNFT[tokenId].storeddatahash = _hash;
+    }
+
+    receive() external payable {}
+
+    fallback() external payable {}
+
+
+    function withdraw() payable public {
+        require(payable(msg.sender) == owner,'You are not owner of contract');
+        (bool success,) = owner.call{value:msg.value}("");
+
+        require(success,"Trabsfer Failed");
+    }
+
 
 }

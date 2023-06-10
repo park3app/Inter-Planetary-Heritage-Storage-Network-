@@ -1,0 +1,16 @@
+
+
+.asset-details-div{
+    background-color: #F5F4E4;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+   
+}
+
+.details-div{
+
+}

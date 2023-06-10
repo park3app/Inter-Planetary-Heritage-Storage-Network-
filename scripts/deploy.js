@@ -1,20 +1,33 @@
 
 const hre = require("hardhat");
 
-//0xc2a96851Ea48046082e4168537Fb363d9BD73a13
 
-let contractAddress;
 
 async function main() {
- const PARK3 = await hre.ethers.getContractFactory("PARK3");
- const park3 = await PARK3.deploy('PARK3','PRK');
- park3.deployed();
 
- console.log(`PARK3 deployed on ${park3.address}`)
- contractAddress  = park3.address
+  // deployinh the ipcsnft contract --> 0xeA52dD03048e6745C4e88a727Ea6209E7db611BE
+ const IPCSNFT = await hre.ethers.getContractFactory("IPCSNFT");
+ const ipcsnft = await IPCSNFT.deploy('IPCSNFT','CNFT');
+ ipcsnft.deployed();
+ console.log(`IPCSNFT deployed on ${ipcsnft.address}`)
+
+  // deploying the IPCS Token contract --> 0xdfD2538c5e84E28A32cD17792f751eaC0442A7b2
+  // const IPCSToken = await hre.ethers.getContractFactory("IPCSToken");
+  // const ipcstoken = await IPCSToken.deploy();
+  // ipcstoken.deployed();
+  // console.log(`IPCSTOKEN deployed on ${ipcstoken.address}`)
+
+  // deploying the IPCS DAO Contract --> 0x65ce98df0d3de436A7363530Ecd95A3278924770
+  const IPCS = await hre.ethers.getContractFactory("IPCS");
+  // const ipcs = await IPCS.deploy(ipcstoken.address , ipcsnft.address);
+  const ipcs = await IPCS.deploy("0xdfD2538c5e84E28A32cD17792f751eaC0442A7b2" , ipcsnft.address);
+  ipcs.deployed();
+  console.log(`IPCS deployed on ${ipcs.address}`)
+
+
 }
 
-// export {contractAddress};
+
 
 
 main().catch((error) => {

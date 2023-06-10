@@ -1,23 +1,51 @@
-import React from 'react'
+import React , {useState  , useEffect} from 'react'
 import {  VStack,Heading,Text,Image , Button , Box} from '@chakra-ui/react'
 import {Link} from "react-router-dom"
-import { includesErrorMessage } from '@thirdweb-dev/react'
+import { includesErrorMessage } from '@thirdweb-dev/react';
+import {ipcsAddress , ipcsABI} from "../../constant.js"
+import { ethers } from 'ethers';
 
 
-const SingleNft = ({img,name,isStateisTrue}) => {
-  console.log(img)
-  const array = img.split("/")
-  const cid = array[-2]
-  console.log(cid)
-  const ipfsurl = img.replace("metadata.json", "image.jpeg");
-  // console.log(ipfsurl)
+const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
+  console.log('Single NFT' ,  tokenURI)
+  const [name, setName] = useState('');
+  const [img,setimg] = useState('')
+
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const response = await fetch(tokenURI);
+        const metadata = await response.json();
+        const metadataName = metadata.name;
+        setName(typeof metadataName === 'string' ? metadataName : '');
+      } catch (error) {
+        console.error('Error fetching metadata:', error);
+      }
+    };
+    // function getImageUrlFromIPFS() {
+    //   try{
+    //   const ipfsHash = tokenURI.split('/ipfs/')[1].split("/")[0]
+    //   // alert(ipfsHash)
+    //   setimg(`https://ipfs.io/ipfs/${ipfsHash}/image.jpeg`)   
+    //   // alert('Image hash', img)
+    // }catch(error){
+    //   console.log(error)
+    // }
+    // }
+    // getImageUrlFromIPFS()
+    fetchMetadata();
+  }, [tokenURI]);
+
+
+  
+
   return (
-    <Box>
+    <Box key={tokenURI}>
     {
-      name !== "" ?
+      tokenURI !== "" ?
     
     
-    <Link to={`/assets`} target='_blank' >
+    <Link to={`/assets/${tokenId.toString()}`} target='_blank' >
     <VStack
       maxW={"400"}
       maxh={"200"}
@@ -32,25 +60,28 @@ const SingleNft = ({img,name,isStateisTrue}) => {
       transitionDelay={'15ms'}
       css={{
         "&:hover": {
-          transform: "scale(1.1)",
-          boxSshadow:' 5px 5px 5px #111'
+          transform: "scale(1.02)",
+          boxSshadow:' 1px 1px 1px #111'
         
         },
       }}
     >
+      <Heading size={"md"} noOfLines={1} fontWeight={'500'} color={'rgba(0, 0, 0, 0.53)'}>
+        TOKEN ID: {tokenId.toString()}
+      </Heading>
       <Image
-        src={ipfsurl}
-        w={"50"}
+        src={img}
+        w={"50"}  
         h={"50"}
         objectFit={"contain"}
-        alt={"Public Places"}
+        alt={name}
       />
-      <Heading size={"md"} noOfLines={1} fontWeight={'500'} color={'rgba(0, 0, 0, 0.53)'}>
-        {name.toUpperCase()}
+      <Heading size={"md"} noOfLines={2} fontWeight={'500'} color={'rgba(0, 0, 0, 0.53)'}>
+      {name.toUpperCase()}
       </Heading>
 
-      <Text noOfLines={1}>{isStateisTrue ? <Button colorScheme='red' size='xs'>Voting Closed</Button> : <Button colorScheme='green' size='xs'>Voting Open</Button>}</Text>
-      {/* <Text noOfLines={3}>{img}</Text> */}
+      <Text noOfLines={1}>{isStateisTrue  ? <Text p={'4px'}  backgroundColor={'red.400'} fontWeight={'700'} color='#fff' borderRadius={'6px'} size='xs'>Voting Closed</Text> : <Text color='#fff' borderRadius={'4px'} p={'4px'} backgroundColor={'green.300'} fontWeight={'600'} size='xs'>Voting Open</Text>}</Text>
+      <Text noOfLines={1}>{isproposed ? <Text p={'4px'} backgroundColor={'red.400'} fontWeight={'700'} color='#fff' size='xs' borderRadius={'6px'}>Proposed</Text> : <Text   color='#fff' borderRadius={'4px'} backgroundColor={'green.300'} p={'4px'} fontWeight={'600'} size='xs'>Propose</Text>}</Text>
     </VStack>
   </Link>:
   <div></div>

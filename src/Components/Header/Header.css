@@ -3,11 +3,7 @@
     color: rgba(0, 0, 0, 0.53);
 }
 
-/* .park3-heading{
-    color:  rgb(127, 176, 105);
-} */
-
-a{
+.a{
     font-size: 1.2rem;
     transition: all 0.2s;
 }
