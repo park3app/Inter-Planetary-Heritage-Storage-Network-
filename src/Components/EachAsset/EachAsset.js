@@ -4,10 +4,9 @@ import { ipcsnftAddress, ipcsnftABI } from '../../constant';
 import { useParams, Link } from "react-router-dom";
 import { Button, Container, HStack , Center , Spinner, VStack , Image, Box, Text , Heading } from '@chakra-ui/react';
 import { ethers } from 'ethers';
+import {ExternalLinkIcon} from "@chakra-ui/icons"
 import"./eachasset.css";
 import screenshot from "../../screenshot.png"
-
-
 
 const EachAsset = () => {
   const { id } = useParams()
@@ -55,9 +54,6 @@ const EachAsset = () => {
 
     setisproposed(data.isproposed)
     setloading(false)
-  
-   
-
   }
 
   function getImageUrlFromIPFS() {
@@ -95,11 +91,14 @@ const EachAsset = () => {
 
 
   useEffect(() => {
-    getNftInfo()
-    fetchMetadata(tokenuri)
-    // getImageUrlFromIPFS()
-  },[id])
- 
+    getNftInfo();
+  }, [id]);
+  
+  useEffect(() => {
+    if (tokenuri) {
+      fetchMetadata(tokenuri);
+    }
+  }, [tokenuri]);
   return (
     <Container maxW={"100vw"}>
       {
@@ -112,12 +111,13 @@ const EachAsset = () => {
     <div className='asset-details-div'>
 
     <HStack spacing={8} >
+       
+        <Image src={image} alt={name}  fallbackSrc={screenshot} maxW={'40%'} />
    
-      <Image src={image} alt={name}  fallbackSrc={screenshot} maxW={'40%'} />
         <VStack spacing={6}   align='stretch' marginLeft={'5rem'}>
         <div className='details-div'>
         <Heading as="h3"  m={'1'} size="lg" >
-          #{id}
+          #{id} <Link target='_blank' style={{marginLeft:'3px'}} to={tokenuri}><ExternalLinkIcon/></Link>
         </Heading>
         <Heading as="h6" m={'1'} size="lg" fontWeight={'1000'} color={'rgba(0, 0, 0, 0.53)'}>
           {name.toUpperCase()}

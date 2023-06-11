@@ -1,12 +1,12 @@
 
  
-export const ipcsAddress = '0x3CBA8774E2Aa56BB68e69f93b6A318D08808b853'
+export const ipcsAddress = '0x5ACAc2A774E3605032dFfE4B26a86B567a339eD2'
 
 export const ipcsnftAddress = '0xD0b63E9e483C609CB85EBaf4EaE4C49510Ac7A55'
 
 export const ipcstokenAddress = '0xdfD2538c5e84E28A32cD17792f751eaC0442A7b2'
 
-export const ipcsABI =[
+export const ipcsABI = [
   {
     "inputs": [
       {

@@ -67,7 +67,7 @@ contract IPCS{
         iipcsnft.setNFTisproposed(_tokenid);
         Proposal storage proposal = proposals[_proposalId];
         proposal.proposalId = _proposalId;
-        proposal.deadline = block.timestamp + 15 minutes;
+        proposal.deadline = block.timestamp + 10 hours;
         proposal.tokenId = nftinfo.tokenId;
         proposal.tokenURI = nftinfo.tokenURI;
         proposal.proposalActive = true ;
@@ -86,10 +86,10 @@ contract IPCS{
     function isInAddressArray(address[] memory addresses, address target) internal pure returns (bool) {
     for (uint256 i = 0; i < addresses.length; i++) {
         if (addresses[i] == target) {
-            return true;
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 
@@ -98,7 +98,7 @@ contract IPCS{
 
         Proposal storage proposal = proposals[proposalId];
 
-        require(proposal.deadline > block.timestamp, "INACTIVE_PROPOSAL");
+        require(proposal.deadline <  block.timestamp, "INACTIVE_PROPOSAL");
         // require(proposal.voters[msg.sender] == false, "ALREADY_VOTED");
         require(isInAddressArray(proposal.voters,  msg.sender), "Address not found in array");
 

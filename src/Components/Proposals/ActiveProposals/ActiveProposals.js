@@ -1,8 +1,10 @@
 import React , {useEffect, useState} from 'react'
 import { ipcsAddress,ipcsABI } from '../../../constant';
-import { Button } from '@chakra-ui/react';
+import { Button , Box, Center , Heading, VStack , HStack } from '@chakra-ui/react';
+import {ExternalLinkIcon} from "@chakra-ui/icons"
 import { ethers } from 'ethers';
-import SingleNft from '../../SingleNFt/SingleNft';
+import { Link } from 'react-router-dom';
+import ProposalTile from '../ProposalTile/ProposalTile';
 
 const ActiveProposals = () => {
   const [assetsArray , setassetsArray] = useState([])
@@ -24,23 +26,44 @@ const ActiveProposals = () => {
 
   useEffect(() => {
     fetchActiveProposals()
-  },[assetsArray])
+  },[])
 
   return (
-    <div>
+    <Box>
+      <Center>
+        <VStack>
 
+       
+      <Heading
+              as='h1'
+              fontWeight='700'
+              fontSize='2rem'
+              color='rgba(0, 0, 0, 0.53)'
+            >
+              All Active Proposals
+            </Heading>
+            
+            <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
       {assetsArray !== [] ?
       assetsArray.map(items => {
         return (
-          <div key={items.tokenId}>
-            {items.tokenURI.toString()}
-          </div>
+          <>
+          <ProposalTile tokenURI={items.tokenURI} proposalid={items.tokenId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
+          {/* <div>{items.tokenURI.toString()}</div> */}
+          </>
         )
       })   :
 
-      <div>Nothing to see mf</div>
+      <Center  h={'50vh'}>
+                <div className='message'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                </Center>
     }
-    </div>
+      </HStack>
+     </VStack>
+      </Center>
+
+     
+    </Box>
   )
 }
 
