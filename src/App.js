@@ -27,7 +27,8 @@ function App() {
     <Route path='myproposals' element={<MyProposals/>}  />
     <Route path='activeproposals' element={<ActiveProposals/>} />
     <Route path='activeproposals/:id' element={<EachProposal/>} />
-    {/* <Route path='myproposals/:id' element={<EachProposal />} /> */}
+    <Route path='sucessproposals' element={<SuccessProposals/>} />
+    <Route path='unsucessproposals' element={<UnSucessProposals/>} />
     
     </Routes>
     </BrowserRouter>

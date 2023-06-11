@@ -38,7 +38,6 @@ contract IPCS{
 }
 
     // modifier 
-
     // struct for Proposals
     struct Proposal{
         uint256 proposalId;
@@ -81,7 +80,6 @@ contract IPCS{
 
     }
 
-
     // checking if an address is in voters array or not
     function isInAddressArray(address[] memory addresses, address target) internal pure returns (bool) {
     for (uint256 i = 0; i < addresses.length; i++) {
@@ -98,7 +96,7 @@ contract IPCS{
 
         Proposal storage proposal = proposals[proposalId];
 
-        require(proposal.deadline <  block.timestamp, "INACTIVE_PROPOSAL");
+        require(proposal.deadline > block.timestamp, "INACTIVE_PROPOSAL");
         // require(proposal.voters[msg.sender] == false, "ALREADY_VOTED");
         require(isInAddressArray(proposal.voters,  msg.sender), "Address not found in array");
 
@@ -119,7 +117,6 @@ contract IPCS{
         require(proposal.executed == false, "ALREADY_EXECUTED");
 
         proposal.executed = true;
-
         
         if(proposal.yesvotes > proposal.novotes){
             proposal.isStateisTrue = true;
@@ -217,7 +214,6 @@ contract IPCS{
                 nfts[currentIndex] = currentNFT;
                 currentIndex += 1 ;
             }
-           
             
         }
         return nfts;

@@ -45,10 +45,10 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
       tokenURI !== "" ?
     
     
-    <Link to={`/assets/${tokenId.toString()}`} target='_blank' >
+    <Link to={`/assets/${tokenId.toString()}`} target='_blank' maxW="30" >
     <VStack
-      maxW={"400"}
-      maxh={"200"}
+      h={"300"}
+      w={"250"}
       shadow={"lg"}
       p={"10"}
       bg={'#F5F4E4'}
@@ -84,7 +84,8 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
       <Text noOfLines={1}>{isproposed ? <Text p={'4px'} backgroundColor={'red.400'} fontWeight={'700'} color='#fff' size='xs' borderRadius={'6px'}>Proposed</Text> : <Text   color='#fff' borderRadius={'4px'} backgroundColor={'green.300'} p={'4px'} fontWeight={'600'} size='xs'>Propose</Text>}</Text>
     </VStack>
   </Link>:
-  <div></div>
+  <div>
+  </div>
     }
     </Box>
   )

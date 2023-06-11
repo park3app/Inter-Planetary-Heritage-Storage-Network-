@@ -50,9 +50,9 @@ const Assets = () => {
 
     return(
       
-    <Box>
-        <Center>
-        <VStack as='header' spacing='6' mt='8'>
+    <Box >
+        <Center justifyContent={'center'}>
+        <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
@@ -77,14 +77,13 @@ const Assets = () => {
                   </Button>
           </VStack>
         </Center>
-
-        <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
+        <HStack wrap={'wrap'}  alignContent={'center'}>
         {loading ? 
-                <Center h={'30vh'} >
-                    <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
+                <Center h={'30vh'} justifyContent={'center'} >
+                    <Spinner alignSelf={'center'} thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
                 </Center>
                  :
-              <HStack>
+              <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
                 {assetsArray ? 
                 assetsArray.map(items => {
                         return (

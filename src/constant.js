@@ -1,10 +1,10 @@
 
  
-export const ipcsAddress = '0x5ACAc2A774E3605032dFfE4B26a86B567a339eD2'
+export const ipcsAddress = '0x85Ef3a729D61e57a7a6e3943d1e7b9C1B178016F'
 
-export const ipcsnftAddress = '0xD0b63E9e483C609CB85EBaf4EaE4C49510Ac7A55'
+export const ipcsnftAddress = '0xcDcA4E8F924c6abFDd106b9F8001BA7cee9d5071'
 
-export const ipcstokenAddress = '0xdfD2538c5e84E28A32cD17792f751eaC0442A7b2'
+export const ipcstokenAddress = '0xd9F95FF6FAee53Be9DbF9f30f3617b824896D055'
 
 export const ipcsABI = [
   {
@@ -645,7 +645,7 @@ export const ipcsABI = [
     "type": "receive"
   }
 ]
-export const ipcsnftABI = [
+export const ipcsnftABI =  [
   {
     "inputs": [
       {
@@ -1428,8 +1428,7 @@ export const ipcsnftABI = [
 ]
 
 
-
-export const ipcstokenABI = [
+export const ipcstokenABI =[
   {
     "inputs": [],
     "stateMutability": "nonpayable",

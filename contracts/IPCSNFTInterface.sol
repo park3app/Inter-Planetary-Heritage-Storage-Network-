@@ -1,5 +1,6 @@
 pragma solidity ^0.8.0;
 
+
 interface IIPCSNFT {
     struct NFTInfo {
         uint256 tokenId;
@@ -8,8 +9,6 @@ interface IIPCSNFT {
         bool isStateisTrue;
         bool isproposed;
     }
-
-
 
     function createToken(string calldata tokenURI, bool _isStateisTrue, bool _isproposed) external payable returns (uint);
     function createListedNFT(uint256 _tokenId, string calldata _tokenURI, bool _isStateisTrue, bool _isproposed) external;

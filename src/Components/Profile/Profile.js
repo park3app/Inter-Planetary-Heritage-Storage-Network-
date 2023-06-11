@@ -78,14 +78,13 @@ const Assets = () => {
                   </Button>
           </VStack>
         </Center>
-
-        <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
+        <HStack style={{margin:'1rem'}} >
         {loading ? 
                 <Center h={'30vh'} >
                     <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
                 </Center>
                  :
-              <HStack>
+              <HStack flexWrap={'wrap'} justifyContent={'flex-start'} >
                 {assetsArray !== [] ? 
                 assetsArray.map(items => {
                         return (
