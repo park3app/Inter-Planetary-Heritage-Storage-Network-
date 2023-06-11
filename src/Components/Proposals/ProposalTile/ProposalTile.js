@@ -12,6 +12,7 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
           try {
             const response = await fetch(tokenURI);
             const metadata = await response.json();
+            console.log(metadata.text())
             setname(metadata.name)
             setimage(image)
 
@@ -29,7 +30,7 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
       tokenURI !== "" ?
     
     
-    <Link to={`/activeproposals/${proposalid.toString()}`} target='_blank' >
+    <Link to={`/activeproposals/${proposalid.toString()}`} target='_blank'  key={proposalid.toString()}>
     <VStack
       maxW={"400"}
       maxh={"200"}
@@ -64,8 +65,8 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
       { name ? name.toUpperCase() : 'Loading...'}
       </Heading>
       <HStack>
-      <Text noOfLines={1} color={'green'} size='xs'>{yesvotes}</Text>
-      <Text noOfLines={1} color={'red'} size='xs'>{novotes}</Text>
+      <Text noOfLines={1} color={'green'} size='lg'>{yesvotes}</Text>
+      <Text noOfLines={1} color={'red'} size='lg'>{novotes}</Text>
       </HStack>
 
       <Button size='md' colorScheme='green' borderRadius={'4px'}  fontWeight={'700'} >Vote</Button>

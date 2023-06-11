@@ -87,6 +87,7 @@ const EachProposal = () => {
             console.log(tx)
         }catch(error){
             console.log(error)
+            alert("You have already Voted")
         }
     
     
@@ -104,6 +105,7 @@ const EachProposal = () => {
             console.log(tx)
         }catch(error){
             console.log(error)
+            alert("You have already Voted")
         }
       }
 
@@ -118,7 +120,7 @@ const EachProposal = () => {
             console.log('yes votes tx -->');
             console.log(tx)
         }catch(error){
-            alert('Deadline passed or Proposal is already Executed')
+            alert('Deadline not passed  passed or Proposal is already Executed')
         }
       }
       

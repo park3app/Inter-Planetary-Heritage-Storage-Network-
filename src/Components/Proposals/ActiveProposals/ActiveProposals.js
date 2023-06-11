@@ -6,9 +6,10 @@ import { ethers } from 'ethers';
 import { Link } from 'react-router-dom';
 import ProposalTile from '../ProposalTile/ProposalTile';
 
+
 const ActiveProposals = () => {
   const [assetsArray , setassetsArray] = useState([])
-
+  
   const fetchActiveProposals = async() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner()
@@ -48,12 +49,11 @@ const ActiveProposals = () => {
       assetsArray.map(items => {
         return (
           <>
-          <ProposalTile tokenURI={items.tokenURI} proposalid={items.tokenId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
-          {/* <div>{items.tokenURI.toString()}</div> */}
+          <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
+          {/* <div>{items.token.toString()}</div> */}
           </>
         )
       })   :
-
       <Center  h={'50vh'}>
                 <div className='message'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
