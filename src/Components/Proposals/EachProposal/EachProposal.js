@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { ipcsAddress,ipcsABI } from '../../../constant.js';
 import { useParams, Link } from "react-router-dom";
-import { Button, Container, HStack , Center , Spinner, VStack , Image, Box, Text , Heading } from '@chakra-ui/react';
+import { Button, Container, HStack , Center , Spinner, VStack , Image, Box, Text , Heading, StepDescription } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import screenshot from "../../../screenshot.png"
 import {ExternalLinkIcon} from "@chakra-ui/icons"
+import lighthouse from '@lighthouse-web3/sdk';
+
 
 
 
@@ -24,6 +26,7 @@ const EachProposal = () => {
     const [novotes , ssetnovotes]  = useState('');
     const [yesvotes , setyesvotes] = useState('');
     const [executed,setisexecuted] = useState(false)
+    const [progress , setprogress] = useState('0')
 
     const ProposalInfo = async() => {
         setloading(true)
@@ -39,11 +42,48 @@ const EachProposal = () => {
         setyesvotes(data.yesvotes)
         ssetnovotes(data.novotes)
         setisexecuted(data.executed)
-        
-        // setstate(data._isStateisTrue);
-    
-        // setisproposed(data.isproposed)
         setloading(false)
+      }
+
+      const progressCallback = (progressData) => {
+        let percentageDone =
+          100 - (progressData?.total / progressData?.uploaded)?.toFixed(2);
+        console.log(percentageDone);
+        setprogress(percentageDone);
+      };
+
+
+      const uploadFile = async(cid) => {
+        try {
+          setloading(true);
+          console.log("CID:", cid);
+          const output = await lighthouse.upload(cid, "f5d8c9db.d5db2e0370a9429b9321faef8a749cdc", progressCallback);
+          console.log("File Status:", output);
+          console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
+          setloading(false);
+        } catch (error) {
+          console.log("Error:", error);
+        }
+      };
+
+      const handleUpload = async() =>{
+          try{
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
+            alert(3)
+            const tx = await ipcs.getproposalInfobyId(id);
+            const state = await tx.isStateisTrue;
+            const tokenURI = await  tx.tokenURI;
+
+            if(state === true){
+              await uploadFile(tokenURI);
+              alert('File Uploaded to the Storage Succefully')
+            }else{
+              alert('Proposal Result to Unsuccefull.')
+            }}catch(error){
+            alert('Some Error While Interacting with LightHouse APIs...')
+          }
       }
 
       const fetchMetadata = async (tokenURI) => {
@@ -119,6 +159,8 @@ const EachProposal = () => {
             const tx = await ipcs.executeProposal(id);
             console.log('yes votes tx -->');
             console.log(tx)
+
+            await handleUpload()
         }catch(error){
             alert('Deadline not passed  passed or Proposal is already Executed')
             console.log(error)
@@ -132,6 +174,7 @@ const EachProposal = () => {
       loading ? 
       <Center h={'30vh'} >
       <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
+      {loading && <Loading progress={progress} />}
   </Center> 
   :
 
@@ -161,6 +204,7 @@ const EachProposal = () => {
        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
         {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button> }
      </HStack>
+    
     </VStack>
   </HStack>
   </div>
@@ -172,3 +216,24 @@ const EachProposal = () => {
 }
 
 export default EachProposal
+
+
+
+const Loading = ({ progress }) => {
+  if (progress === 100) {
+    return <div>Upload completed</div>;
+  }
+
+  return (
+    <div className="loading">
+      <div
+        className="bar"
+        style={{ width: `${progress}%` }}
+        role="progressbar"
+        aria-valuenow={progress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      ></div>
+    </div>
+  );
+};

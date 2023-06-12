@@ -63,7 +63,6 @@ const EachAsset = () => {
     try {
       setloading(true)
       const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
-
       const metadata = await response.json();
       const metadataName = metadata.name;
       setname(metadataName)

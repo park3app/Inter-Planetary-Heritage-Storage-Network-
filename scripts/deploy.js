@@ -4,8 +4,6 @@ const hre = require("hardhat");
 
 
 async function main() {
-
-
 //  const IPCSNFT = await hre.ethers.getContractFactory("IPCSNFT");
 //  const ipcsnft = await IPCSNFT.deploy('IPCSNFT','CNFT');
 //  ipcsnft.deployed();

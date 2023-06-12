@@ -6,8 +6,6 @@ import { ethers } from 'ethers';
 import { Link } from 'react-router-dom';
 import ExecutedProposalTile from '../ExecutedProposalTile/ExecutedProposalTile';
 
-
-
 const UnSuccesFullProposals = () => {
 
   const [assetsArray , setassetsArray] = useState([]);
@@ -75,7 +73,7 @@ const UnSuccesFullProposals = () => {
                         return (
                           <>
                         
-                          <ExecutedProposalTile state={true} tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
+                          <ExecutedProposalTile state={false} tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
                           <div>
                           {/* {items.proposalId.toString()} */}
                           </div>
