@@ -9,7 +9,7 @@ import  Profile from "./Components/Profile/Profile"
 import MyProposals from "./Components/Proposals/MyProposals/MyProposals"
 import ActiveProposals from "./Components/Proposals/ActiveProposals/ActiveProposals"
 import SuccessProposals from "./Components/Proposals/SucessProposals/SuccessProposals"
-import UnSucessProposals from "./Components/Proposals/UnSucessProposals/UnSucessProposals"
+import UnSuccesFullProposals from "./Components/Proposals/UnSucessProposals/UnSucessProposals"
 import EachAsset from './Components/EachAsset/EachAsset';
 import EachProposal from "./Components/Proposals/EachProposal/EachProposal"
 
@@ -28,7 +28,7 @@ function App() {
     <Route path='activeproposals' element={<ActiveProposals/>} />
     <Route path='activeproposals/:id' element={<EachProposal/>} />
     <Route path='sucessproposals' element={<SuccessProposals/>} />
-    <Route path='unsucessproposals' element={<UnSucessProposals/>} />
+    <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
     
     </Routes>
     </BrowserRouter>

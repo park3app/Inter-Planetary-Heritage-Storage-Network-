@@ -2,7 +2,7 @@ import React , {useEffect , useState} from 'react'
 import {Box , VStack , Heading , Image , Text, HStack, Button} from "@chakra-ui/react"
 import {Link} from "react-router-dom"
 
-const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
+const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , state}) => {
 
     const [name , setname] = useState();
     const [image , setimage] = useState('')
@@ -69,8 +69,9 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
       <Text noOfLines={1} color={'green'} size='lg'>{yesvotes}</Text>
       <Text noOfLines={1} color={'red'} size='lg'>{novotes}</Text>
       </HStack>
+      {state ?  <Text noOfLines={1} color={'green'} size='2xl'>Succesfull Proposal</Text> :  <Text noOfLines={1} color={'red'} size='2xl'>UnSuccesfull Proposal</Text>  }
 
-      <Button size='md' colorScheme='green' borderRadius={'4px'}  fontWeight={'700'} >Vote</Button>
+     
      
       </VStack>
   </Link>:
@@ -80,4 +81,4 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
   )
 }
 
-export default ProposalTile
+export default ExecutedProposalTile

@@ -14,25 +14,16 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
-        const response = await fetch(tokenURI);
+        const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
         const metadata = await response.json();
         const metadataName = metadata.name;
         setName(typeof metadataName === 'string' ? metadataName : '');
+        console.log(tokenURI);
       } catch (error) {
         console.error('Error fetching metadata:', error);
       }
     };
-    // function getImageUrlFromIPFS() {
-    //   try{
-    //   const ipfsHash = tokenURI.split('/ipfs/')[1].split("/")[0]
-    //   // alert(ipfsHash)
-    //   setimg(`https://ipfs.io/ipfs/${ipfsHash}/image.jpeg`)   
-    //   // alert('Image hash', img)
-    // }catch(error){
-    //   console.log(error)
-    // }
-    // }
-    // getImageUrlFromIPFS()
+
     fetchMetadata();
   }, [tokenURI]);
 
@@ -70,7 +61,7 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
         TOKEN ID: {tokenId.toString()}
       </Heading>
       <Image
-        src={img}
+        src={`https://ipfs.io/ipfs/${tokenURI}/image.jpeg`}
         w={"50"}  
         h={"50"}
         objectFit={"contain"}

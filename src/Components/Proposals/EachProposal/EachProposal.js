@@ -49,7 +49,7 @@ const EachProposal = () => {
       const fetchMetadata = async (tokenURI) => {
         try {
           setloading(true)
-          const response = await fetch(tokenURI);
+          const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
           const metadata = await response.json();
           const metadataName = metadata.name;
           setname(metadataName)
@@ -116,11 +116,12 @@ const EachProposal = () => {
             const signer = provider.getSigner()
             const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
     
-            const tx = await ipcs.executeProposal();
+            const tx = await ipcs.executeProposal(id);
             console.log('yes votes tx -->');
             console.log(tx)
         }catch(error){
             alert('Deadline not passed  passed or Proposal is already Executed')
+            console.log(error)
         }
       }
       
@@ -156,8 +157,8 @@ const EachProposal = () => {
       </div>
 
      <HStack>
-        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleYESVote} colorScheme='green'>Vote Yes</Button>}
-       {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
+        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :  <Button onClick={handleYESVote} colorScheme='green'>Vote Yes</Button>}
+       {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
         {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button> }
      </HStack>
     </VStack>

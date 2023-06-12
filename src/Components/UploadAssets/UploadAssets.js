@@ -52,10 +52,11 @@ const UploadAssets = () => {
       location:location,
       storeddatahash: "",
     })
+
     // Save the URL
-    const NFturl = `https://ipfs.io/ipfs/${ipnft}/metadata.json`
-    seturl(NFturl)
-    return NFturl
+    // const NFturl = `https://ipfs.io/ipfs/${ipnft}/metadata.json`
+    seturl(ipnft)
+    return ipnft
   }
 
   const mintnfthandler = async(tokenuri) => {
@@ -85,7 +86,7 @@ const UploadAssets = () => {
     
     
 
-    const nfturl = await  uploadImage(files)
+    const nfturl = await uploadImage(files)
     console.log(nfturl)
     await mintnfthandler(nfturl)
   }

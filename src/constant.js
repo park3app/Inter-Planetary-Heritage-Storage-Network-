@@ -1,10 +1,10 @@
 
  
-export const ipcsAddress = '0x85Ef3a729D61e57a7a6e3943d1e7b9C1B178016F'
+export const ipcsAddress = '0x7F2748109D625A120F214c5aFCE22485b26aF988'
 
-export const ipcsnftAddress = '0xcDcA4E8F924c6abFDd106b9F8001BA7cee9d5071'
+export const ipcsnftAddress = '0x2ad10065dc0f8805Fa474CdBee40E187Ec991755'
 
-export const ipcstokenAddress = '0xd9F95FF6FAee53Be9DbF9f30f3617b824896D055'
+export const ipcstokenAddress = '0x3590D57ce4CC85252F5cfb1B9abD5F2dedd8C25A'
 
 export const ipcsABI = [
   {

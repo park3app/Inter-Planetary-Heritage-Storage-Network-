@@ -59,14 +59,14 @@ contract IPCS{
     mapping(uint256 => Proposal) public proposals;
 
     // creating proposals
-    function createProposal(uint256 _tokenid) public payable   returns(uint256){
+    function createProposal(uint256 _tokenid) public payable returns(uint256){
         IIPCSNFT.NFTInfo  memory nftinfo = iipcsnft.getNFTInfobyId(_tokenid);
 
         require(nftinfo.isStateisTrue == false,"THE NFT State is Already  True");
         iipcsnft.setNFTisproposed(_tokenid);
         Proposal storage proposal = proposals[_proposalId];
         proposal.proposalId = _proposalId;
-        proposal.deadline = block.timestamp + 10 hours;
+        proposal.deadline = block.timestamp + 15 minutes;
         proposal.tokenId = nftinfo.tokenId;
         proposal.tokenURI = nftinfo.tokenURI;
         proposal.proposalActive = true ;
@@ -92,7 +92,7 @@ contract IPCS{
 
 
     // voting on proposal
-    function voteonProposal(uint256 proposalId, bool _vote) public  onlyTokenHolderWithAtLeast(10){
+    function voteonProposal(uint256 proposalId, bool _vote) public  onlyTokenHolderWithAtLeast(1){
 
         Proposal storage proposal = proposals[proposalId];
 

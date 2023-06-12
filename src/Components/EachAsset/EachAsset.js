@@ -40,7 +40,7 @@ const EachAsset = () => {
 
   // function for getting the info for each NFT with tokenid
   const getNftInfo = async() => {
-    alert(tokenuri)
+    // alert(tokenuri)
     setloading(true)
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner()
@@ -56,24 +56,14 @@ const EachAsset = () => {
     setloading(false)
   }
 
-  function getImageUrlFromIPFS() {
-    try{
-    const ipfsHash = "https://ipfs.io/ipfs/bafyreifrjarrrykmuuiukxkbuwhes24udb73pgrm55ovp7pzx6qjwnibl4/metadata.json".split('/ipfs/')[1].split("/")[0]
-    // alert(ipfsHash)
-    setimage(`https://ipfs.io/ipfs/${ipfsHash}/image.jpeg`)   
-    // alert(image)
-    // return `https://ipfs.io/ipfs/${ipfsHash}/image.jpeg`
-    
-  }catch(error){
-    console.log(error)
-  }
-  }
+
 
 
   const fetchMetadata = async (tokenURI) => {
     try {
       setloading(true)
-      const response = await fetch(tokenURI);
+      const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
+
       const metadata = await response.json();
       const metadataName = metadata.name;
       setname(metadataName)
@@ -83,7 +73,6 @@ const EachAsset = () => {
       setnote(metadata.otherNote);
       setimage(metadata.image)
       setloading(false)
-      getImageUrlFromIPFS(tokenURI)
     } catch (error) {
       console.error('Error fetching metadata:', error);
     }
@@ -117,7 +106,7 @@ const EachAsset = () => {
         <VStack spacing={6}   align='stretch' marginLeft={'5rem'}>
         <div className='details-div'>
         <Heading as="h3"  m={'1'} size="lg" >
-          #{id} <Link target='_blank' style={{marginLeft:'3px'}} to={tokenuri}><ExternalLinkIcon/></Link>
+          #{id} <Link target='_blank' style={{marginLeft:'3px'}} to={`https://ipfs.io/ipfs/${tokenuri}/metadata.json`}><ExternalLinkIcon/></Link>
         </Heading>
         <Heading as="h6" m={'1'} size="lg" fontWeight={'1000'} color={'rgba(0, 0, 0, 0.53)'}>
           {name.toUpperCase()}

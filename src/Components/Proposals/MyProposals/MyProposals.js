@@ -61,7 +61,7 @@ const MyProposals = () => {
               fontSize='2rem'
               color='rgba(0, 0, 0, 0.53)'
             >
-              See All Assets
+              My Proposals
             </Heading>
        
          
@@ -75,7 +75,7 @@ const MyProposals = () => {
                     type='submit'
                     onClick={handlebtn}
                   >
-                    Get All Assets
+                    Get My Proposals
                   </Button>
           </VStack>
         </Center>
@@ -89,7 +89,13 @@ const MyProposals = () => {
                 {assetsArray ? 
                 assetsArray.map(items => {
                         return (
+                          <>
+                        
                           <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
+                          <div>
+                          {/* {items.proposalId.toString()} */}
+                          </div>
+                          </>
                         )
                 })  :
                 <Center  h={'50vh'}>
