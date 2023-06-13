@@ -7,18 +7,23 @@ import { ethers } from 'ethers';
 
 
 const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
-  console.log('Single NFT' ,  tokenURI)
   const [name, setName] = useState('');
   const [img,setimg] = useState('')
 
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
+        let tokenURIx= "https://ipfs.io/ipfs/"+ tokenURI + "/metadata.json";
         const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
         const metadata = await response.json();
         const metadataName = metadata.name;
+        
+        let tokenImagex= metadata.image;
+        
+
+        setimg( tokenImagex );
         setName(typeof metadataName === 'string' ? metadataName : '');
-        console.log(tokenURI);
+
       } catch (error) {
         console.error('Error fetching metadata:', error);
       }
@@ -26,8 +31,6 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
 
     fetchMetadata();
   }, [tokenURI]);
-
-
   
 
   return (
@@ -61,7 +64,7 @@ const SingleNft = ({tokenURI ,isStateisTrue , isproposed , tokenId}) => {
         TOKEN ID: {tokenId.toString()}
       </Heading>
       <Image
-        src={`https://ipfs.io/ipfs/${tokenURI}/image.jpeg`}
+        src={`${img.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
         w={"50"}  
         h={"50"}
         objectFit={"contain"}

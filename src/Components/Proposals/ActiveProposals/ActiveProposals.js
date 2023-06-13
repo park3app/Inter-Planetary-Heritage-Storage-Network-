@@ -6,7 +6,6 @@ import { ethers } from 'ethers';
 import { Link } from 'react-router-dom';
 import ProposalTile from '../ProposalTile/ProposalTile';
 
-
 const ActiveProposals = () => {
   const [assetsArray , setassetsArray] = useState([])
   

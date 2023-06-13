@@ -56,9 +56,6 @@ const EachAsset = () => {
     setloading(false)
   }
 
-
-
-
   const fetchMetadata = async (tokenURI) => {
     try {
       setloading(true)
@@ -72,6 +69,10 @@ const EachAsset = () => {
       setnote(metadata.otherNote);
       setimage(metadata.image)
       setloading(false)
+      let tokenURIx= "https://ipfs.io/ipfs/"+ tokenURI + "/metadata.json";
+
+      let tokenImagex= metadata.image;
+      setimage( tokenImagex );
     } catch (error) {
       console.error('Error fetching metadata:', error);
     }
@@ -100,7 +101,7 @@ const EachAsset = () => {
 
     <HStack spacing={8} >
        
-        <Image src={image} alt={name}  fallbackSrc={screenshot} maxW={'40%'} />
+        <Image src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}  alt={name}  fallbackSrc={screenshot} maxW={'40%'} />
    
         <VStack spacing={6}   align='stretch' marginLeft={'5rem'}>
         <div className='details-div'>

@@ -109,7 +109,6 @@ contract IPCS{
         }
     }
 
-
     // exceuting the proposal 
     function executeProposal(uint256 proposalId) public onlyTokenHolderWithAtLeast(10) {
         Proposal storage proposal = proposals[proposalId];
