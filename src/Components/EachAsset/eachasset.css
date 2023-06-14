@@ -3,6 +3,7 @@
 .asset-details-div{
     background-color: #F5F4E4;
     padding: 4rem;
+    /* margin: 4rem; */
     border-radius: 1rem;
     display: flex;
     flex-direction: row;

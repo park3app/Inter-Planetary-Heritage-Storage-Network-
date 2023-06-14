@@ -12,7 +12,6 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
             // alert(tokenURI)
             const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
             const metadata = await response.json();
-            console.log(metadata.text())
             let metadataname = metadata.name
             let tokenImagex= metadata.image;
             setname(metadataname)

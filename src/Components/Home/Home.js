@@ -1,10 +1,13 @@
 import React from 'react'
+import { Box } from '@chakra-ui/react';
+
+
 
 const Home = () => {
   return (
-    <div>
-        
-    </div>
+   <Box minH={"100vh"}>
+
+   </Box>
   )
 }
 

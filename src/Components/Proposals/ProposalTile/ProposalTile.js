@@ -11,10 +11,10 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
     useEffect(() => {
         const fetchMetadata = async () => {
           try {
-            // alert(tokenURI)
             const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
+            console.log(response)
             const metadata = await response.json();
-            console.log(metadata.text())
+            // console.log(metadata.text())
             setname(metadata.name)
             let tokenImagex= metadata.image;
             setimage(tokenImagex)
@@ -33,9 +33,10 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
       tokenURI !== "" ?
     
     
-    <Link to={`/activeproposals/${proposalid.toString()}`}  maxW="30" key={proposalid.toString()}>
+    <Link to={`/activeproposals/${proposalid.toString()}`}  maxw="30" key={proposalid.toString()}>
     <VStack
        h={"350"}
+       key={proposalid.toString()}
        w={"300"}
       shadow={"lg"}
       p={"10"}
@@ -66,7 +67,7 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
         alt={name}
       />
    <Heading size={"sm"} noOfLines={2} fontWeight={'700'} color={'#fff'} padding={'2'} textDecoration={'underline'}>
-      {name ? name.toUpperCase(): "Loading..."}
+      {name}
       </Heading>
       <HStack>
       <Text noOfLines={1} color={'green.800'} fontSize={'2xl'}>{yesvotes}</Text>

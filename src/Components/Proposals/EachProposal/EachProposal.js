@@ -51,8 +51,7 @@ const EachProposal = () => {
         console.log(percentageDone);
         setprogress(percentageDone);
       };
-
-
+      
       const uploadFile = async(cid) => {
         try {
           setloading(true);

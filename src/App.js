@@ -14,6 +14,7 @@ import EachAsset from './Components/EachAsset/EachAsset';
 import EachProposal from "./Components/Proposals/EachProposal/EachProposal";
 import Footer from './Components/Footer/Footer';
 
+
 function App() {
   return (
     <ThirdwebProvider>

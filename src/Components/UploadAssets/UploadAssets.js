@@ -15,6 +15,12 @@ import {
   Button
 } from '@chakra-ui/react'
 import { Box, Input } from '@chakra-ui/react';
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 
 
 const UploadAssets = () => {
@@ -26,7 +32,10 @@ const UploadAssets = () => {
     const [note,setnote] = useState("")
     const [location , setlocation] = useState("")
     const [url , seturl] = useState('')
-    const [isuploaded , setuploaded] = useState()
+    const [isuploaded , setuploaded] = useState();
+    const [loading , setloading] = useState(false)
+    const [showUploadAlert, setShowUploadAlert] = useState(false);
+    const [showMintAlert, setShowMintAlert] = useState(false);
   // defining  useRef for all inputes
     const fileRef = useRef(null)
 
@@ -34,7 +43,7 @@ const UploadAssets = () => {
 
   // upload image function
   const uploadImage = async (imageData) => {
-
+    setloading(true)
     const nftstorage = new NFTStorage({ token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDAzM2Y5Mzc1ZEQ5ODY1YzhmN2FiODVENGRiRTM3NDhERWI4NTljRkYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NTc3MTE1MDk5NiwibmFtZSI6IlBBUkszIn0.eHLoAl-RBIxAqXmHm_KTQ553Ha-_18sZrnoxuXpGxMI` })
 
     // Send request to store image
@@ -51,39 +60,66 @@ const UploadAssets = () => {
     // Save the URL
     // const NFturl = `https://ipfs.io/ipfs/${ipnft}/metadata.json`
     seturl(ipnft)
+    setuploaded(true);
+    setloading(false);
+    setShowUploadAlert(true); // Set showUploadAlert to true after uploadImage function is completed
+    setTimeout(() => {
+      setShowUploadAlert(false); // Set showUploadAlert back to false after 5 seconds
+    }, 5000);
     return ipnft
+   
   }
 
   const mintnfthandler = async(tokenuri) => {
-
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-
-    let contract = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
-    let listingPrice = await contract.getListPrice()
-    listingPrice = listingPrice.toString()
-
-    let transaction = await contract.createToken(tokenuri,false,false, {value:listingPrice} )
-    await transaction.wait()
-    alert("Successfully listed your NFT!");
-    setuploaded(true);
-
+    try{
+      setloading(true)
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+  
+      let contract = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
+      let listingPrice = await contract.getListPrice()
+      listingPrice = listingPrice.toString()
+  
+      let transaction = await contract.createToken(tokenuri,false,false, {value:listingPrice} )
+      await transaction.wait()
+      alert("Successfully listed your NFT!");
+      setuploaded(true);
+      setloading(false)
+      setShowMintAlert(true); // Set showMintAlert to true after mintnfthandler function is completed
+      setTimeout(() => {
+        setShowMintAlert(false); // Set showMintAlert back to false after 5 seconds
+      }, 5000);
+    }catch(error){
+      setTimeout(() => {
+        <Alert status='success'>
+        <AlertIcon />
+        Data Uploaded to IPFS. Now Minting the NFT...
+      </Alert>
+      }, 5000);
+    }
+  
   }
 
   // handle upload Function
   const handleUpload = async(event) => {
-    event.preventDefault();
-
-    const files = fileRef.current.files[0];
-    console.log(files)
-
-    console.log(name,description,location,significance , note, fileRef)
-    
-    
-
-    const nfturl = await uploadImage(files)
-    console.log(nfturl)
-    await mintnfthandler(nfturl)
+    try{
+      event.preventDefault();
+      const files = fileRef.current.files[0];
+      console.log(files)
+      console.log(name,description,location,significance , note, fileRef)
+  
+      const nfturl = await uploadImage(files)
+      console.log(nfturl)
+      await mintnfthandler(nfturl)
+    }catch(error){
+      setTimeout(() => {
+        <Alert status='error'>
+        <AlertIcon />
+        Some Error Occured Please Try Again Later...
+      </Alert>
+      }, 5000);
+    }
+   
   }
 
 
@@ -91,9 +127,21 @@ const UploadAssets = () => {
 
   return (
     <div className="uploadassets">
+     {showUploadAlert ? (
+      <Alert status='success'>
+        <AlertIcon />
+        Data Uploaded to IPFS. Now Minting the NFT...
+      </Alert>
+    ) : null}
+    {showMintAlert ? (
+      <Alert status='success'>
+        <AlertIcon />
+        NFT Minted Successfully
+      </Alert>
+    ) : null}
       <Box>
       <Center>
-        <Stack spacing='4'>
+        <VStack spacing='4'>
           <VStack as='header' spacing='6' mt='8'>
             <Heading
               as='h1'
@@ -104,11 +152,11 @@ const UploadAssets = () => {
             >
               Upload Assets
             </Heading>
-          </VStack>
+            </VStack>
           <Card bg='#454545' variant='outline' borderColor='#d8dee4' w='308px'>
             <CardBody>
               <form onSubmit={handleUpload} >
-                <Stack spacing='4'>
+                <VStack spacing='4'>
                   <FormControl>
                     <FormLabel size='sm' color={'#fff'}>Name of The Asset</FormLabel>
                     <Input
@@ -209,13 +257,12 @@ const UploadAssets = () => {
                   >
                     Upload
                   </Button>
-                </Stack>
+                </VStack>
               </form>
             </CardBody>
           </Card>
+        </VStack>
 
-         
-        </Stack>
       </Center>
       
     </Box>
