@@ -34,22 +34,21 @@ const UnSuccesFullProposals = () => {
 
 
   return (
-    <Box >
+    <Box bg={'hsl(0, 0%, 90%)'} minH={'50vh'} >
         <Center justifyContent={'center'}>
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='rgba(0, 0, 0, 0.53)'
+              color={'#454545'}
             >
               All UnSuccesfull Proposals
             </Heading>
-       
          
             <Button
                     bg='#F5F4E4'
-                    color='rgba(0, 0, 0, 0.53)'
+                    color={'#454545'}
                     className='btn-upload'
                     size='md'
                     _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
@@ -67,7 +66,7 @@ const UnSuccesFullProposals = () => {
                     <Spinner alignSelf={'center'} thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
                 </Center>
                  :
-              <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
+              <HStack wrap={'wrap'} justifyContent={'flex-start'}>
                 {assetsArray ? 
                 assetsArray.map(items => {
                         return (

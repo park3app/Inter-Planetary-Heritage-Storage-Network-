@@ -3,7 +3,6 @@ import {Box , VStack , Heading , Image , Text, HStack, Button} from "@chakra-ui/
 import {Link} from "react-router-dom"
 
 const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , state}) => {
-
     const [name , setname] = useState();
     const [image , setimage] = useState('')
 
@@ -14,8 +13,10 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
             const response = await fetch(`https://ipfs.io/ipfs/${tokenURI}/metadata.json`);
             const metadata = await response.json();
             console.log(metadata.text())
-            setname(metadata.name)
-            setimage(image)
+            let metadataname = metadata.name
+            let tokenImagex= metadata.image;
+            setname(metadataname)
+            setimage(tokenImagex)
 
             
           } catch (error) {
@@ -31,18 +32,18 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
       tokenURI !== "" ?
     
     
-    <Link to={`/activeproposals/${proposalid.toString()}`} target='_blank'  key={proposalid.toString()}>
+    <Link to={`/activeproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
     <VStack
-      maxW={"400"}
-      maxh={"200"}
+      h={"350"}
+      w={"300"}
       shadow={"lg"}
       p={"10"}
-      bg={'#F5F4E4'}
+      bg={'#63686E'}
       transition={"all 0.3s"}
       m={"6"}
       borderWidth={'3px'}
       borderRadius={'10px'}
-      borderColor={'rgba(0, 0, 0, 0.53)'}
+      borderColor={'#CCEABB'}
       transitionDelay={'15ms'}
       css={{
         "&:hover": {
@@ -52,24 +53,24 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
         },
       }}
     >
-      <Heading size={"md"} noOfLines={1} fontWeight={'500'} color={'rgba(0, 0, 0, 0.53)'}>
-        TOKEN ID: {proposalid.toString()}
-      </Heading>
+       <Heading  noOfLines={1} fontWeight={'1000'}  fontSize = {'2rem'} color={"#CCEABB"}>
+        #{proposalid.toString()}
+        </Heading>
       <Image
-        src={image}
+        src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
         w={"50"}  
         h={"50"}
         objectFit={"contain"}
         alt={name}
       />
-      <Heading size={"md"} noOfLines={2} fontWeight={'500'} color={'rgba(0, 0, 0, 0.53)'}>
+      <Heading size={"sm"} noOfLines={2} fontWeight={'700'} color={'#fff'} padding={'2'} textDecoration={'underline'}>
       { name ? name.toUpperCase() : 'Loading...'}
       </Heading>
       <HStack>
-      <Text noOfLines={1} color={'green'} size='lg'>{yesvotes}</Text>
-      <Text noOfLines={1} color={'red'} size='lg'>{novotes}</Text>
+      <Text noOfLines={1} color={'green.800'} fontSize={'2xl'} >{yesvotes}</Text>
+      <Text noOfLines={1} color={'red'} fontSize={'2xl'} >{novotes}</Text>
       </HStack>
-      {state ?  <Text noOfLines={1} color={'green'} size='2xl'>Succesfull Proposal</Text> :  <Text noOfLines={1} color={'red'} size='2xl'>UnSuccesfull Proposal</Text>  }
+      {state ?  <Text noOfLines={1} color={'#fff'} fontSize={'xl'}>Succesfull Proposal</Text> :  <Text noOfLines={1} color={'red'} fontSize={'xl'}>UnSuccesfull Proposal</Text>  }
 
      
      

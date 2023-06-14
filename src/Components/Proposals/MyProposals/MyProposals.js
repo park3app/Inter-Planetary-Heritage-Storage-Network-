@@ -52,14 +52,14 @@ const MyProposals = () => {
 
 
   return (
-    <Box >
+    <Box bg={'hsl(0, 0%, 90%)'} >
         <Center justifyContent={'center'}>
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='rgba(0, 0, 0, 0.53)'
+              color={"#454545"}
             >
               My Proposals
             </Heading>
@@ -67,7 +67,7 @@ const MyProposals = () => {
          
             <Button
                     bg='#F5F4E4'
-                    color='rgba(0, 0, 0, 0.53)'
+                    color={"#454545"}
                     className='btn-upload'
                     size='md'
                     _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
@@ -90,10 +90,8 @@ const MyProposals = () => {
                 assetsArray.map(items => {
                         return (
                           <>
-                        
                           <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
                           <div>
-                          {/* {items.proposalId.toString()} */}
                           </div>
                           </>
                         )

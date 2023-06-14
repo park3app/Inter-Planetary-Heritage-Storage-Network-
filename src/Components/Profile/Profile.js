@@ -2,7 +2,7 @@ import React , {useEffect, useState} from 'react'
 import "./Profile.css"
 import { ethers } from 'ethers';
 import {ipcsnftAddress , ipcsnftABI} from "../../constant.js"
-import { Spinner , Button, Center , Box , VStack , Heading , HStack } from '@chakra-ui/react'
+import { Spinner , Button, Center , Container , Box, VStack , Heading , HStack } from '@chakra-ui/react'
 import {ExternalLinkIcon} from "@chakra-ui/icons"
 import SingleNft from '../SingleNFt/SingleNft';
 import { Link } from 'react-router-dom';
@@ -25,8 +25,6 @@ const Assets = () => {
       console.log(tx)
       setassetsArray(tx)
       console.log('Reading tc --> ')
-     
-
 
       console.log('Reading assets array --. ')
       console.log(assetsArray)
@@ -51,14 +49,14 @@ const Assets = () => {
         handlebtn()
     },[])
   return (
-    <Box>
+    <Box bg={'hsl(0, 0%, 90%)'}>
         <Center>
         <VStack as='header' spacing='6' mt='8'>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='rgba(0, 0, 0, 0.53)'
+              color='#454545'
             >
               See Your Assets
             </Heading>
@@ -66,10 +64,10 @@ const Assets = () => {
          
             <Button
                     bg='#F5F4E4'
-                    color='rgba(0, 0, 0, 0.53)'
+                    color='#454545'
                     className='btn-upload'
                     size='md'
-                    _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
+                    _hover={{ bg: "#454545" }}
                     _active={{ bg: '#298e46' }}
                     type='submit'
                     onClick={handlebtn}
@@ -78,13 +76,13 @@ const Assets = () => {
                   </Button>
           </VStack>
         </Center>
-        <HStack style={{margin:'1rem'}} >
+        <HStack style={{margin:'1rem'}} wrap={'wrap'} justifyContent={'flex-start'} >
         {loading ? 
-                <Center h={'30vh'} >
-                    <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
+                <Center h={'30vh'} justifyContent={'center'} alignItems={'center'} >
+                    <Spinner justifyContent={'center'} alignItems={'center'} thickness='5px'speed='0.5s'emptyColor='gray.200'color='#454545' size='xl' />
                 </Center>
                  :
-              <HStack flexWrap={'wrap'} justifyContent={'flex-start'} >
+              <HStack  wrap={'wrap'} justifyContent={'flex-start'} >
                 {assetsArray !== [] ? 
                 assetsArray.map(items => {
                         return (

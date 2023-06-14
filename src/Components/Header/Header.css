@@ -1,12 +1,26 @@
 .header{
-    background: #F5F4E4;
-    color: rgba(0, 0, 0, 0.53);
+    /* background: #F5F4E4; */
+    background-color: hsl(0, 0%, 90%);
+    font-size: 2rem;
+    color: #454545;
 }
 
 .a{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: all 0.2s;
+    color: #454545;
 }
+
+.header-link{
+    font-size: 1.2rem;
+    color: #454545;
+}
+
+
+.inline{
+    display: inline;
+}
+
 
 .connect-btn{
     background-color: #00C389;

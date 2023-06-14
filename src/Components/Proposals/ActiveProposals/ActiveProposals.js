@@ -23,33 +23,30 @@ const ActiveProposals = () => {
     console.log(assetsArray)
   }
 
-
   useEffect(() => {
     fetchActiveProposals()
   },[])
 
   return (
-    <Box>
+    <Box bg={'hsl(0, 0%, 90%)'} minH={'50vh'}>
       <Center>
         <VStack>
-
        
       <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='rgba(0, 0, 0, 0.53)'
+              color={"#454545"}
             >
               All Active Proposals
             </Heading>
             
-            <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
+            <HStack wrap={'wrap'} justifyContent={'flex-start'}>
       {assetsArray !== [] ?
       assetsArray.map(items => {
         return (
           <>
           <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
-          {/* <div>{items.token.toString()}</div> */}
           </>
         )
       })   :

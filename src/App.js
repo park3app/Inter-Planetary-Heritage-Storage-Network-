@@ -11,7 +11,8 @@ import ActiveProposals from "./Components/Proposals/ActiveProposals/ActivePropos
 import SuccessProposals from "./Components/Proposals/SucessProposals/SuccessProposals"
 import UnSuccesFullProposals from "./Components/Proposals/UnSucessProposals/UnSucessProposals"
 import EachAsset from './Components/EachAsset/EachAsset';
-import EachProposal from "./Components/Proposals/EachProposal/EachProposal"
+import EachProposal from "./Components/Proposals/EachProposal/EachProposal";
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
     
     </Routes>
+    <Footer/>
     </BrowserRouter>
     </ThirdwebProvider>
   );

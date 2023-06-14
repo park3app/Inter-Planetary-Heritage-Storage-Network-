@@ -47,17 +47,16 @@ const Assets = () => {
     useEffect(() => {
         handlebtn()
     },[])
-
     return(
       
-    <Box >
-        <Center justifyContent={'center'}>
+    <Box bg={'hsl(0, 0%, 90%)'} >
+        <Center >
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='rgba(0, 0, 0, 0.53)'
+              color='#454545'
             >
               See All Assets
             </Heading>
@@ -65,7 +64,7 @@ const Assets = () => {
          
             <Button
                     bg='#F5F4E4'
-                    color='rgba(0, 0, 0, 0.53)'
+                    color='#454545'
                     className='btn-upload'
                     size='md'
                     _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
@@ -77,13 +76,13 @@ const Assets = () => {
                   </Button>
           </VStack>
         </Center>
-        <HStack wrap={'wrap'}  alignContent={'center'}>
+        <HStack style={{margin:'1rem'}} wrap={'wrap'} justifyContent={'flex-start'}>
         {loading ? 
                 <Center h={'30vh'} justifyContent={'center'} >
                     <Spinner alignSelf={'center'} thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
                 </Center>
                  :
-              <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
+              <HStack  wrap={'wrap'} justifyContent={'flex-start'} >
                 {assetsArray ? 
                 assetsArray.map(items => {
                         return (

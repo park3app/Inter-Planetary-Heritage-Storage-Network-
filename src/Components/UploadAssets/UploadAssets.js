@@ -1,4 +1,4 @@
-import React, { useState , useRef , useEffect } from 'react';
+import React, { useState , useRef  } from 'react';
 import { NFTStorage, File } from 'nft.storage'
 import {ipcsnftAddress , ipcsnftABI} from "../../constant.js"
 import { ethers } from 'ethers';
@@ -16,8 +16,6 @@ import {
 } from '@chakra-ui/react'
 import { Box, Input } from '@chakra-ui/react';
 
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@chakra-ui/react";
-
 
 const UploadAssets = () => {
 
@@ -28,12 +26,9 @@ const UploadAssets = () => {
     const [note,setnote] = useState("")
     const [location , setlocation] = useState("")
     const [url , seturl] = useState('')
-    const [isuploaded,setuploaded] = useState(false)
-
-
-
+    const [isuploaded , setuploaded] = useState()
   // defining  useRef for all inputes
-  const fileRef = useRef(null)
+    const fileRef = useRef(null)
 
  
 
@@ -96,7 +91,6 @@ const UploadAssets = () => {
 
   return (
     <div className="uploadassets">
- 
       <Box>
       <Center>
         <Stack spacing='4'>
@@ -104,19 +98,19 @@ const UploadAssets = () => {
             <Heading
               as='h1'
               fontWeight='600'
-              fontSize='1.8rem'
+              fontSize='2rem'
               letterSpacing='-0.5px'
-              color='rgba(0, 0, 0, 0.53)'
+              color='#393646'
             >
               Upload Assets
             </Heading>
           </VStack>
-          <Card bg='#F5F4E4' variant='outline' borderColor='#d8dee4' w='308px'>
+          <Card bg='#454545' variant='outline' borderColor='#d8dee4' w='308px'>
             <CardBody>
               <form onSubmit={handleUpload} >
                 <Stack spacing='4'>
                   <FormControl>
-                    <FormLabel size='sm'>Name of The Asset</FormLabel>
+                    <FormLabel size='sm' color={'#fff'}>Name of The Asset</FormLabel>
                     <Input
                       type='text'
                       onChange={(event) => setname(event.target.value)}
@@ -129,7 +123,7 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Description</FormLabel>
+                      <FormLabel size='sm' color={'#fff'}>Description</FormLabel>
                     <Input
                       type='text'
                       bg='white'
@@ -142,7 +136,7 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Location</FormLabel>
+                      <FormLabel size='sm' color={'#fff'}>Location</FormLabel>
                     <Input
                       type='text'
                       bg='white'
@@ -155,7 +149,7 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Cultural Significance</FormLabel>
+                      <FormLabel size='sm' color={'#fff'}>Cultural Significance</FormLabel>
                     <Input
                       type='text'
                       bg='white'
@@ -168,7 +162,7 @@ const UploadAssets = () => {
                     />
                   </FormControl>
                   <FormControl>
-                      <FormLabel size='sm'>Any Other Note...</FormLabel>
+                      <FormLabel size='sm' color={'#fff'}>Any Other Note...</FormLabel>
                     <Input
                       type='text'
                       bg='white'
@@ -191,7 +185,6 @@ const UploadAssets = () => {
               css={{
                 '&::file-selector-button': {
                   border: 'none',
-                  borderColor:'#d8dee4',
                   width: 'calc(100% + 36px)',
                   height: '100%',
                   color: 'rgba(0, 0, 0, 0.53)',
@@ -206,13 +199,13 @@ const UploadAssets = () => {
 
                   <Button
                     bg='#F5F4E4'
-                    color='rgba(0, 0, 0, 0.53)'
+                    color='#454545'
                     className='btn-upload'
                     size='md'
-                    _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
+                    _hover={{ bg: '#454545' , border: '2px solid #fff' }}
                     _active={{ bg: '#298e46' }}
                     type='submit'
-                    // onClick={handleUpload}
+                    onClick={handleUpload}
                   >
                     Upload
                   </Button>

@@ -69,10 +69,9 @@ const EachAsset = () => {
       setnote(metadata.otherNote);
       setimage(metadata.image)
       setloading(false)
-      let tokenURIx= "https://ipfs.io/ipfs/"+ tokenURI + "/metadata.json";
-
       let tokenImagex= metadata.image;
       setimage( tokenImagex );
+      
     } catch (error) {
       console.error('Error fetching metadata:', error);
     }
@@ -89,37 +88,34 @@ const EachAsset = () => {
     }
   }, [tokenuri]);
   return (
-    <Container maxW={"100vw"}>
+    <Container maxW={"100vw"} bgColor={'hsl(0, 0%, 90%)'} bg={'hsl(0, 0%, 90%)'}>
       {
         loading ? 
         <Center h={'30vh'} >
-        <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
+        <Spinner thickness='5px'speed='0.5s'emptyColor='#454545' color='#454545'size='xl' />
     </Center> 
     :
-
-    <div className='asset-details-div'>
-
-    <HStack spacing={8} >
+    <div className='asset-details-div' borderColor={'#CCEABB'} >
+    <HStack spacing={8} borderColor={'#CCEABB'}   >
        
-        <Image src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}  alt={name}  fallbackSrc={screenshot} maxW={'40%'} />
+        <Image  borderColor={'#CCEABB'} borderRadius={'10px'} src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}  alt={name}   maxW={'40%'} />
    
         <VStack spacing={6}   align='stretch' marginLeft={'5rem'}>
         <div className='details-div'>
-        <Heading as="h3"  m={'1'} size="lg" >
-          #{id} <Link target='_blank' style={{marginLeft:'3px'}} to={`https://ipfs.io/ipfs/${tokenuri}/metadata.json`}><ExternalLinkIcon/></Link>
+        <Heading as="h3"  m={'1'} size="lg" color={'#454545'}>
+          #{id}  <Link  target='_blank' style={{marginLeft:'3px'}} to={`https://ipfs.io/ipfs/${tokenuri}/metadata.json`}><ExternalLinkIcon fontWeight={'1000'}  fontSize = {'2rem'} color={"#CCEABB"}/></Link>
         </Heading>
-        <Heading as="h6" m={'1'} size="lg" fontWeight={'1000'} color={'rgba(0, 0, 0, 0.53)'}>
-          {name.toUpperCase()}
+        <Heading as="h6" m={'1'} size="md"  color={'#454545'}>
+         <Text style={{display:'inline', color:'rgba(0, 0, 0, 0.53)', fontWeight:'1000'}}>Name:  </Text> {name}
         </Heading>
-        <Text  color={'rgba(0, 0, 0, 0.53)'} fontWeight={'700'} m={'1'} fontSize={'xl'}>{description}</Text>
-        <Text  color={'rgba(0, 0, 0, 0.53)'} fontWeight={'700'} m={'1'} fontSize={'md'}>Culutural significance:   {significance}</Text>
-        <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</Text>
+        <Text  color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{display:'inline', color:'rgba(0, 0, 0, 0.53)', fontWeight:'1000'}}>Description:  </Text>{description}</Text>
+        <Text  color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{display:'inline', color:'rgba(0, 0, 0, 0.53)', fontWeight:'1000'}}>Significance: </Text>  {significance}</Text>
+        <Text fontSize="xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}><Text style={{display:'inline', color:'rgba(0, 0, 0, 0.53)', fontWeight:'1000'}}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</Text>
         <Text fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{owner}</Text>
-        <Text noOfLines={1}> {isstatetrue  ? <Text p={'4px'}   fontWeight={'700'} color={'green'} size='lg'>State is True</Text> : <Text color={"red"}  p={'4px'} fontWeight={'600'} size='lg'>State is False</Text>}</Text>
+        <Text noOfLines={1}> {isstatetrue  ? <Text p={'4px'}   fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"}  p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</Text>
         </div>
-
        <HStack>
-      {isproposed ? <Text color={"red"}  p={'4px'} fontWeight={'600'} size='lg' >Already Proposed</Text> : <Button onClick={handleCreateProposal} size='md' colorScheme='green' borderRadius={'4px'}   fontWeight={'700'} >Propose</Button>}
+      {isproposed ? <Text color={"#1F4068"}  p={'4px'} fontWeight={'600'} fontSize='2xl' >Already Proposed</Text> : <Button onClick={handleCreateProposal} size='lg' colorScheme='green' borderRadius={'4px'}  fontWeight={'700'} >Propose</Button>}
        </HStack>
       </VStack>
       

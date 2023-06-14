@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-items: center;
     justify-content: center;
-    /* width: 100vw; */
+    background-color: hsl(0, 0%, 90%);
 }
 
 .btn-upload{
