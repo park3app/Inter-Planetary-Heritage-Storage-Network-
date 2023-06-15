@@ -56,7 +56,22 @@ const EachProposal = () => {
         try {
           setloading(true);
           console.log("CID:", cid);
-          const output = await lighthouse.upload(cid, "f5d8c9db.d5db2e0370a9429b9321faef8a749cdc", progressCallback);
+          const response = await fetch(`https://ipfs.io/ipfs/${cid}/metadata.json`);
+          console.log(response)
+          const metadata = await response.json();
+
+          const dataObject = {
+            cid : cid,
+            name : metadata.name,
+            description : metadata.description,
+            significance : metadata.significance,
+            location : metadata.location,
+            otherNote : metadata.otherNote,
+            storeddatahash : ""
+          }
+
+          const data = JSON.stringify(dataObject);
+          const output = await lighthouse.uploadText(data, "f5d8c9db.d5db2e0370a9429b9321faef8a749cdc", progressCallback);
           console.log("File Status:", output);
           console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
           setloading(false);
@@ -201,6 +216,8 @@ const EachProposal = () => {
        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
         {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button> }
      </HStack>
+
+     <button onClick={() => uploadFile("bafyreiag5yatteawckhtka65jya24ikwiqwrmwuktmsmrrhk4mlb6tenwy")}>Store Data to LightHouse</button>
     
     </VStack>
   </HStack>
