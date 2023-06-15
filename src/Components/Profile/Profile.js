@@ -34,14 +34,19 @@ const Assets = () => {
 
 
     const handlebtn = async() => {
+      try{
         const accounts = await window.ethereum.request({
-            method: 'eth_accounts'
-          });
+          method: 'eth_accounts'
+        });
 
-        const account = accounts[0]
-        
-        console.log(account)
-        await fetchMyNFTs(account)
+      const account = accounts[0]
+      
+      console.log(account)
+      await fetchMyNFTs(account)
+      }catch(error){
+        console.log(error)
+      }
+ 
         
     }
 
@@ -83,14 +88,14 @@ const Assets = () => {
                 </Center>
                  :
               <HStack  wrap={'wrap'} justifyContent={'flex-start'} >
-                {assetsArray !== [] ? 
+                {assetsArray.length !== 0 ? 
                 assetsArray.map(items => {
                         return (
                             <SingleNft tokenId={items.tokenId} tokenURI={items.tokenURI}  isStateisTrue={items.isStateisTrue} isproposed={items.isproposed}  />
                         )
                 })  :
 
-                <Center  h={'50vh'}>
+                <Center  justifyContent={'center'} alignContent={'center'} alignItems={'center'}>
                 <div className='message'>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                

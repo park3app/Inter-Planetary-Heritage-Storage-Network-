@@ -86,7 +86,7 @@ const MyProposals = () => {
                 </Center>
                  :
               <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
-                {assetsArray ? 
+                {assetsArray.length !== 0 ? 
                 assetsArray.map(items => {
                         return (
                           <>
