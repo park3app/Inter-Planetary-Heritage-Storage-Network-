@@ -1,10 +1,10 @@
 
  
-export const ipcsAddress = '0x5F44bC544de9E03B99bD2B660cd1892C85d3aEa8'
+export const ipcsAddress = '0x48D35658b497CcDD8193096C7f060eb6D9FD3e2E'
 
-export const ipcsnftAddress = '0x2ad10065dc0f8805Fa474CdBee40E187Ec991755'
+export const ipcsnftAddress = '0x84b63D5594121DDd4eBD19e3f56A61F7C1525012'
 
-export const ipcstokenAddress = '0x3590D57ce4CC85252F5cfb1B9abD5F2dedd8C25A'
+export const ipcstokenAddress = '0x82EE73E6B47d3E144439E7b1ad6fd7a964FC69a2'
 
 export const ipcsABI = [
   {
@@ -646,7 +646,7 @@ export const ipcsABI = [
   }
 ]
 
-export const ipcsnftABI = [
+export const ipcsnftABI =  [
   {
     "inputs": [
       {
@@ -1427,4 +1427,3 @@ export const ipcsnftABI = [
     "type": "receive"
   }
 ]
-
