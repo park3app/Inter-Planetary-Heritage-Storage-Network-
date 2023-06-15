@@ -128,8 +128,6 @@ const EachProposal = () => {
             console.log(error)
             alert("You have already Voted")
         }
-    
-    
       }
 
       // handleNoVote

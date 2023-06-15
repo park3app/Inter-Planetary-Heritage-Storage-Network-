@@ -66,7 +66,7 @@ contract IPCS{
         iipcsnft.setNFTisproposed(_tokenid);
         Proposal storage proposal = proposals[_proposalId];
         proposal.proposalId = _proposalId;
-        proposal.deadline = block.timestamp + 1 minutes;
+        proposal.deadline = block.timestamp + 30 minutes;
         proposal.tokenId = nftinfo.tokenId;
         proposal.tokenURI = nftinfo.tokenURI;
         proposal.proposalActive = true ;
