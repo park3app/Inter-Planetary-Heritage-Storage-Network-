@@ -70,7 +70,7 @@ const SuccessProposals = () => {
                 </Center>
                  :
               <HStack wrap={'wrap'} justifyContent={'flex-start'}>
-                {assetsArray ? 
+                {assetsArray.length !== 0 ? 
                 assetsArray.map(items => {
                         return (
                           <>   
