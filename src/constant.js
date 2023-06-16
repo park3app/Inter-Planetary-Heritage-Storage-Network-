@@ -1,10 +1,10 @@
 
  
-export const ipcsAddress = '0x2b4112d429dB8CE72E3cBb2f59179A184E28fCfD'
+export const ipcsAddress = '0xfF9603f4671649Cdcb56810D4A90D2c466A5Bed6'
 
-export const ipcsnftAddress = '0x6Ed8C5C1dB9A96C280d1Ee25D97d899BAA80325a'
+export const ipcsnftAddress = '0x9E521845a99FD51E0664d87CE0BEb78492be8F62'
 
-export const ipcstokenAddress = '0x540Dd4394211ff33367c062c575e2BB6e0649D80'
+export const ipcstokenAddress = '0x07F99B29b69Afa06C6766309158A5940049Ef4E7'
 
 export const ipcsABI = [
   {
@@ -38,6 +38,13 @@ export const ipcsABI = [
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -1427,7 +1434,6 @@ export const ipcsnftABI =  [
     "type": "receive"
   }
 ]
-
 
 
 export const Apecoinabi = [

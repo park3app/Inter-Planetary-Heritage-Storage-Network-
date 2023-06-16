@@ -215,8 +215,6 @@ const EachProposal = () => {
        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
         {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button> }
      </HStack>
-
-     <button onClick={() => uploadFile("bafyreiag5yatteawckhtka65jya24ikwiqwrmwuktmsmrrhk4mlb6tenwy")}>Store Data to LightHouse</button>
     
     </VStack>
   </HStack>

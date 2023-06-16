@@ -47,6 +47,17 @@ const Header = () => {
           </MenuList>
         </Menu>
           </li>
+
+          <li>
+          <Menu>
+          <MenuButton  className=' a'  as={Text} fontWeight="500" fontSize="lg" _hover={{ textDecoration: 'underline', cursor:'pointer' }}>
+            Faucet
+          </MenuButton>
+          <MenuList>
+            <MenuItem>  <Link  className='header-link'  to={'/faucet'}>Mint APE Token</Link>  </MenuItem>
+          </MenuList>
+        </Menu>
+          </li>
           <ConnectWallet className='btn-upload'    btnTitle="Connect" />
         </ul>
       </nav>
