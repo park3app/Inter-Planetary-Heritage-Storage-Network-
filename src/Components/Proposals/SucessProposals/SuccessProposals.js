@@ -82,7 +82,7 @@ const SuccessProposals = () => {
                         )
                 })  :
                 <Center  h={'50vh'}>
-                <div className='message'>No SuccessProposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message' >No SuccessProposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                
             }

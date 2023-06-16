@@ -23,7 +23,7 @@ import {
               textTransform={'uppercase'}
               textAlign={['center', 'left']}
             >
-              Inter Planatery Cultural Storage Network
+              INTER PLANATERY CULTURAL STORAGE
             </Heading>
 
             <Image src={IPCS_logo} width={'4rem'} height={'4rem'}  style={{borderRadius:'12px'}} />
@@ -37,7 +37,7 @@ import {
             <Heading textTransform={'uppercase'} textAlign={'center'} textDecoration={'underline'}>
               IPCS
             </Heading>
-            <Text color={'#454545'} display={'inline'} fontSize={'1rem'}>All rights received  <FaCopyright className='inline' /></Text>
+            <Text color={'#454545'} display={'inline'} fontSize={'1rem'}>All rights reserved <FaCopyright className='inline' /></Text>
           </VStack>
   
           <VStack w={'full'}>
@@ -53,6 +53,12 @@ import {
             <Button variant={'link'} colorScheme={'white'}>
               <a target={'black'} href="https://github.com/park3app/Inter-Planetary-Heritage-Storage-Network-">
                 Github
+              </a>
+            </Button>
+
+            <Button variant={'link'} colorScheme={'white'}>
+              <a target={'black'} href="https://discord.gg/WgGmUsf6">
+                Discord
               </a>
             </Button>
           </VStack>

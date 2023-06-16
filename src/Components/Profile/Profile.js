@@ -54,7 +54,7 @@ const Assets = () => {
     handlebtn()
   }, [])
   return (
-    <div className='bg-[#0a1930]'>
+    <div style={{minHeight : '100vh'}} className='bg-[#0a1930]'>
       <Center>
         <VStack as='header' spacing='6' mt='8'>
           <Heading
@@ -95,7 +95,7 @@ const Assets = () => {
                 )
               }) :
               <Center justifyContent={'center'} alignContent={'center'} alignItems={'center'}>
-                <div className='message'>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon /></Link> </div>
+                <div className='message' style={{color:"#fff"}}>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon /></Link> </div>
               </Center>
             }
           </HStack>

@@ -49,7 +49,7 @@ const Assets = () => {
     },[])
     return(
       
-    <Box bg={'hsl(0, 0%, 90%)'} >
+    <Box  className='bg-[#0a1930]' minHeight={'75vh'}>
         <Center >
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading

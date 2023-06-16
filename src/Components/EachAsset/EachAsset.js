@@ -7,6 +7,7 @@ import { ethers } from 'ethers';
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 import "./eachasset.css";
 import screenshot from "../../screenshot.png"
+import lighthouse from '@lighthouse-web3/sdk';
 
 const EachAsset = () => {
   const { id } = useParams()
@@ -110,6 +111,9 @@ const EachAsset = () => {
       fetchMetadata(tokenuri);
     }
   }, [tokenuri]);
+
+
+
   return (
     <Container maxW={"100vw"} bgColor={'hsl(0, 0%, 90%)'} bg={'hsl(0, 0%, 90%)'}>
       {showMetamaskAlert && <Alert status={type} className='rounded-xl mb-3'>{status}</Alert>}
@@ -141,6 +145,7 @@ const EachAsset = () => {
                 <HStack>
                   {isproposed ? <Text color={"#1F4068"} p={'4px'} fontWeight={'600'} fontSize='2xl' >Already Proposed</Text> : <Button onClick={handleCreateProposal} size='lg' colorScheme='green' borderRadius={'4px'} fontWeight={'700'} >Propose</Button>}
                 </HStack>
+               
               </VStack>
 
 

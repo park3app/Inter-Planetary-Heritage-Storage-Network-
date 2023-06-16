@@ -10,15 +10,14 @@ async function main() {
  console.log(`IPCSNFT deployed on ${ipcsnft.address}`)
 
 
-  // const IPCSToken = await hre.ethers.getContractFactory("IPCSToken");
-  // const ipcstoken = await IPCSToken.deploy();
-  // await ipcstoken.deployed();
-  // console.log(`IPCSTOKEN deployed on ${ipcstoken.address}`)
-
+  const APECOIN = await hre.ethers.getContractFactory("APECOINTOKENS");
+  const apetokens = await APECOIN.deploy();
+  await apetokens.deployed();
+  console.log(`APECOIN deployed on ${apetokens.address}`)
 
   const IPCS = await hre.ethers.getContractFactory("IPCS");
   // const ipcs = await IPCS.deploy(ipcstoken.address , ipcsnft.address);
-  const ipcs = await IPCS.deploy("0x82EE73E6B47d3E144439E7b1ad6fd7a964FC69a2", ipcsnft.address);
+  const ipcs = await IPCS.deploy(apetokens.address, ipcsnft.address);
   ipcs.deployed();
   console.log(`IPCS deployed on ${ipcs.address}`)
 

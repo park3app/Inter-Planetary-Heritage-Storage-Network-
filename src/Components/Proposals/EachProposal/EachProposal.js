@@ -67,11 +67,12 @@ const EachProposal = () => {
             significance : metadata.significance,
             location : metadata.location,
             otherNote : metadata.otherNote,
-            storeddatahash : ""
+            storeddatahash : "",
+            image : metadata.image
           }
 
           const data = JSON.stringify(dataObject);
-          const output = await lighthouse.uploadText(data, "f5d8c9db.d5db2e0370a9429b9321faef8a749cdc", progressCallback);
+          const output = await lighthouse.uploadText(data, "3f7cefae.45d5e6b6283f4f3ba887d3c896e96cf0", progressCallback);
           console.log("File Status:", output);
           console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
           setloading(false);

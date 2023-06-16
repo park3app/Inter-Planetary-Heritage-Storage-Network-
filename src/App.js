@@ -13,6 +13,7 @@ import UnSuccesFullProposals from "./Components/Proposals/UnSucessProposals/UnSu
 import EachAsset from './Components/EachAsset/EachAsset';
 import EachProposal from "./Components/Proposals/EachProposal/EachProposal";
 import Footer from './Components/Footer/Footer';
+import Faucet from './Components/Faucet';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
    <BrowserRouter>
    <Header/>
    <Routes>
+
+
     <Route path='/' element={<Home/>} />
     <Route path='uploadassets' element={<UploadAssets/>} />
     <Route path='/assets' element={<Assets/>} />
@@ -31,7 +34,6 @@ function App() {
     <Route path='activeproposals/:id' element={<EachProposal/>} />
     <Route path='sucessproposals' element={<SuccessProposals/>} />
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
-    
     </Routes>
     <Footer/>
     </BrowserRouter>

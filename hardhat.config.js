@@ -18,7 +18,15 @@ module.exports = {
       gasPrice: 8000000000000,
       allowUnlimitedContractSize: true
     },
-  },
+
+
+  calibrationnet: {
+    chainId: 314159,
+    url: "https://api.calibration.node.glif.io/rpc/v1",
+    accounts: ["2af3750a8b8d2533e310182d00fbd9fc3fdb2926b303d220c9779e031f23c61b"],
+},
+
+},
 
   solidity:{
     version:"0.8.18",

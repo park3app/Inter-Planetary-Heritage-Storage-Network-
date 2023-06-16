@@ -7,9 +7,7 @@ import IPCS_logo from "../../IPCS_logo.jpg"
  
 const Header = () => {
   return (
-
     <>
-    
     <div>
         <header className="header ">
     <div className="container mx-auto px-4 py-4">
@@ -31,7 +29,7 @@ const Header = () => {
             <MenuItem><Link className='header-link' to={'/myproposals'} >My Proposals</Link></MenuItem>
             <MenuItem><Link className='header-link' to={'/activeproposals'}>Active Proposals</Link></MenuItem>
             <MenuItem><Link className='header-link' to={"/sucessproposals"}>Succesfull Proposals</Link></MenuItem>
-            <MenuItem><Link className='header-link' to={"/unsucessproposals"}>UnSuccesFull Proposals</Link></MenuItem>
+            <MenuItem><Link className='header-link' to={"/unsucessproposals"}>UnsuccesFull Proposals</Link></MenuItem>
           </MenuList>
         </Menu>
           </li>
@@ -41,7 +39,7 @@ const Header = () => {
             Assets
           </MenuButton>
           <MenuList>
-            <MenuItem>  <Link  className='header-link'  to={'/uploadassets'}>Create One</Link>  </MenuItem>
+            <MenuItem>  <Link  className='header-link'  to={'/uploadassets'}>New Asset</Link>  </MenuItem>
             <MenuItem> <Link   className='header-link' to={'/profile'}>My Assets</Link></MenuItem>
             <MenuItem> <Link   className='header-link' to={"/assets"}>All Assets</Link>  </MenuItem>
           </MenuList>
