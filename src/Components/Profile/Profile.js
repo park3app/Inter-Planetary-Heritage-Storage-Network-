@@ -54,14 +54,14 @@ const Assets = () => {
     handlebtn()
   }, [])
   return (
-    <div className='bg-[#0a1930]'>
+    <div className='bg-[#0a1930] h-screen'>
       <Center>
         <VStack as='header' spacing='6' mt='8'>
           <Heading
             as='h1'
             fontWeight='700'
             fontSize='2rem'
-            color='#454545'
+            color='white'
           >
             See Your Assets
           </Heading>
