@@ -77,7 +77,7 @@ const UploadAssets = () => {
       setloading(true)
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-
+        
       let contract = new ethers.Contract(ipcsnftAddress, ipcsnftABI, signer)
       let listingPrice = await contract.getListPrice()
       listingPrice = listingPrice.toString()

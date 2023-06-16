@@ -227,6 +227,20 @@ contract IPCS{
 
 
 
+    // user can claim 1 token for each proposal they made 
+    function claimToken() public {
+    uint256 proposalCount = _proposalId;
+    uint256 claimableTokens = 0;
+    
+    for (uint256 i = 1; i <= proposalCount; i++) {
+        if (proposals[i].owner == msg.sender) {
+            claimableTokens++;
+        }
+    }
+    
+    require(claimableTokens > 0, "No tokens to claim");
+    ipcstoken.transfer(msg.sender, claimableTokens);
+}
 
    
 
