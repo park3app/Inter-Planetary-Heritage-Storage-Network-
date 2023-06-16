@@ -232,7 +232,7 @@ const EachProposal = () => {
             <HStack spacing={8} className='bg-[#17173d] shadow-xl shadow-black rounded-2xl p-8'>
             <div className='w-6/12 h-full'>
               
-              <img className='border-cyan-500 border-2 w-full rounded-xl' src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} fallbackSrc={screenshot} maxW={'40%'} />
+              <img className='border-cyan-500 border-2 w-full rounded-xl' src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} fallbackSrc={screenshot} style={{ maxWidth: '60%' }} />
               
               </div>
 
