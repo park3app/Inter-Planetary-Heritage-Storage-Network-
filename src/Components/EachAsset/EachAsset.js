@@ -115,7 +115,7 @@ const EachAsset = () => {
 
 
   return (
-    <Container maxW={"100vw"} bgColor={'hsl(0, 0%, 90%)'} bg={'hsl(0, 0%, 90%)'}>
+    <div className='w-full bg-[#0a1930]'>
       {showMetamaskAlert && <Alert status={type} className='rounded-xl mb-3'>{status}</Alert>}
       {
         loading ?
@@ -123,29 +123,30 @@ const EachAsset = () => {
             <Spinner thickness='5px' speed='0.5s' emptyColor='#454545' color='#454545' size='xl' />
           </Center>
           :
-          <div className='asset-details-div' borderColor={'#CCEABB'} >
-            <HStack spacing={8} borderColor={'#CCEABB'}   >
+          <div className='px-28 py-20 bg-[#0a1930]'  >
+            <HStack spacing={8} className='bg-[#008e8e] shadow-xl shadow-black rounded-2xl p-8'   >
+              <div className='w-6/12 h-full'>
 
-              <Image borderColor={'#CCEABB'} borderRadius={'10px'} src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} maxW={'40%'} />
-
+              <img className='border-cyan-500 border-2 w-full rounded-xl' borderColor={'#CCEABB'} borderRadius={'10px'} src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} maxW={'40%'} />
+              </div>
               <VStack spacing={6} align='stretch' marginLeft={'5rem'}>
                 <div className='details-div'>
-                  <Heading as="h3" m={'1'} size="lg" color={'#454545'}>
+                  <Heading as="h3" m={'1'} size="lg" color={'#0a1930'}>
                     #{id}  <Link target='_blank' style={{ marginLeft: '3px' }} to={`https://ipfs.io/ipfs/${tokenuri}/metadata.json`}><ExternalLinkIcon fontWeight={'1000'} fontSize={'2rem'} color={"#CCEABB"} /></Link>
                   </Heading>
                   <Heading as="h6" m={'1'} size="md" color={'#454545'}>
                     <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Name:  </Text> {name}
                   </Heading>
-                  <Text color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Description:  </Text>{description}</Text>
-                  <Text color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Significance: </Text>  {significance}</Text>
-                  <Text fontSize="xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</Text>
-                  <Text fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{owner}</Text>
-                  <Text noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</Text>
+                  <p color={'#0a1930'} fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Description:  </Text>{description}</p>
+                  <p color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Significance: </Text>  {significance}</p>
+                  <p fontSize="xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</p>
+                  <p fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{owner}</p>
+                  <p noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</p>
                 </div>
                 <HStack>
                   {isproposed ? <Text color={"#1F4068"} p={'4px'} fontWeight={'600'} fontSize='2xl' >Already Proposed</Text> : <Button onClick={handleCreateProposal} size='lg' colorScheme='green' borderRadius={'4px'} fontWeight={'700'} >Propose</Button>}
                 </HStack>
-               
+
               </VStack>
 
 
@@ -154,7 +155,7 @@ const EachAsset = () => {
 
       }
 
-    </Container>
+    </div>
   )
 }
 
