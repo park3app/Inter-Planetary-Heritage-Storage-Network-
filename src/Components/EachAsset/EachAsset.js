@@ -162,11 +162,11 @@ const EachAsset = () => {
                   <Heading as="h6" m={'1'} size="md" color={'#454545'}>
                     <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Name:  </Text> {name}
                   </Heading>
-                  <p color={'#0a1930'} fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Description:  </Text>{description}</p>
-                  <p color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Significance: </Text>  {significance}</p>
-                  <p fontSize="xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</p>
-                  <p fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{ensData.name.length > 0 ? ensData.name : owner}</p>
-                  <p noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</p>
+                  <p className='text-slate-300' fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Description:  </Text>{description}</p>
+                  <p className='text-slate-300' color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Significance: </Text>  {significance}</p>
+                  <p className='text-slate-300' fontSize="xl" m={'1'} color={'rgb(209 213 219)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</p>
+                  <p className='text-slate-300' fontSize="md" color={'rgb(209 213 219)'} fontWeight={'400'} m={'1'}>{owner}</p>
+                  <p className='text-slate-300' noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</p>
                 </div>
                 <HStack>
                   {isproposed ? <Text color={"#1F4068"} p={'4px'} fontWeight={'600'} fontSize='2xl' >Already Proposed</Text> : <Button onClick={handleCreateProposal} size='lg' colorScheme='green' borderRadius={'4px'} fontWeight={'700'} >Propose</Button>}
