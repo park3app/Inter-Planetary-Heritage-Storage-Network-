@@ -52,6 +52,7 @@ function Faucet() {
           type="number"
           className='w-full rounded-lg py-2 px-4 mt-2 mb-4'
           value={amount}
+          placeholder='Enter Amount'
           onChange={(e) => setAmount(e.target.value)}
         />
         <br />
