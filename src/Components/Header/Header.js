@@ -14,18 +14,20 @@ const Header = () => {
       <nav className="flex items-center justify-between">
         <div className="flex items-center">
           <a href="/" className=" font-bold text-2xl park3-heading ">
+            <div className='flex h-full py-auto'> 
             <img style={{borderRadius:'10px' , display:'inline'}} src={IPCS_logo}  width={'50px'} height={'50px'} alt='IPCS'/>
-            
+            <p className='h-full py-auto px-4'>IPCS</p>
+            </div>
           </a>
         </div>
         <ul className="flex items-center space-x-6">
           <li>
           <Menu>
           <MenuButton className="a" as={Text} fontWeight="500" fontSize="lg" _hover={{ textDecoration: 'underline' , cursor:'pointer'}}>
-            Proposal
+          Storage Proposal
           </MenuButton>
           <MenuList>
-            <MenuItem className='header-link'>Proposal</MenuItem>
+            <MenuItem className='header-link'>Storage Proposal</MenuItem>
             <MenuItem><Link className='header-link' to={'/myproposals'} >My Proposals</Link></MenuItem>
             <MenuItem><Link className='header-link' to={'/activeproposals'}>Active Proposals</Link></MenuItem>
             <MenuItem><Link className='header-link' to={"/sucessproposals"}>Succesfull Proposals</Link></MenuItem>

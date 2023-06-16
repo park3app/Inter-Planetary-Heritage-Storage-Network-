@@ -50,7 +50,7 @@ const Assets = () => {
     },[])
     return(
       
-    <Box  className='bg-[#0a1930] h-screen ' minHeight={'75vh'}>
+    <Box  className='bg-[#0a1930] h-full ' minHeight={'75vh'}>
         <Center >
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading

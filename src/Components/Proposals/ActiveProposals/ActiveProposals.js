@@ -28,7 +28,7 @@ const ActiveProposals = () => {
   },[])
 
   return (
-    <div className='bg-[#0a1930] h-screen' >
+    <div className='bg-[#0a1930] h-full' >
       <Center>
         <VStack>
        
