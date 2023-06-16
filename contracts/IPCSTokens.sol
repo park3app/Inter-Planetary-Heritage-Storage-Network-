@@ -1,32 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract APECOINTOKENS is ERC20Votes {
-    uint256 public maxSupply = 1000000000000000000000000000000000;
+contract APECOINTOKENS is ERC20 {
 
-    constructor() 
-        ERC20("APECOIN", "APE") 
-        ERC20Permit("APECOIN")
-    {
-        _mint(msg.sender, maxSupply);
+     constructor() ERC20("APECOIN", "APE"){
     }
 
-    function _afterTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal override(ERC20Votes) {
-        super._afterTokenTransfer(from, to, amount);
+    function mint(address to, uint256 amount) public{
+        _mint(to, amount);
     }
 
     
-    function _mint(address to, uint256 amount) internal override(ERC20Votes) {
-        super._mint(to, amount);
-    }
+    receive() external payable {}
 
-    function _burn(address account, uint256 amount) internal override(ERC20Votes) {
-        super._burn(account, amount);
-    }
+    fallback() external payable {}
+
 }

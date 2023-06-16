@@ -34,6 +34,7 @@ function App() {
     <Route path='activeproposals/:id' element={<EachProposal/>} />
     <Route path='sucessproposals' element={<SuccessProposals/>} />
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
+    <Route path='faucet'  element={<Faucet/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
