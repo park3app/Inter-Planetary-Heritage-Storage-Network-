@@ -8,6 +8,8 @@ import { ExternalLinkIcon } from "@chakra-ui/icons"
 import "./eachasset.css";
 import screenshot from "../../screenshot.png"
 import lighthouse from '@lighthouse-web3/sdk';
+import { ENS } from '@ensdomains/ens';
+import { getEnsAddress } from '@ensdomains/resolver';
 
 const EachAsset = () => {
   const { id } = useParams()
@@ -25,7 +27,8 @@ const EachAsset = () => {
   const [loading, setloading] = useState(false)
   const [showMetamaskAlert, setShowMetamaskAlert] = useState(false)
   const [status, setStatus] = useState('')
-  const [type, setType] = useState('')
+  const [type, setType] = useState('');
+  const [ensData, setEnsData] = useState({ name: '', avatar: '' });
 
 
   // calls the createProposal Function 
@@ -102,6 +105,20 @@ const EachAsset = () => {
   };
 
 
+   const getENSData = async() => {
+     const provider = new ethers.providers.JsonRpcProvider("https://filecoin-calibration-testnet.rpc.thirdweb.com");
+     const ens = new ENS({ provider, ensAddress: getEnsAddress(provider.network.chainId) })
+     try {
+       const name = await ens.getName(owner) 
+        const avatar = await ens.getAvatar(owner);
+       return { name, avatar }
+     } catch (error) {
+       console.error('Error fetching ENS data:', error);
+       return { name: '', avatar: '' };
+     }
+   }
+
+
   useEffect(() => {
     getNftInfo();
   }, [id]);
@@ -110,6 +127,14 @@ const EachAsset = () => {
     if (tokenuri) {
       fetchMetadata(tokenuri);
     }
+    // if(owner){
+    //   const fetchData = async () => {
+    //     const data = await getENSData(owner);
+    //     setEnsData(data);
+    //   };
+  
+    //   fetchData();
+    // }
   }, [tokenuri]);
 
 
@@ -140,7 +165,7 @@ const EachAsset = () => {
                   <p color={'#0a1930'} fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Description:  </Text>{description}</p>
                   <p color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Significance: </Text>  {significance}</p>
                   <p fontSize="xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgba(0, 0, 0, 0.53)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</p>
-                  <p fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{owner}</p>
+                  <p fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{ensData.name.length > 0 ? ensData.name : owner}</p>
                   <p noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</p>
                 </div>
                 <HStack>

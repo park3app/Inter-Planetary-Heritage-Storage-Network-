@@ -30,9 +30,8 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     
     {
       tokenURI !== "" ?
-    
-    
-    <Link to={`/activeproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
+
+    <Link to={state ?  `/sucessproposals/${proposalid.toString()}` : `/unsucessproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
     <div
        className='w-72 rounded-3xl h-fit border-2 pb-3 border-sky-800  bg-[#172a48] pt-2.5'
     >

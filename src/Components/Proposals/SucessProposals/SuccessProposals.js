@@ -74,11 +74,8 @@ const SuccessProposals = () => {
                 {assetsArray.length !== 0 ? 
                 assetsArray.map(items => {
                         return (
-                          <>   
+                          <> 
                           <ExecutedProposalTile state={true} tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
-                          <div>
-                          {/* {items.proposalId.toString()} */}
-                          </div>
                           </>
                         )
                 })  :

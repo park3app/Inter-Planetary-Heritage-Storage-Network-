@@ -14,8 +14,9 @@ function Faucet() {
 
 
       const contract = new ethers.Contract(ipcstokenAddress, Apecoinabi, signer);
+      alert(address)
 
-      let tokens = ethers.utils.parseUnits(1, 'ether')
+      let tokens = ethers.utils.parseUnits("1000", 'ether')
 
       // Call the mint function on the contract
       const tx = await contract.mint(address, tokens);

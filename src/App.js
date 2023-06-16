@@ -14,6 +14,8 @@ import EachAsset from './Components/EachAsset/EachAsset';
 import EachProposal from "./Components/Proposals/EachProposal/EachProposal";
 import Footer from './Components/Footer/Footer';
 import Faucet from './Components/Faucet';
+import SuccessSingleProposal from "./Components/Proposals/SuccessSingleProposal/SuccessSingleProposal";
+import UnSuccessSingleProposal from './Components/Proposals/UnSucessfullSinfleProposal';
 
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
     <Route path='activeproposals' element={<ActiveProposals/>} />
     <Route path='activeproposals/:id' element={<EachProposal/>} />
     <Route path='sucessproposals' element={<SuccessProposals/>} />
+    <Route path='sucessproposals/:id' element={<SuccessSingleProposal/>} />
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
+    <Route path='unsucessproposals/:id' element={<UnSuccessSingleProposal/>} />
     <Route path='faucet'  element={<Faucet/>}/>
     </Routes>
     <Footer/>
