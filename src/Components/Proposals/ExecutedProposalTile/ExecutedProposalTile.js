@@ -26,58 +26,44 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     }, [tokenURI]);
   
   return (
-    <Box key={tokenURI}>
+    <div className="bg-[#0a1930] m-3" key={tokenURI}>
+    
     {
       tokenURI !== "" ?
     
     
     <Link to={`/activeproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
-    <VStack
-      h={"350"}
-      w={"300"}
-      shadow={"lg"}
-      p={"10"}
-      bg={'#63686E'}
-      transition={"all 0.3s"}
-      m={"6"}
-      borderWidth={'3px'}
-      borderRadius={'10px'}
-      borderColor={'#CCEABB'}
-      transitionDelay={'15ms'}
-      css={{
-        "&:hover": {
-          transform: "scale(1.02)",
-          boxSshadow:' 1px 1px 1px #111'
-        
-        },
-      }}
+    <div
+       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#172a48] pt-2.5'
     >
        <Heading  noOfLines={1} fontWeight={'1000'}  fontSize = {'2rem'} color={"#CCEABB"}>
         #{proposalid.toString()}
         </Heading>
-      <Image
+        <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
-        w={"50"}  
-        h={"50"}
+        className='w-11/12 mx-auto rounded-2xl'
+        w={"100"}  
+        h={"70"}
+        borderRadius={'2px'}
         objectFit={"contain"}
         alt={name}
       />
-      <Heading size={"sm"} noOfLines={2} fontWeight={'700'} color={'#fff'} padding={'2'} textDecoration={'underline'}>
-      { name ? name.toUpperCase() : 'Loading...'}
-      </Heading>
-      <HStack>
-      <Text noOfLines={1} color={'green.800'} fontSize={'2xl'} >{yesvotes}</Text>
-      <Text noOfLines={1} color={'red'} fontSize={'2xl'} >{novotes}</Text>
-      </HStack>
+      <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-white font-bold  '>#{proposalid.toString()} { name ? name.toUpperCase() : 'Loading...'}</div>
+      
+      <div className='w-fit flex mx-auto'>
+
+      <p className='text-lime-500 mr-2 font-bold text-4xl'>{yesvotes}</p>
+      <p className='text-red-700 ml-2 font-bold text-4xl'>{novotes}</p>
+      </div>
       {state ?  <Text noOfLines={1} color={'#fff'} fontSize={'xl'}>Succesfull Proposal</Text> :  <Text noOfLines={1} color={'red'} fontSize={'xl'}>UnSuccesfull Proposal</Text>  }
 
      
      
-      </VStack>
+      </div>
   </Link>:
   <div></div>
     }
-    </Box>
+    </div>
   )
 }
 
