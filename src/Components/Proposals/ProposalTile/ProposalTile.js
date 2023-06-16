@@ -28,59 +28,47 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
     }, [tokenURI]);
   
   return (
-    <Box key={tokenURI}>
+    <div className="bg-[#0a1930] m-3" key={tokenURI}>
     {
       tokenURI !== "" ?
     
     
     <Link to={`/activeproposals/${proposalid.toString()}`}  maxw="30" key={proposalid.toString()}>
-    <VStack
-       h={"350"}
-       key={proposalid.toString()}
-       w={"300"}
-      shadow={"lg"}
-      p={"10"}
-      bg={'#63686E'}
-      transition={"all 0.3s"}
-      m={"6"}
-      borderWidth={'3px'}
-      borderRadius={'10px'}
-      borderColor={'#CCEABB'}
-      transitionDelay={'15ms'}
-      css={{
-        "&:hover": {
-          transform: "scale(1.02)",
-          boxSshadow:' 1px 1px 1px #111'
-        
-        },
-      }}
+    <div
+       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#172a48] pt-2.5'
     >
-        <Heading  noOfLines={1} fontWeight={'1000'}  fontSize = {'2rem'} color={"#CCEABB"}>
-        #{proposalid.toString()}
-        </Heading>
-      <Image
+      <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
+        className='w-11/12 mx-auto rounded-2xl'
         w={"100"}  
         h={"70"}
         borderRadius={'2px'}
         objectFit={"contain"}
         alt={name}
       />
-   <Heading size={"sm"} noOfLines={2} fontWeight={'700'} color={'#fff'} padding={'2'} textDecoration={'underline'}>
-      {name}
-      </Heading>
-      <HStack>
-      <Text noOfLines={1} color={'green.800'} fontSize={'2xl'}>{yesvotes}</Text>
-      <Text noOfLines={1} color={'red'} fontSize={'2xl'}>{novotes}</Text>
-      </HStack>
+       <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-white font-bold  '>{`#${proposalid.toString()} ${name}`}</div>
+   
+      <div className='w-fit flex mx-auto'>
 
-      <Button size='md' colorScheme='green' borderRadius={'4px'}  fontWeight={'700'} >Vote</Button>
+      <p className='text-lime-500 mr-2 font-bold text-4xl'>{yesvotes}</p>
+      <p className='text-red-700 ml-2 font-bold text-4xl'>{novotes}</p>
+      </div>
+
+      <p
+                className='bg-green-600 text-center rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                color='#fff'
+                borderRadius={'3px'}
+                m={'3'}
+                backgroundColor={'green.300'}
+                p={'2'}
+                fontWeight={'700'}
+                size='xs'>VOTE</p>
      
-      </VStack>
+      </div>
   </Link>:
   <div></div>
     }
-    </Box>
+    </div>
   )
 }
 

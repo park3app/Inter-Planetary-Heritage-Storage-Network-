@@ -36,16 +36,17 @@ const SuccessProposals = () => {
 
 
   return (
-    <Box bg={'hsl(0, 0%, 90%)'} minH={'50vh'}>
+    <div className='bg-[#0a1930] h-screen' >
         <Center justifyContent={'center'}>
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
-            <Heading
+        <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color={'#454545'}
+              color={"white"}
+              mt='10'
             >
-              All Succesfull Proposals
+              All Succesful Proposals
             </Heading>
        
          
@@ -59,7 +60,7 @@ const SuccessProposals = () => {
                     type='submit'
                     onClick={fetchSuccesfullProposals}
                   >
-                    Get Succesfull Proposals
+                    Get Succesful Proposals
                   </Button>
           </VStack>
         </Center>
@@ -82,7 +83,7 @@ const SuccessProposals = () => {
                         )
                 })  :
                 <Center  h={'50vh'}>
-                <div className='message' >No SuccessProposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message'>No SuccessProposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                
             }
@@ -96,7 +97,7 @@ const SuccessProposals = () => {
     
 
 
-    </Box>
+    </div>
   )
 }
 

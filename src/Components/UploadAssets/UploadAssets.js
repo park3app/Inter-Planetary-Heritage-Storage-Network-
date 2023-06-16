@@ -50,7 +50,7 @@ const UploadAssets = () => {
 
     // Send request to store image
     const { ipnft } = await nftstorage.store({
-      assets: new File([imageData], "image.jpeg", { type: "image/jpeg" }),
+      image: new File([imageData], "image.jpeg", { type: "image/jpeg" }),
       name: name,
       description: description,
       significance: significance,
@@ -123,20 +123,20 @@ const UploadAssets = () => {
       console.log(nfturl);
       await mintnfthandler(nfturl);
     } catch (error) {
-      console.error(error); // Print the error on the console
+      console.error(error.code); // Print the error on the console
   
       if (error.code === 4001) {
 
         // Display an alert or error message for the 4001 error
           console.error("User cancelled the transaction.");
           setstatus("User cancelled the transaction.")
-          setShowMetamaskAlert(true)
+          showMetamaskAlert(true)
       } else {
         // Display a generic error message for other types of errors
         setTimeout(() => {
           console.error("Some Error Occurred. Please Try Again Later...");
           setstatus("User cancelled the transaction.")
-          setShowMetamaskAlert(true)
+          showMetamaskAlert(true)
         }, 5000);
       }
     }
