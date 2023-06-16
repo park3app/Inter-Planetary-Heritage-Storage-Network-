@@ -28,7 +28,7 @@ const ActiveProposals = () => {
   },[])
 
   return (
-    <Box bg={'hsl(0, 0%, 90%)'} minH={'50vh'}>
+    <div className='bg-[#0a1930] h-screen' >
       <Center>
         <VStack>
        
@@ -36,7 +36,8 @@ const ActiveProposals = () => {
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color={"#454545"}
+              color={"white"}
+              mt='10'
             >
               All Active Proposals
             </Heading>
@@ -51,7 +52,7 @@ const ActiveProposals = () => {
         )
       })   :
       <Center  h={'50vh'}>
-                <div className='message'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message text-white'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
     }
       </HStack>
@@ -59,7 +60,7 @@ const ActiveProposals = () => {
       </Center>
 
      
-    </Box>
+    </div>
   )
 }
 

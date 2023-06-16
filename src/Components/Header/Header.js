@@ -30,8 +30,8 @@ const Header = () => {
             <MenuItem className='header-link'>Proposal</MenuItem>
             <MenuItem><Link className='header-link' to={'/myproposals'} >My Proposals</Link></MenuItem>
             <MenuItem><Link className='header-link' to={'/activeproposals'}>Active Proposals</Link></MenuItem>
-            <MenuItem><Link className='header-link' to={"/sucessproposals"}>Succesfull Proposals</Link></MenuItem>
-            <MenuItem><Link className='header-link' to={"/unsucessproposals"}>UnSuccesFull Proposals</Link></MenuItem>
+            <MenuItem><Link className='header-link' to={"/sucessproposals"}>Succesful Proposals</Link></MenuItem>
+            <MenuItem><Link className='header-link' to={"/unsucessproposals"}>UnSuccesFul Proposals</Link></MenuItem>
           </MenuList>
         </Menu>
           </li>
