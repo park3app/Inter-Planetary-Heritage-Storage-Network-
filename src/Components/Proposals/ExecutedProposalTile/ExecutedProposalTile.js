@@ -37,7 +37,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     >
         <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
-        className='w-11/12 mx-auto rounded-2xl'
+        className='w-11/12 mx-auto rounded-2xl max-h-52'
         w={"100"}  
         h={"70"}
         borderRadius={'2px'}
