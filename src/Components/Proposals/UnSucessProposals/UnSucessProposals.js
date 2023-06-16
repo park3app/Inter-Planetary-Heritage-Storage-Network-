@@ -34,14 +34,14 @@ const UnSuccesFullProposals = () => {
 
 
   return (
-    <Box bg={'hsl(0, 0%, 90%)'} minH={'50vh'} >
+    <div className='bg-[#0a1930] h-screen' >
         <Center justifyContent={'center'}>
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color={'#454545'}
+              color={'white'}
             >
               All UnSuccesfull Proposals
             </Heading>
@@ -94,7 +94,7 @@ const UnSuccesFullProposals = () => {
     
 
 
-    </Box>
+    </div>
   )
 }
 

@@ -26,7 +26,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     }, [tokenURI]);
   
   return (
-    <div className="bg-[#0a1930] m-3" key={tokenURI}>
+    <div className="bg-[#0a1930] m-3 rounded-3xl " key={tokenURI}>
     
     {
       tokenURI !== "" ?
@@ -34,11 +34,8 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     
     <Link to={`/activeproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
     <div
-       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#172a48] pt-2.5'
+       className='w-72 rounded-3xl h-fit border-2 pb-3 border-sky-800  bg-[#172a48] pt-2.5'
     >
-       <Heading  noOfLines={1} fontWeight={'1000'}  fontSize = {'2rem'} color={"#CCEABB"}>
-        #{proposalid.toString()}
-        </Heading>
         <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
         className='w-11/12 mx-auto rounded-2xl'
@@ -55,7 +52,23 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
       <p className='text-lime-500 mr-2 font-bold text-4xl'>{yesvotes}</p>
       <p className='text-red-700 ml-2 font-bold text-4xl'>{novotes}</p>
       </div>
-      {state ?  <Text noOfLines={1} color={'#fff'} fontSize={'xl'}>Succesfull Proposal</Text> :  <Text noOfLines={1} color={'red'} fontSize={'xl'}>UnSuccesfull Proposal</Text>  }
+      {state ?  <p
+                className='bg-green-600 mb-3 text-center rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                color='#fff'
+                borderRadius={'3px'}
+                m={'3'}
+                backgroundColor={'green.300'}
+                p={'2'}
+                fontWeight={'700'}
+                size='xs'>Successful Proposal</p> :  <p
+                className='bg-red-700  mb-3 text-center rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                color='#fff'
+                borderRadius={'3px'}
+                m={'3'}
+                backgroundColor={'green.300'}
+                p={'2'}
+                fontWeight={'700'}
+                size='xs'>Unsucessful Proposals</p>  }
 
      
      
