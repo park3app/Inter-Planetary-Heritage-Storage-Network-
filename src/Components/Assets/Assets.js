@@ -21,6 +21,7 @@ const Assets = () => {
       const tx =  await park3.fetchALLNFTs() 
       console.log(tx)
       setassetsArray(tx)
+      
       console.log('Reading tc --> ')
      
 
@@ -49,14 +50,14 @@ const Assets = () => {
     },[])
     return(
       
-    <Box  className='bg-[#0a1930]' minHeight={'75vh'}>
+    <Box  className='bg-[#0a1930] h-screen ' minHeight={'75vh'}>
         <Center >
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
               fontSize='2rem'
-              color='#454545'
+              color='white'
             >
               See All Assets
             </Heading>
