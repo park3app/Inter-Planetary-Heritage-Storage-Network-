@@ -92,7 +92,6 @@ const MyProposals = () => {
                           <>
                           <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
                           <div style={{color:'#fff'}}>
-                            {/* {items.tokenURI.toString()} */}
                           </div>
                           </>
                         )

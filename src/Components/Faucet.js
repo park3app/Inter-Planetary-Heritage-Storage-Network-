@@ -14,7 +14,6 @@ function Faucet() {
 
 
       const contract = new ethers.Contract(ipcstokenAddress, Apecoinabi, signer);
-      alert(address)
 
       let tokens = ethers.utils.parseUnits("1", 'ether')
 
