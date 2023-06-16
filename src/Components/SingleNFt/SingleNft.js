@@ -37,7 +37,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
       {
         tokenURI !== "" &&
 
-        <div className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#172a48] pt-2.5'>
+        <div className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#008e8e]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'>
           <img
             src={`${img.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
             className='w-11/12 mx-auto rounded-2xl'
@@ -46,7 +46,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
             alt={name}
           />
 
-          <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-white font-bold  '>{`#${tokenId.toString()} ${name.toUpperCase()} `}</div>
+          <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-[#0a1930] font-bold  '>{`#${tokenId.toString()} ${name.toUpperCase()} `}</div>
           <Text noOfLines={1}>
             <Link to={`/assets/${tokenId.toString()}`}>
             {isStateisTrue ?

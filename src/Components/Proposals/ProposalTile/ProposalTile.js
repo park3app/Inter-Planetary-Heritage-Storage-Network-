@@ -35,7 +35,7 @@ const ProposalTile = ({tokenURI , proposalid , yesvotes , novotes}) => {
     
     <Link to={`/activeproposals/${proposalid.toString()}`}  maxw="30" key={proposalid.toString()}>
     <div
-       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#172a48] pt-2.5'
+       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#008e8e]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'
     >
       <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
