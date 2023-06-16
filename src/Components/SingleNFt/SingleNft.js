@@ -37,7 +37,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
       {
         tokenURI !== "" &&
 
-        <div className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#008e8e]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'>
+        <div className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#17173d]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'>
           <img
             src={`${img.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
             className='w-11/12 mx-auto rounded-2xl'
@@ -46,7 +46,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
             alt={name}
           />
 
-          <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-[#0a1930] font-bold  '>{`#${tokenId.toString()} ${name.toUpperCase()} `}</div>
+          <div className='mx-3 mt-2 text-xl w-fit py-1 px-2 text-gray-300 font-bold  '>{`#${tokenId.toString()} ${name.toUpperCase()} `}</div>
           <Text noOfLines={1}>
             <Link to={`/assets/${tokenId.toString()}`}>
             {isStateisTrue ?
@@ -56,7 +56,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
                 fontWeight={'700'}
                 color='#fff'
                 m={'3'}
-                className='bg-red-500 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                className='bg-[#17173d] border-red-700 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2'
                 size='xs'>Voting Closed</p> :
 
               <p
@@ -64,7 +64,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
                 borderRadius={'3px'}
                 p={'2'}
                 m={'3'}
-                className='bg-green-600 rounded-lg border-2 py-2 px-4   text-white font-bold mx-3 mt-2  border-slate-700'
+                className='bg-[#17173d] border-green-700 rounded-lg border-2 py-2 px-4   text-white font-bold mx-3 mt-2 '
                 fontWeight={'600'}
                 size='xs'>Voting Open</p>}
                 </Link></Text>
@@ -73,22 +73,22 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
           <Link to={`/assets/${tokenId.toString()}`}>
             {isproposed ?
               <Text p={'2'}
-                backgroundColor={'red.400'}
+        
                 fontWeight={'700'}
                 color='#fff'
                 m={'3'}
                 size='xs'
-                className='bg-red-500 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
-                borderRadius={'6px'}>Proposed</Text>
+                className='bg-[#17173d] border-blue-800 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
+                borderRadius={'6px'}>Send To Storage</Text>
 
               :
 
               <p
-                className='bg-green-600 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                className='bg-[#17173d] border-green-700 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
                 color='#fff'
                 borderRadius={'3px'}
                 m={'3'}
-                backgroundColor={'green.300'}
+          
                 p={'2'}
                 fontWeight={'700'}
                 size='xs'>Propose</p>
