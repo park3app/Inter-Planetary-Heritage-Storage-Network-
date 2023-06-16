@@ -97,7 +97,7 @@ const MyProposals = () => {
                         )
                 })  :
                 <Center  h={'50vh'}>
-                <div className='message'>No Assets... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message text-white'>No Assets... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                
             }

@@ -43,7 +43,7 @@ const UnSuccesFullProposals = () => {
               fontSize='2rem'
               color={'white'}
             >
-              All UnSuccesfull Proposals
+              All UnSuccesful Proposals
             </Heading>
          
             <Button
@@ -56,7 +56,7 @@ const UnSuccesFullProposals = () => {
                     type='submit'
                     onClick={fetchSuccesfullProposals}
                   >
-                    Get UnSuccesfull Proposals
+                    Get UnSuccesful Proposals
                   </Button>
           </VStack>
         </Center>
@@ -80,7 +80,7 @@ const UnSuccesFullProposals = () => {
                         )
                 })  :
                 <Center  h={'50vh'}>
-                <div className='message'>No UnSuccesFullProposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message text-white'>No UnSuccesFul Proposals... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
                
             }

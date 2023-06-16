@@ -52,7 +52,7 @@ const ActiveProposals = () => {
         )
       })   :
       <Center  h={'50vh'}>
-                <div className='message'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
+                <div className='message text-white'>Currently No Active proposals <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>
     }
       </HStack>
