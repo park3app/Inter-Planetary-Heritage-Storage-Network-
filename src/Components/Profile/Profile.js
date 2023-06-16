@@ -54,7 +54,7 @@ const Assets = () => {
     handlebtn()
   }, [])
   return (
-    <div className='bg-[#0a1930] h-screen'>
+    <div className='bg-[#0a1930] h-full'>
       <Center>
         <VStack as='header' spacing='6' mt='8'>
           <Heading

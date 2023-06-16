@@ -79,7 +79,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
                 m={'3'}
                 size='xs'
                 className='bg-[#17173d] border-blue-800 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
-                borderRadius={'6px'}>Send To Storage</Text>
+                borderRadius={'6px'}>Sended To Storage</Text>
 
               :
 
@@ -88,10 +88,9 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
                 color='#fff'
                 borderRadius={'3px'}
                 m={'3'}
-          
                 p={'2'}
                 fontWeight={'700'}
-                size='xs'>Propose</p>
+                size='xs'>Send To Storage</p>
             }</Link></Text>
         </div>
         

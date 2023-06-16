@@ -34,7 +34,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     
     <Link to={`/activeproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
     <div
-       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#008e8e]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'
+       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'
     >
         <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
@@ -53,7 +53,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
       <p className='text-red-700 ml-2 font-bold text-4xl'>{novotes}</p>
       </div>
       {state ?  <p
-                className='bg-green-600 mb-3 text-center rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                className='bg-[#17173d] border-green-700 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
                 color='#fff'
                 borderRadius={'3px'}
                 m={'3'}
@@ -61,7 +61,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
                 p={'2'}
                 fontWeight={'700'}
                 size='xs'>Successful Proposal</p> :  <p
-                className='bg-red-700  mb-3 text-center rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  border-slate-700'
+                className='bg-[#17173d] border-red-800 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
                 color='#fff'
                 borderRadius={'3px'}
                 m={'3'}
