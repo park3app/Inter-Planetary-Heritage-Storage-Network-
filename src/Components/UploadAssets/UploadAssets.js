@@ -160,7 +160,7 @@ const UploadAssets = () => {
         </Alert>
       )}
       {showMetamaskAlert&&
-        <Alert status='error'>{status}</Alert>
+        <Alert className=' w-10/12  ' status='error'><AlertIcon />{status}</Alert>
       }
       <Box>
         <Center>

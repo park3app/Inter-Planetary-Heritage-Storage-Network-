@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ipcsAddress, ipcsABI } from '../../constant';
 import { ipcsnftAddress, ipcsnftABI } from '../../constant';
 import { useParams, Link } from "react-router-dom";
-import { Button, Container, HStack, Center, Spinner, VStack, Image, Box, Text, Heading, Alert } from '@chakra-ui/react';
+import { Button, Container, HStack, Center, Spinner, VStack, Image, Box, Text, Heading, Alert, AlertIcon } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 import "./eachasset.css";
@@ -141,7 +141,7 @@ const EachAsset = () => {
 
   return (
     <div className='w-full bg-[#0a1930]'>
-      {showMetamaskAlert && <Alert status={type} className='rounded-xl mb-3'>{status}</Alert>}
+      {showMetamaskAlert && <Alert status={type}  className=' w-10/12  '><AlertIcon />{status}</Alert>}
       {
         loading ?
           <Center h={'30vh'} >
