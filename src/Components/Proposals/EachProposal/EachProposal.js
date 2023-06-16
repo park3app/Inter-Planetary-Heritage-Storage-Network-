@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ipcsAddress, ipcsABI } from '../../../constant.js';
 import { useParams, Link } from "react-router-dom";
-import { Button, Container, HStack, Center, Spinner, VStack, Image, Box, Text, Heading, StepDescription } from '@chakra-ui/react';
+import { Button, Container, HStack, Center, Spinner, VStack, Image, Box, Text, Heading, StepDescription, Alert } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import screenshot from "../../../screenshot.png"
 import { ExternalLinkIcon } from "@chakra-ui/icons"
@@ -9,22 +9,27 @@ import lighthouse from '@lighthouse-web3/sdk';
 
 
 const EachProposal = () => {
-    const { id } = useParams()
-    const [tokenid , settokenid] = useState('')
-    const [nftdata , setnftdata] = useState('')
-    const [tokenuri, settokenuri] = useState('')
-    const [owner,setowner] = useState('');
-    const [name , setname ] = useState('')
-    const [description  , setdescription] = useState('');
-    const [significance , setsignificance ] = useState('');
-    const [note , setnote] = useState('');
-    const [location , setlocation] = useState('');
-    const [image , setimage] = useState('')
-    const [loading , setloading ] = useState(false)
-    const [novotes , ssetnovotes]  = useState('');
-    const [yesvotes , setyesvotes] = useState('');
-    const [executed,setisexecuted] = useState(false)
-    const [progress , setprogress] = useState('0')
+  const { id } = useParams()
+  const [tokenid, settokenid] = useState('')
+  const [nftdata, setnftdata] = useState('')
+  const [tokenuri, settokenuri] = useState('')
+  const [owner, setowner] = useState('');
+  const [name, setname] = useState('')
+  const [description, setdescription] = useState('');
+  const [significance, setsignificance] = useState('');
+  const [note, setnote] = useState('');
+  const [location, setlocation] = useState('');
+  const [image, setimage] = useState('')
+  const [loading, setloading] = useState(false)
+  const [novotes, ssetnovotes] = useState('');
+  const [yesvotes, setyesvotes] = useState('');
+  const [executed, setisexecuted] = useState(false)
+  const [progress, setprogress] = useState('0')
+  const [showMintAlert, setShowMintAlert] = useState(false);
+  const [showMetamaskAlert, setShowMetamaskAlert] = useState(false);
+  const [status, setstatus] = useState('')
+  const [type, settype] = useState('')
+
 
   const ProposalInfo = async () => {
     setloading(true)
@@ -69,35 +74,36 @@ const EachProposal = () => {
         image: metadata.image
       }
 
-          const data = JSON.stringify(dataObject);
-          const output = await lighthouse.uploadText(data, "3f7cefae.45d5e6b6283f4f3ba887d3c896e96cf0", progressCallback);
-          console.log("File Status:", output);
-          console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
-          setloading(false);
-        } catch (error) {
-          console.log("Error:", error);
-        }
-      };
+      const data = JSON.stringify(dataObject);
+      const output = await lighthouse.uploadText(data, "3f7cefae.45d5e6b6283f4f3ba887d3c896e96cf0", progressCallback);
+      console.log("File Status:", output);
+      console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
+      setloading(false);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
-      const handleUpload = async() =>{
-          try{
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const signer = provider.getSigner()
-            const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
-            alert(3)
-            const tx = await ipcs.getproposalInfobyId(id);
-            const state = await tx.isStateisTrue;
-            const tokenURI = await  tx.tokenURI;
+  const handleUpload = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
+      alert(3)
+      const tx = await ipcs.getproposalInfobyId(id);
+      const state = await tx.isStateisTrue;
+      const tokenURI = await tx.tokenURI;
 
-            if(state === true){
-              await uploadFile(tokenURI);
-              alert('File Uploaded to the Storage Succefully')
-            }else{
-              alert('Proposal Result to Unsuccefull.')
-            }}catch(error){
-            alert('Some Error While Interacting with LightHouse APIs...')
-          }
+      if (state === true) {
+        await uploadFile(tokenURI);
+        alert('File Uploaded to the Storage Succefully')
+      } else {
+        alert('Proposal Result to Unsuccefull.')
       }
+    } catch (error) {
+      alert('Some Error While Interacting with LightHouse APIs...')
+    }
+  }
 
   const fetchMetadata = async (tokenURI) => {
     try {
@@ -128,21 +134,36 @@ const EachProposal = () => {
   }, [tokenuri]);
 
 
-      // handleYESVote
-      const handleYESVote = async() =>{
-        try{
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const signer = provider.getSigner()
-            const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
-    
-            const tx = await ipcs.voteonProposal(id ,true);
-            console.log('yes votes tx -->');
-            console.log(tx)
-        }catch(error){
-            console.log(error)
-            alert("You have already Voted")
-        }
-      }
+  // handleYESVote
+  const handleYESVote = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
+
+      const tx = await ipcs.voteonProposal(id, true);
+      console.log('yes votes tx -->');
+      console.log(tx)
+      settype('success')
+      setstatus('Successfuly voted')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
+    } catch (error) {
+      console.log(error)
+      settype('error')
+      setstatus('You are already voted')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
+    }
+  }
 
   // handleNoVote
   const handleNoVote = async () => {
@@ -154,33 +175,51 @@ const EachProposal = () => {
       const tx = await ipcs.voteonProposal(id, false);
       console.log('yes votes tx -->');
       console.log(tx)
+      settype('success')
+      setstatus('Successfuly voted')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
     } catch (error) {
       console.log(error)
-      alert("You have already Voted")
+      settype('error')
+      setstatus('You are already voted')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
     }
   }
 
-      //handleexecute
-      const handleExecute = async() =>{
-        try{
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const signer = provider.getSigner()
-            const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
-    
-            const tx = await ipcs.executeProposal(id);
-            console.log('yes votes tx -->');
-            console.log(tx)
+  //handleexecute
+  const handleExecute = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
 
-            await handleUpload()
-        }catch(error){
-            alert('Deadline not passed  passed or Proposal is already Executed')
-            console.log(error)
-        }
-      }
-      
+      const tx = await ipcs.executeProposal(id);
+      console.log('yes votes tx -->');
+      console.log(tx)
+
+      await handleUpload()
+    } catch (error) {
+      alert('Deadline not passed  passed or Proposal is already Executed')
+      console.log(error)
+    }
+  }
+
 
   return (
-    <Container maxW={"100vw"}>
+    <div className='w-full bg-[#0a1930]'>
+      {showMetamaskAlert &&
+        <Alert status={type}>{status}</Alert>
+      }
       {
         loading ?
           <Center h={'30vh'} >
@@ -189,25 +228,26 @@ const EachProposal = () => {
           </Center>
           :
 
-          <div className='asset-details-div'>
+          <div className='px-28 py-20 bg-[#0a1930]'  >
+            <HStack spacing={8} className='bg-[#17173d] shadow-xl shadow-black rounded-2xl p-8'>
+            <div className='w-6/12 h-full'>
+              
+              <img className='border-cyan-500 border-2 w-full rounded-xl' src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} fallbackSrc={screenshot} maxW={'40%'} />
+              
+              </div>
 
-            <HStack spacing={8} >
-              {/* <Link  to={tokenuri} target='_blank' > */}
-              <Image src={image} alt={name} fallbackSrc={screenshot} maxW={'40%'} />
-              {/* </Link> */}
-
-              <VStack spacing={6} align='stretch' marginLeft={'5rem'}>
+              <VStack className='text-[#a7a5a5]' spacing={6} align='stretch' marginLeft={'5rem'}>
                 <div className='details-div'>
                   <Heading as="h3" m={'1'} size="lg" >
                     #{id}<Link style={{ marginLeft: '3px' }} target='_blank' to={tokenuri}><ExternalLinkIcon /></Link>
                   </Heading>
-                  <Heading as="h6" m={'1'} size="lg" fontWeight={'1000'} color={'rgba(0, 0, 0, 0.53)'}>
+                  <Heading as="h6" m={'1'} size="lg" fontWeight={'1000'} >
                     {name.toUpperCase()}
                   </Heading>
-                  <Text color={'rgba(0, 0, 0, 0.53)'} fontWeight={'700'} m={'1'} fontSize={'xl'}>{description}</Text>
-                  <Text color={'rgba(0, 0, 0, 0.53)'} fontWeight={'700'} m={'1'} fontSize={'md'}>Culutural significance:   {significance}</Text>
-                  <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</Text>
-                  <Text fontSize="md" color={'rgba(0, 0, 0, 0.53)'} fontWeight={'400'} m={'1'}>{owner}</Text>
+                  <Text  fontWeight={'700'} m={'1'} fontSize={'xl'}>{description}</Text>
+                  <Text fontWeight={'700'} m={'1'} fontSize={'md'}>Culutural significance:   {significance}</Text>
+                  <Text fontSize="2xl" m={'1'}  fontWeight={'600'}>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</Text>
+                  <Text fontSize="md"  fontWeight={'400'} m={'1'}>{owner}</Text>
                 </div>
 
      <HStack>
@@ -215,6 +255,8 @@ const EachProposal = () => {
        {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> :   <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
         {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> :  <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button> }
      </HStack>
+
+     <button onClick={() => uploadFile("bafyreiag5yatteawckhtka65jya24ikwiqwrmwuktmsmrrhk4mlb6tenwy")}>Store Data to LightHouse</button>
     
     </VStack>
   </HStack>
@@ -222,7 +264,7 @@ const EachProposal = () => {
 
       }
 
-    </Container>
+    </div>
   )
 }
 
