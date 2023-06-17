@@ -40,7 +40,6 @@ function App() {
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
     <Route path='unsucessproposals/:id' element={<UnSuccessSingleProposal/>} />
     <Route path='faucet'  element={<Faucet/>}/>
-    <Route path='av'  element={<Avatar/>}/>
     
     </Routes>
     <Footer/>
