@@ -206,8 +206,13 @@ const EachProposal = () => {
       const tx = await ipcs.executeProposal(id);
       console.log('yes votes tx -->');
       console.log(tx)
+      const transactionHash = tx.hash;
+      signer.provider.on(transactionHash, (receipt) => {
+        console.log('Transaction confirmed:', receipt);
+        handleUpload();
+      });
 
-      await handleUpload()
+      
     } catch (error) {
       alert('Deadline not passed  passed or Proposal is already Executed')
       console.log(error)
