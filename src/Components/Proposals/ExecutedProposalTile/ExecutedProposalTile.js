@@ -26,15 +26,13 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
     }, [tokenURI]);
   
   return (
-    <div className="bg-[#0a1930] m-3 rounded-3xl " key={tokenURI}>
+    <div className=" m-3  " key={tokenURI}>
     
     {
       tokenURI !== "" ?
 
     <Link to={state ?  `/sucessproposals/${proposalid.toString()}` : `/unsucessproposals/${proposalid.toString()}`}   key={proposalid.toString()}>
-    <div
-       className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'
-    >
+    
         <img
         src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
         className='w-11/12 mx-auto rounded-2xl max-h-52'
@@ -71,7 +69,7 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
 
      
      
-      </div>
+      
   </Link>:
   <div></div>
     }
