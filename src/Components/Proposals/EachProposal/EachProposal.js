@@ -54,7 +54,6 @@ const EachProposal = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer)
-      alert(3)
       const tx = await ipcs.getproposalInfobyId(id);
       const state = await tx.isStateisTrue;
       const tokenURI = await tx.tokenURI;
@@ -62,9 +61,9 @@ const EachProposal = () => {
       // set a timeout here like 10 seconds 
 
       if (state === true) {
-        // alert message will come here , that proposal is sucess
+        alert("Proposal Result to Successfull")
       } else {
-         // alert message will come here , that proposal is unsucess
+        alert('Proposal Result to be Unsuccessfull')
       }
     } catch (error) {
       alert('Some Error While Interacting with LightHouse APIs...')

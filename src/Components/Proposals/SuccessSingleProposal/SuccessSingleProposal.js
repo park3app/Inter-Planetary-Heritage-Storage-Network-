@@ -10,8 +10,8 @@ import lighthouse from '@lighthouse-web3/sdk';
 
 const SuccessSingleProposal = () => {
     const { id } = useParams()
+    const [nftdata , setnftdata] = useState('');
     const [tokenid , settokenid] = useState('')
-    const [nftdata , setnftdata] = useState('')
     const [tokenuri, settokenuri] = useState('')
     const [owner,setowner] = useState('');
     const [name , setname ] = useState('')
@@ -78,7 +78,7 @@ const SuccessSingleProposal = () => {
           setloading(false);
 
           settype('success')
-          setstatus('Successfuly Uploded Proposal')
+          setstatus(`Successfuly Uploded Proposal at ${"https://gateway.lighthouse.storage/ipfs/" + output.data.Hash}`)
           setShowMetamaskAlert(true)
           setTimeout(() => {
             settype('')
@@ -125,9 +125,6 @@ const SuccessSingleProposal = () => {
           fetchMetadata(tokenuri);
         }
       }, [tokenuri]);
-
-
-
      
 
   return(

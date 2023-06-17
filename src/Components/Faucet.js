@@ -37,7 +37,7 @@ function Faucet() {
       await tx.wait();
 
       setShowMetamaskAlert(true)
-      setstatus('Transaction confirmed:')
+      setstatus('Transaction confirmed: Credited 1 Ape Coin')
       settype('success')
       setTimeout(() => {
         setstatus("")
