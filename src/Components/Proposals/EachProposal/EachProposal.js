@@ -28,8 +28,8 @@ const EachProposal = () => {
   const [showMintAlert, setShowMintAlert] = useState(false);
   const [showMetamaskAlert, setShowMetamaskAlert] = useState(false);
   const [status, setstatus] = useState('')
-  const [type, settype] = useState('')
-
+  const [type, settype] = useState('');
+  const [tokenClaimed , settokenclaimed] = useState(false)
 
   const ProposalInfo = async () => {
     setloading(true)
@@ -45,6 +45,8 @@ const EachProposal = () => {
     setyesvotes(data.yesvotes)
     ssetnovotes(data.novotes)
     setisexecuted(data.executed)
+    settokenclaimed(data.isClaimedToken)
+
     setloading(false)
   }
   
@@ -200,6 +202,25 @@ const EachProposal = () => {
     }
   }
 
+  // handleClaim function
+  const handleClaim = async() => {
+    // const account = await window.ethereum.request({method: "eth_accounts"})
+    try{
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const ipcs = new ethers.Contract(ipcsAddress, ipcsABI, signer);
+  
+      const tx = await ipcs.claimTokenforEachProposal(id , owner);
+  
+      tx.wait();
+    }catch(error){
+      console.log(error)
+    }
+   
+
+
+  }
+
 
   return (
     <div className='w-full bg-[#0a1930]'>
@@ -240,6 +261,7 @@ const EachProposal = () => {
                   {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> : <Button onClick={handleYESVote} colorScheme='green'>Vote Yes</Button>}
                   {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> : <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
                   {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> : <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button>}
+                  {tokenClaimed ? <Text fontSize="xl" m={'1'} color={'red.600'} fontWeight={'600'}>APE Claimed</Text> : <Button onClick={handleClaim} colorScheme='green'>Claim APE</Button>}
                 </HStack>
               </VStack>
             </HStack>

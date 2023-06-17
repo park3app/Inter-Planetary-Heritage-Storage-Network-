@@ -84,7 +84,6 @@ const UploadAssets = () => {
 
       let transaction = await contract.createToken(tokenuri, false, false, { value: listingPrice })
       await transaction.wait()
-      alert("Successfully listed your NFT!");
       setuploaded(true);
       setloading(false)
       setShowMintAlert(true); // Set showMintAlert to true after mintnfthandler function is completed

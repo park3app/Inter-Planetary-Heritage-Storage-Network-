@@ -23,7 +23,7 @@ module.exports = {
   calibrationnet: {
     chainId: 314159,
     url: "https://api.calibration.node.glif.io/rpc/v1",
-    accounts: ["f1694101cc2cda683d39556bf6f16ddb3007072c53f76735de8769cfb1c0163b"],
+    accounts: ["edd0a374fb70992c742af5ff48618adf91eb6f97656be5ed122a6fc0ff3aed3e"],
 },
 
 },

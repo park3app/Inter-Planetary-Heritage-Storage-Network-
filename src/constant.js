@@ -1,10 +1,10 @@
 
  
-export const ipcsAddress = '0xfF9603f4671649Cdcb56810D4A90D2c466A5Bed6'
+export const ipcsAddress = '0x70fC55515fAA339eFaC88ba37b238F4E3588f7AF'
 
-export const ipcsnftAddress = '0x9E521845a99FD51E0664d87CE0BEb78492be8F62'
+export const ipcsnftAddress = '0xaF9A87c1e7c93e72C926043dAb38cc4497267078'
 
-export const ipcstokenAddress = '0x07F99B29b69Afa06C6766309158A5940049Ef4E7'
+export const ipcstokenAddress = '0xB6233d21d0cC6E74341e80De2c586Ac8D32426f7'
 
 export const ipcsABI = [
   {
@@ -42,7 +42,31 @@ export const ipcsABI = [
   },
   {
     "inputs": [],
-    "name": "claimToken",
+    "name": "checkTokenBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "proposalId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_sender",
+        "type": "address"
+      }
+    ],
+    "name": "claimTokenforEachProposal",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -156,6 +180,11 @@ export const ipcsABI = [
             "internalType": "string",
             "name": "storedatahash",
             "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClaimedToken",
+            "type": "bool"
           }
         ],
         "internalType": "struct IPCS.Proposal[]",
@@ -242,6 +271,11 @@ export const ipcsABI = [
             "internalType": "string",
             "name": "storedatahash",
             "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClaimedToken",
+            "type": "bool"
           }
         ],
         "internalType": "struct IPCS.Proposal[]",
@@ -322,6 +356,11 @@ export const ipcsABI = [
             "internalType": "string",
             "name": "storedatahash",
             "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClaimedToken",
+            "type": "bool"
           }
         ],
         "internalType": "struct IPCS.Proposal[]",
@@ -402,6 +441,11 @@ export const ipcsABI = [
             "internalType": "string",
             "name": "storedatahash",
             "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClaimedToken",
+            "type": "bool"
           }
         ],
         "internalType": "struct IPCS.Proposal[]",
@@ -488,6 +532,11 @@ export const ipcsABI = [
             "internalType": "string",
             "name": "storedatahash",
             "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClaimedToken",
+            "type": "bool"
           }
         ],
         "internalType": "struct IPCS.Proposal",
@@ -606,6 +655,11 @@ export const ipcsABI = [
         "internalType": "string",
         "name": "storedatahash",
         "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isClaimedToken",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",

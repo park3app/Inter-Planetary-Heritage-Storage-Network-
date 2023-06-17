@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier:MIT
+
 pragma solidity ^0.8.9;
 
 import "./IPCSTokens.sol";
@@ -16,11 +17,12 @@ contract IPCS{
     // defining owner
     address payable public owner;
 
-    constructor(address _votingTokenAddress , address _nftcontractaddress){
+     constructor(address _votingTokenAddress , address _nftcontractaddress){
         ipcstoken  = IERC20(_votingTokenAddress);
         iipcsnft = IIPCSNFT(_nftcontractaddress);
         owner  = payable(msg.sender);
     }
+
 
     // using counters for keep tracking of the tokenIds
     uint256 public  _proposalId = 0 ;
@@ -30,7 +32,6 @@ contract IPCS{
     require(ipcstoken.balanceOf(msg.sender) >= amount, "Not enough tokens to vote");
     _;
 }
-
     modifier payToken(uint256 amount) {
     require(ipcstoken.allowance(msg.sender, address(this)) >= amount, "Allowance not set");
     ipcstoken.transferFrom(msg.sender, address(this), amount);
@@ -53,6 +54,7 @@ contract IPCS{
         address owner;
         address[] voters;
         string storedatahash;
+        bool isClaimedToken;
     }
 
     // tracking all proposals
@@ -226,23 +228,19 @@ contract IPCS{
     }
 
 
-
-    // user can claim 1 token for each proposal they made 
-    function claimToken() public {
-    uint256 proposalCount = _proposalId;
-    uint256 claimableTokens = 0;
-    
-    for (uint256 i = 1; i <= proposalCount; i++) {
-        if (proposals[i].owner == msg.sender) {
-            claimableTokens++;
-        }
+    function checkTokenBalance() public view returns (uint256) {
+        return ipcstoken.balanceOf(address(this));
     }
-    
-    require(claimableTokens > 0, "No tokens to claim");
-    ipcstoken.transfer(msg.sender, claimableTokens);
-}
 
-   
+    function claimTokenforEachProposal(uint256 proposalId , address _sender) public {
+    Proposal storage proposal = proposals[proposalId];
+
+    require(proposal.owner == _sender, "Only the owner can claim the token");
+    require(!proposal.isClaimedToken, "Token already claimed for this proposal");
+
+    proposal.isClaimedToken = true;
+    ipcstoken.transfer(_sender, 1);
+}
 
     //if user want to fund smart contract 
     function deposit() public payable {
