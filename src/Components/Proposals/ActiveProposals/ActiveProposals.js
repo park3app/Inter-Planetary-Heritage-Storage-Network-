@@ -28,9 +28,9 @@ const ActiveProposals = () => {
   }, [])
 
   return (
-    <div className='bg-[#0a1930] h-full' >
+    <div className='bg-[#0a1930] h-full' style={{minHeight:'100vh'}} >
       <Center>
-        <VStack>
+        <VStack spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'} p={'4'}>
 
           <Heading
             as='h1'
@@ -42,14 +42,27 @@ const ActiveProposals = () => {
             All Active Proposals
           </Heading>
 
+          <Button
+                    bg='#F5F4E4'
+                    color={"#454545"}
+                    className='btn-upload'
+                    size='md'
+                    _hover={{ bg: 'rgba(0, 0, 0, 0.53)' }}
+                    _active={{ bg: '#298e46' }}
+                    type='submit'
+                    onClick={fetchActiveProposals}
+                  >
+                    Get Avtive Proposals
+                  </Button>
+
           <HStack wrap={'wrap'} justifyContent={'flex-start'}>
             {assetsArray.length !== 0 ?
-              <div className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
+              <div  className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
               {assetsArray.map((items) => {
                 return (
                   <>
                     {items.tokenURI && (
-                      <div className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
+                      <div  style={{margin:'2rem'}} className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
                         <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
                       </div>
                     )}

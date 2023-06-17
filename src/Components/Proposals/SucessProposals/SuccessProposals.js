@@ -36,7 +36,7 @@ const SuccessProposals = () => {
 
 
   return (
-    <div className='bg-[#0a1930] h-full' >
+    <div className='bg-[#0a1930] h-full' style={{minHeight:'100vh'}} >
         <Center justifyContent={'center'}>
         <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
         <Heading
@@ -79,7 +79,7 @@ const SuccessProposals = () => {
                   return (
                     <>
                       {items.tokenURI && (
-                        <div className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
+                        <div style={{margin:'2rem'}} className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
                           <ExecutedProposalTile state={true} tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
                         </div>
                       )}

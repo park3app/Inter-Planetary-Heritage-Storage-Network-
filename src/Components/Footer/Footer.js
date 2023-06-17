@@ -15,7 +15,6 @@ import {
   const Footer = () => {
     return (
       <Box bgColor={'hsl(0, 0%, 90%)'} minH={'30'} p={'16'} color={'454545'} >
-         <Box borderBottom="2px" borderColor="454545" marginBottom={'2rem'} />
         <Stack direction={['column', 'row']}>
           <VStack alignItems={'stretch'} w={'full'} px={'4'}>
             <Heading

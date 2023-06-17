@@ -47,42 +47,7 @@ const EachProposal = () => {
     setisexecuted(data.executed)
     setloading(false)
   }
-
-  const progressCallback = (progressData) => {
-    let percentageDone =
-      100 - (progressData?.total / progressData?.uploaded)?.toFixed(2);
-    console.log(percentageDone);
-    setprogress(percentageDone);
-  };
-
-  const uploadFile = async (cid) => {
-    try {
-      setloading(true);
-      console.log("CID:", cid);
-      const response = await fetch(`https://ipfs.io/ipfs/${cid}/metadata.json`);
-      console.log(response)
-      const metadata = await response.json();
-
-      const dataObject = {
-        cid: cid,
-        name: metadata.name,
-        description: metadata.description,
-        significance: metadata.significance,
-        location: metadata.location,
-        otherNote: metadata.otherNote,
-        storeddatahash: "",
-        image: metadata.image
-      }
-
-      const data = JSON.stringify(dataObject);
-      const output = await lighthouse.uploadText(data, "3f7cefae.45d5e6b6283f4f3ba887d3c896e96cf0", progressCallback);
-      console.log("File Status:", output);
-      console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash);
-      setloading(false);
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
+  
 
   const handleUpload = async () => {
     try {
@@ -94,11 +59,12 @@ const EachProposal = () => {
       const state = await tx.isStateisTrue;
       const tokenURI = await tx.tokenURI;
 
+      // set a timeout here like 10 seconds 
+
       if (state === true) {
-        await uploadFile(tokenURI);
-        alert('File Uploaded to the Storage Succefully')
+        // alert message will come here , that proposal is sucess
       } else {
-        alert('Proposal Result to Unsuccefull.')
+         // alert message will come here , that proposal is unsucess
       }
     } catch (error) {
       alert('Some Error While Interacting with LightHouse APIs...')
@@ -260,9 +226,6 @@ const EachProposal = () => {
                   {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}></Text> : <Button onClick={handleNoVote} colorScheme='red'>Vote No</Button>}
                   {executed ? <Text fontSize="2xl" m={'1'} color={'rgba(0, 0, 0, 0.53)'} fontWeight={'600'}>Proposal Executed</Text> : <Button onClick={handleExecute} colorScheme='purple'>Execute Proposal</Button>}
                 </HStack>
-
-                <button onClick={() => uploadFile("bafyreiag5yatteawckhtka65jya24ikwiqwrmwuktmsmrrhk4mlb6tenwy")}>Store Data to LightHouse</button>
-
               </VStack>
             </HStack>
           </div>

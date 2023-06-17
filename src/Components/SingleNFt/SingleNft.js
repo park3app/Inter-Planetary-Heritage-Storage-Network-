@@ -39,7 +39,7 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
       {
         tokenURI !== "" &&
 
-        <div >
+        <div>
           <img
             src={`${img.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
             className='w-11/12 mx-auto rounded-2xl max-h-52'

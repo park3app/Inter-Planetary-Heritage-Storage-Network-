@@ -50,9 +50,9 @@ const Assets = () => {
     },[])
     return(
       
-    <Box  className='bg-[#0a1930] h-full ' minHeight={'75vh'}>
+    <Box  className='bg-[#0a1930] h-full ' minH={'100vh'}>
         <Center >
-        <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
+        <VStack as='header' spacing='6' mt='8' p={'4'} wrap={'wrap'} justifyContent={'space-evenly'}>
             <Heading
               as='h1'
               fontWeight='700'
@@ -77,20 +77,20 @@ const Assets = () => {
                   </Button>
           </VStack>
         </Center>
-        <HStack style={{margin:'1rem'}} wrap={'wrap'} justifyContent={'flex-center'}>
+        <HStack  wrap={'wrap'} justifyContent={'flex-center'}>
         {loading ? 
                 <Center h={'30vh'} justifyContent={'center'} >
                     <Spinner alignSelf={'center'} thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
                 </Center>
                  :
               <HStack  wrap={'wrap'} justifyContent={'flex-start'} >
-                {assetsArray ? 
-                <div className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
+                {assetsArray.length !== 0  ? 
+                <div style={{margin:'2rem'}} className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
                 {assetsArray.map((items) => {
                   return (
                     <>
                       {items.tokenURI && (
-                        <div className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
+                        <div style={{margin:'1rem'}} className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
                           <SingleNft
                             tokenId={items.tokenId}
                             tokenURI={items.tokenURI}

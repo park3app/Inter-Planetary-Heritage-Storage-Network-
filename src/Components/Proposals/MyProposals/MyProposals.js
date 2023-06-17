@@ -52,9 +52,9 @@ const MyProposals = () => {
 
 
   return (
-    <div className='bg-[#0a1930] h-full' >
+    <div className='bg-[#0a1930] h-full' style={{minHeight:'100vh'}} >
         <Center justifyContent={'center'}>
-        <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'}>
+        <VStack as='header' spacing='6' mt='8' wrap={'wrap'} justifyContent={'space-evenly'} p={'2'}>
             <Heading
               as='h1'
               fontWeight='700'

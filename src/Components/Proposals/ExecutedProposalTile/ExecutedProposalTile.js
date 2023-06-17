@@ -51,21 +51,21 @@ const ExecutedProposalTile = ({tokenURI , proposalid , yesvotes , novotes , stat
       </div>
       {state ?  <p
                 className='bg-[#17173d] border-green-700 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
-                color='#fff'
+                color='green'
                 borderRadius={'3px'}
                 m={'3'}
                 backgroundColor={'green.300'}
                 p={'2'}
                 fontWeight={'700'}
-                size='xs'>Successful Proposal</p> :  <p
+                size='xs'><span style={{color:'green'}}>Successful Proposal</span></p> :  <p
                 className='bg-[#17173d] border-red-800 rounded-lg border-2 py-2 p-2 text-white font-bold mx-3 mt-2  '
-                color='#fff'
+                color='red'
                 borderRadius={'3px'}
                 m={'3'}
                 backgroundColor={'green.300'}
                 p={'2'}
                 fontWeight={'700'}
-                size='xs'>Unsucessful Proposals</p>  }
+                size='xs'><span style={{color:'red'}}>UnSuccesful Proposal</span></p>  }
 
      
      

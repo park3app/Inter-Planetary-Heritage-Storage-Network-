@@ -46,8 +46,8 @@ const ProposalTile = ({ tokenURI, proposalid, yesvotes, novotes }) => {
         <p className="text-red-700 ml-2 font-bold text-4xl">{novotes}</p>
       </div>
       <p
-        className="bg-[#17173d] border-green-700 text-center rounded-lg mt-6 border-2 py-2 p-2 text-white font-bold mx-3"
-        color="#fff"
+        className="vote-btn-hover bg-[#17173d] border-green-700 text-center rounded-lg mt-6 border-2 py-2 p-2 text-white font-bold mx-3"
+        color="green"
         borderRadius={'3px'}
         m={'3'}
         backgroundColor={'green.300'}

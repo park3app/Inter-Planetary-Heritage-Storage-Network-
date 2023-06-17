@@ -127,14 +127,6 @@ const EachAsset = () => {
     if (tokenuri) {
       fetchMetadata(tokenuri);
     }
-    // if(owner){
-    //   const fetchData = async () => {
-    //     const data = await getENSData(owner);
-    //     setEnsData(data);
-    //   };
-  
-    //   fetchData();
-    // }
   }, [tokenuri]);
 
 
@@ -172,7 +164,7 @@ const EachAsset = () => {
                   <p className='text-slate-300' fontWeight={'700'} m={'1'} fontSize={'xl'}> <Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Description:  </Text>{description}</p>
                   <p className='text-slate-300' color={'#454545'} fontWeight={'700'} m={'1'} fontSize={'xl'}><Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Significance: </Text>  {significance}</p>
                   <p className='text-slate-300' fontSize="xl" m={'1'} color={'rgb(209 213 219)'} fontWeight={'600'}><Text style={{ display: 'inline', color: 'rgb(209 213 219)', fontWeight: '1000' }}>Location:   </Text>{`${location.charAt(0).toUpperCase()}${location.slice(1)}`}</p>
-                  <p className='text-slate-300' fontSize="md" color={'rgb(209 213 219)'} fontWeight={'400'} m={'1'}>{owner}</p>
+                  <p className='text-slate-300' fontSize="xl" color={'rgb(209 213 219)'} fontWeight={'400'} m={'1'}>{owner}</p>
                   <p className='text-slate-300' noOfLines={1}> {isstatetrue ? <Text p={'4px'} fontWeight={'700'} color={'green'} fontSize={'xl'}>State is True</Text> : <Text color={"red"} p={'4px'} fontWeight={'600'} fontSize={'xl'} size='lg'>State is False</Text>}</p>
                 </div>
                 <HStack>

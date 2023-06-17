@@ -56,7 +56,7 @@ const Assets = () => {
   return (
     <div className='bg-[#0a1930] h-full'>
       <Center>
-        <VStack as='header' spacing='6' mt='8'>
+        <VStack as='header' spacing='6' mt='8' p={'2'}>
           <Heading
             as='h1'
             fontWeight='700'
@@ -89,7 +89,7 @@ const Assets = () => {
           :
           <HStack wrap={'wrap'} justifyContent={'flex-start'} >
             {assetsArray.length !== 0 ?
-              <div className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
+              <div style={{margin:'2rem'}} className=" grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
                 {assetsArray.map((items) => {
                   return (
                     <>

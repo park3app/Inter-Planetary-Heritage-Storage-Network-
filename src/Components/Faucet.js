@@ -19,6 +19,10 @@ function Faucet() {
 
       // Call the mint function on the contract
       const tx = await contract.mint(address, tokens);
+      const transactionHash = tx.hash;
+      signer.provider.on(transactionHash, (receipt) => {
+        /// aleert message will come here
+      });
 
 
 

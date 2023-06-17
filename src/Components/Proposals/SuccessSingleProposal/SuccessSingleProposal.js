@@ -34,20 +34,9 @@ const SuccessSingleProposal = () => {
         setowner(data.owner);
         settokenid(data.tokenId)
         setloading(false)
-
-     
-        // await uploadFile(tokenuri)
           
       }
 
-
-      const progressCallback = (progressData) => {
-        let percentageDone =
-          100 - (progressData?.total / progressData?.uploaded)?.toFixed(2);
-        console.log(percentageDone);
-        setprogress(percentageDone);
-      };
-      
       const uploadFile = async (cid) => {
         try {
           if (!cid) {
@@ -121,12 +110,11 @@ const SuccessSingleProposal = () => {
      
 
   return(
-    <Container maxW={"100vw"}>
+    <Container maxW={"100vw"} minH={'50vh'}>
     {
       loading ? 
       <Center h={'30vh'} >
       <Spinner thickness='5px'speed='0.5s'emptyColor='gray.200'color='blue.500'size='xl' />
-      {/* {loading && <Loading progress={progress} />} */}
   </Center> 
   :
 
