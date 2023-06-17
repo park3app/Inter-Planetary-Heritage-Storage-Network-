@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ipcsAddress,ipcsABI } from '../../../constant.js';
 import { useParams, Link } from "react-router-dom";
-import { Button, Container, HStack , Center , Spinner, VStack , Image, Box, Text , Heading, StepDescription } from '@chakra-ui/react';
+import { Button, Container, HStack , Center , Spinner, VStack , Image, Box, Text , Heading, StepDescription, Alert } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import screenshot from "../../../screenshot.png"
 import {ExternalLinkIcon} from "@chakra-ui/icons"
@@ -21,6 +21,9 @@ const SuccessSingleProposal = () => {
     const [image , setimage] = useState('')
     const [loading , setloading ] = useState(false);
     const [progress , setprogress] = useState('')
+    const [showMetamaskAlert, setShowMetamaskAlert] = useState(false);
+    const [status, setstatus] = useState('')
+    const [type, settype] = useState('')
 
     const ProposalInfo = async() => {
         setloading(true)
@@ -73,8 +76,26 @@ const SuccessSingleProposal = () => {
             "Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash
           );
           setloading(false);
+
+          settype('success')
+          setstatus('Successfuly Uploded Proposal')
+          setShowMetamaskAlert(true)
+          setTimeout(() => {
+            settype('')
+            setstatus('')
+            setShowMetamaskAlert(false)
+          }, 5000);
+
         } catch (error) {
           console.log("Error:", error);
+          settype('error')
+          setstatus('Something went wrong!')
+          setShowMetamaskAlert(true)
+          setTimeout(() => {
+            settype('')
+            setstatus('')
+            setShowMetamaskAlert(false)
+          }, 5000);
         }
       };
       
@@ -111,6 +132,9 @@ const SuccessSingleProposal = () => {
 
   return(
     <Container maxW={"100vw"} minH={'50vh'}>
+      {showMetamaskAlert &&
+        <Alert status={type}>{status}</Alert>
+      }
     {
       loading ? 
       <Center h={'30vh'} >

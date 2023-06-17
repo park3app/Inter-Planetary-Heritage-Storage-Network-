@@ -178,10 +178,26 @@ const EachProposal = () => {
         handleUpload();
       });
 
+      settype('success')
+      setstatus('Successfuly Executed Proposal')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
+
       
     } catch (error) {
-      alert('Deadline not passed  passed or Proposal is already Executed')
       console.log(error)
+      settype('error')
+      setstatus('Deadline not passed  passed or Proposal is already Executed')
+      setShowMetamaskAlert(true)
+      setTimeout(() => {
+        settype('')
+        setstatus('')
+        setShowMetamaskAlert(false)
+      }, 5000);
     }
   }
 

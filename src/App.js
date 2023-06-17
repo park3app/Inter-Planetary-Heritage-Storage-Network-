@@ -16,6 +16,7 @@ import Footer from './Components/Footer/Footer';
 import Faucet from './Components/Faucet';
 import SuccessSingleProposal from "./Components/Proposals/SuccessSingleProposal/SuccessSingleProposal";
 import UnSuccessSingleProposal from './Components/Proposals/UnSucessfullSinfleProposal';
+import { Avatar } from '@chakra-ui/react';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
     <Route path='unsucessproposals' element={<UnSuccesFullProposals/>} />
     <Route path='unsucessproposals/:id' element={<UnSuccessSingleProposal/>} />
     <Route path='faucet'  element={<Faucet/>}/>
+    
     </Routes>
     <Footer/>
     </BrowserRouter>
