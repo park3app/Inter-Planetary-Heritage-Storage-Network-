@@ -87,15 +87,22 @@ const MyProposals = () => {
                  :
               <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
                 {assetsArray.length !== 0 ? 
-                assetsArray.map(items => {
-                        return (
-                          <>
+                <div className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
+                {assetsArray.map((items) => {
+                  return (
+                    <>
+                      {items.tokenURI && (
+                        <div className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
                           <ProposalTile tokenURI={items.tokenURI} proposalid={items.proposalId.toString()} yesvotes={items.yesvotes.toString()} novotes={items.novotes.toString()} />
-                          <div style={{color:'#fff'}}>
-                          </div>
-                          </>
-                        )
-                })  :
+                        </div>
+                      )}
+                      <div style={{ color: '#fff' }}>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+                :
                 <Center  h={'50vh'}>
                 <div className='message text-white'>No Assets... Pretty Strange <Link to='/uploadassets'><ExternalLinkIcon/></Link> </div>
                 </Center>

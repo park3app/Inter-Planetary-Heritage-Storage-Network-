@@ -237,11 +237,11 @@ const EachProposal = () => {
             <HStack spacing={8} className='bg-[#17173d] shadow-xl shadow-black rounded-2xl p-8'>
             <div className='w-6/12 h-full'>
               
-              <img className='border-cyan-500 border-2 w-full rounded-xl' src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} fallbackSrc={screenshot} style={{ maxWidth: '60%' }} />
+              <img className='border-cyan-500 border-2 w-full mx-auto rounded-xl' src={`${image.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`} alt={name} fallbackSrc={screenshot} style={{ maxWidth: '60%' }} />
               
               </div>
 
-              <VStack className='text-[#a7a5a5]' spacing={6} align='stretch' marginLeft={'5rem'}>
+              <VStack className='text-[#b9b6b6]' spacing={6} align='stretch' marginLeft={'5rem'}>
                 <div className='details-div'>
                   <Heading as="h3" m={'1'} size="lg" >
                     #{id}<Link style={{ marginLeft: '3px' }} target='_blank' to={tokenuri}><ExternalLinkIcon /></Link>

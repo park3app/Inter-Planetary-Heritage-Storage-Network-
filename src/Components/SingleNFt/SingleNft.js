@@ -10,6 +10,8 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
   const [name, setName] = useState('');
   const [img, setimg] = useState('')
 
+  console.log("max",tokenURI);
+
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
@@ -33,11 +35,11 @@ const SingleNft = ({ tokenURI, isStateisTrue, isproposed, tokenId }) => {
 
 
   return (
-    <div className="bg-[#0a1930] m-3" key={tokenURI}>
+    <div className=" m-3 " key={tokenURI}>
       {
         tokenURI !== "" &&
 
-        <div className='w-72 rounded-3xl h-96 border-2 border-sky-800  bg-[#17173d]  pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black'>
+        <div >
           <img
             src={`${img.replace('ipfs://', 'https://nftstorage.link/ipfs/')}`}
             className='w-11/12 mx-auto rounded-2xl max-h-52'

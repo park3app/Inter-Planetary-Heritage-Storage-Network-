@@ -89,13 +89,28 @@ const Assets = () => {
           :
           <HStack wrap={'wrap'} justifyContent={'flex-start'} >
             {assetsArray.length !== 0 ?
-              assetsArray.map(items => {
-                return (
-                  <SingleNft tokenId={items.tokenId} tokenURI={items.tokenURI} isStateisTrue={items.isStateisTrue} isproposed={items.isproposed} />
+              <div className="grid sm:grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 mx-auto pb-10 gap-6">
+                {assetsArray.map((items) => {
+                  return (
+                    <>
+                      {items.tokenURI && (
+                        <div className="col-span-1 w-72 rounded-3xl border-2 border-sky-800 bg-[#17173d] pt-2.5 shadow-md hover:shadow-lg hover:shadow-black transition ease-in-out delay-150 shadow-black">
+                          <SingleNft
+                            tokenId={items.tokenId}
+                            tokenURI={items.tokenURI}
+                            isStateisTrue={items.isStateisTrue}
+                            isproposed={items.isproposed}
+                          />
+                        </div>
+                      )}
+                    </>
+                  );
+                }
                 )
-              }) :
+                }
+              </div> :
               <Center justifyContent={'center'} alignContent={'center'} alignItems={'center'}>
-                <div className='message' style={{color:"#fff"}}>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon /></Link> </div>
+                <div className='message' style={{ color: "#fff" }}>You Don't have any Assets <Link to='/uploadassets'><ExternalLinkIcon /></Link> </div>
               </Center>
             }
           </HStack>
