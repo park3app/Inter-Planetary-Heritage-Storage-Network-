@@ -2,6 +2,7 @@
 
 ## ETH HACK FS 2023 <br>
 
+
 We made a Data DAO for Cultural History.  Stories of cultures, arts and people are preserved by a decentralized network using the IPCS “inter planetary cultural storage” contracts.
 
 <li>Testnet contracts for end-users to administer the File Storage in the collection<br></li>
@@ -21,36 +22,42 @@ Example Decentralized Science: The IPCS app can be used for cross-border decentr
 
 ### OUR USE CASE:
 
-IPCS is a "Global Cultures Data Dao"
-Members of the Data DAO record cultural histories of communities, local arts, photos and stories of cultural diversity in significant places that must be preserved.  This solution creates "large shared data-sets" that can be used by governments, schools, museums and other archivists in decentralized science. For our use we have included one of the most culturally diverse places in Los Angeles, a park in East LA.
+This use case includes one of the most culturally diverse places in Los Angeles, a park in East LA. Members of the Data DAO record cultural histories of communities, local arts, photos and stories of cultural diversity in significant places that must be preserved. 
 
 ### How it's Made
-<li>Upload to IPFS - Preserving cultural histories and places in a dynamic data verification and processing system.<br></li>
-<li>Creating standards for archival data in a new decentralized records network. Using NFT.Storage<br></li>
-<li>Creating data governance and storage options and perpetual storage deals for archivists and historians. using FileCoin Storage and Litehouse<br></li>
-<li>Using Livepeer for storing the Videos , and using livepeer for original video creator "Attestations", so that the members of the network can be recognized or rewarded when their data is used or remixed<br></li>
-<li>Using ENS for integrations with web3 community and profiles<br></li>
 
-<br>
+FILECOIN - Calibration Testnet
+1. Deploy Data DAO contracts for IPCS to Calibration Testnet
+2. Configure the DAO tokens, voting, and governance use case for IPCS
+3. Use voting function to calculate votes and approve Filecoin  storage deals.
+4. Use Lighthouse Storage SDK to store successful cultural asset files on Filecoin.Storage on Calibration Testnet.
+5. Storage providers notified of new storage deals.
+6. We were inspired by FIL and Protocol Labs to innovate with DataDAO technology. We built this project with FVM to enable curation, compute-over-data, and governance of valuable cultural Datasets.
 
-Filecoin<br>
-We were inspired by FIL and Protocol Labs to innovate with DataDAO technology. We built this project with FVM to enable curation, use, and governance of valuable cultural Datasets.
+IPFS - 
+1. User Input cultural data to Front-end.
+2. Send Metadata to IPFS using NFT.storage sdk.
+3. Retrieve IPFS meta-data by providing the CID.
+4. The storage is immutable and the Cultural History can be accessed anywhere. 
 
-Nft.storage<br>
-We are answering the NFT.storage teams call for Social Good Warriors: Making sustainability, and preventing misinformation a part of the IPCS system.  
+NFT.storage
+1. Trigger nft storage from user front-end asset upload. 
+2. Include custom metadata: cultural significance, location, etc
+3. Use NFT.storage store method to upload metadata to IPFS.
+4. We are answering the NFT.storage teams call for Social Good Warriors: Making sustainability, and preventing misinformation a part of the IPCS system.
 
-Livepeer<br>
-We were inspired by Livepeer team to use creator signing, and video provenance, that will insure the future value of the content is reflected to the creators, and collaborators.
+LIGHTHOUSE Storage 
+1. The CID and meta-data are passed into the Storage Deal
+2. Data DAO members send storage proposals to Filecoin storage providers using Lighthouse sdk.
+
+APECOIN
+1. Require Apecoin for Voting 
+2. Create custom Apecoin contract for Calibration Testnet.
+3. Add Mint functionality in Front-End for users to get their first Calibration Testnet Apecoin.
+4. Reward cultural preservation professionals using IPCS Application  with Apecoin.
+Apecoin Address (Calibration Testnet) -> 0x07F99B29b69Afa06C6766309158A5940049Ef4E7
 
 
-Lighthouse<br>
-This was very helpful for developing our storage app for end users. 
 
 
-ENS<br>
-We were inspired to make our App simple and easy for our users through ENS. Integration with ENS name and avatar resolution create a more efficient solution for cultural storage in our use case of a Data DAO.
-
-
-Apecoin<br>
-Apecoin is the ideal community inspiration and is a part of our creator content tooling that allows IPCS to store the cultural histories of our communities. 
 
